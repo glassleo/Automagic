@@ -1,0 +1,8 @@
+## Interface: 80300
+## Title: !Automagic
+## Notes: Automagic
+## Author: Leo Bolin
+## Version: 8.3.0
+## OptionalDeps: !ZigiAuras
+
+Automagic.lua
