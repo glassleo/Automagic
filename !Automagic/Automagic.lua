@@ -1,5 +1,6 @@
 local gr, fl, aq, su, pa, hs, co = {}, {}, {}, {}, {}, {}, {}
 local bindingsSet = false
+local macrosReset = false
 -------------------------------
 
 
@@ -13,73 +14,136 @@ local default_hs = "Eternal Traveler's Hearthstone"
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Character specific mounts
 
 ----------------------------------------------------
--- 		ALLIANCE
+-- Alliance
 ----------------------------------------------------
--- 1	Ravenholdt
+-- Ravenholdt I
 ----------------------------------------------------
 
--- Fou
-gr.Fou			= "[nomounted]Starcursed Voidstrider"
+-- Agon
+gr.Agon 		= "[nomounted]Avenging Felcrusher"
 
--- Malgorzata
-gr.Malgorzata	= "[nomounted]Felsaber"
-fl.Malgorzata	= "[nomounted]Slayer's Felbroken Shrieker"
+-- Chow
+gr.Chow 		= "[nomounted]Blue Shado-Pan Riding Tiger"
 
--- Margaret
-gr.Margaret		= "[nomounted]Kul Tiran Charger"
+-- Ellika
+gr.Ellika 		= "[nomounted]Beryl Ruinstrider"
 
--- Medea
-gr.Medea 		= "[nomounted]Lucid Nightmare"
-fl.Medea 		= "[nomounted]Twilight Drake"
+-- Ethan
 
--- Millius
-gr.Millius 		= "[nomounted]Vicious War Elekk"
+-- Fax
+gr.Fax 			= "[nomounted]Explorer's Dunetrekker"
 
--- Octavia
-gr.Octavia		= "[nomounted]Dark Iron Core Hound"
+-- Ólafur
 
--- Parsec
-gr.Parsec		= "[nomounted]Prestigious Royal Courser"
-
--- Peng
-gr.Peng 		= "[nomounted]Great Blue Dragon Turtle"
-
--- Vack
-gr.Vack			= "[nomounted]Running Wild"
-fl.Vack			= "[nomounted]Witherbark Direwing"
-aq.Vack 		= "Fathom Dweller"
-
--- Valdor
-hs.Valdor 		= "Noble Gardener's Hearthstone"
-
--- Yulia
-gr.Yulia		= "[nomounted]Bleakhoof Ruinstrider"
-fl.Yulia		= "[nomounted]Felglow Mana Ray"
+-- Skuggi
 
 ----------------------------------------------------
--- 1	Sporeggar
+-- Sporeggar I
+----------------------------------------------------
+
+-- Aero
+gr.Aero 		= "[nomounted]Prestigious Forest Courser"
+
+-- Asami
+gr.Asami 		= "[nomounted]Regal Riding Crane"
+fl.Asami 		= "[nomounted]Rajani Warserpent"
+
+-- Castor
+
+-- Desmond
+gr.Desmond 		= "[nomounted]Starcursed Voidstrider"
+
+-- Dreki
+gr.Dreki 		= "[nomounted]Core Hound"
+
+----------------------------------------------------
+-- The Venture Co I
+----------------------------------------------------
+
+-- Asteria
+gr.Asteria 		= "[nomounted]Kaldorei Nightsaber"
+
+-- Coeus
+
+-- Eris
+gr.Eris 		= "[nomounted]Felsaber"
+
+-- Hecate
+gr.Hecate 		= "[nomounted]Bloodfang Widow"
+fl.Hecate 		= "[nomounted]Nazjatar Blood Serpent"
+
+-- Sacha
+
+----------------------------------------------------
+-- Skullcrusher I
+----------------------------------------------------
+
+-- Bruce
+
+-- Ingrid
+gr.Ingrid 		= "[nomounted]Invincible"
+fl.Ingrid 		= "[nomounted]Invincible"
+
+-- Karl
+gr.Karl 		= "[nomounted]Blackpaw"
+
+-- Vigg
+gr.Vigg 		= "[nomounted]Umber Nightsaber"
+
+----------------------------------------------------
+-- Sporeggar II
 ----------------------------------------------------
 
 -- Andrew
 gr.Andrew		= "[nomounted]Blackpaw"
+fl.Andrew 		= "[nomounted]Alabaster Stormtalon"
 
 -- Auros
-gr.Auros 		= "[nomounted]Avenging Felcrusher"
-
--- Bree
-gr.Bree 		= "[nomounted]Lightforged Felcrusher"
+gr.Auros 		= "[nomounted]Glorious Felcrusher"
+fl.Auros 		= "[nomounted]Scintillating Mana Ray"
 
 -- Flor
 hs.Flor 		= "Noble Gardener's Hearthstone"
 
 -- Gloria
 gr.Gloria 		= "[nomounted]Lightforged Felcrusher"
-
--- Helena
-hs.Helena 		= "Headless Horseman's Hearthstone"
+fl.Gloria 		= "[nomounted]Scintillating Mana Ray"
 
 -- Janet
 gr.Janet 		= "[nomounted]Starcursed Voidstrider"
@@ -96,26 +160,70 @@ fl.Violaine		= "[nomounted]Teldrassil Hippogryph"
 aq.Violaine 	= "Saltwater Seahorse"
 hs.Violaine 	= "Lunar Elder's Hearthstone"
 
+-- Wax
+gr.Wax 			= "[nomounted]Sandy Nightsaber"
+fl.Wax 			= "[nomounted]Honeyback Harvester"
+hs.Wax 			= "Noble Gardener's Hearthstone"
+
 -- Wes
 gr.Wes 			= "[nomounted]Black Riding Goat"
+fl.Wes 			= "[nomounted]Steamscale Incinerator"
 
 ----------------------------------------------------
--- 1	Xavius
+-- Ravenholdt II
 ----------------------------------------------------
+
+-- Malgorzata
+gr.Malgorzata	= "[nomounted]Felsaber"
+fl.Malgorzata	= "[nomounted]Slayer's Felbroken Shrieker"
+
+-- Margaret
+gr.Margaret		= "[nomounted]Kul Tiran Charger"
+fl.Margaret 	= "[nomounted]Proudmoore Sea Scout"
+
+-- Medea
+gr.Medea 		= "[nomounted]Lucid Nightmare"
+fl.Medea 		= "[nomounted]Twilight Drake"
+
+-- Parsec
+gr.Parsec		= "[nomounted]Prestigious Royal Courser"
+fl.Parsec 		= "[nomounted]Onyx Netherwing Drake"
+
+-- Selma
+gr.Selma 		= "[nomounted]Stormpike Battle Ram"
+fl.Selma 		= "[nomounted]Valarjar Stormwing"
+hs.Selma 		= "Brewfest Reveler's Hearthstone"
+
+-- Vack
+gr.Vack			= "[nomounted]Running Wild"
+fl.Vack			= "[nomounted]Witherbark Direwing"
+aq.Vack 		= "Fathom Dweller"
+
+-- Yulia
+gr.Yulia		= "[nomounted]Bleakhoof Ruinstrider"
+fl.Yulia		= "[nomounted]Felglow Mana Ray"
+
+----------------------------------------------------
+-- Xavius II
+----------------------------------------------------
+
+-- Aleksandr
+
+-- Hart
+gr.Hart 		= "[nomounted]Highlord's Golden Charger"
 
 -- Leo
-gr.Leo 			= "[nomounted]Highlord's Golden Charger"
-fl.Leo 			= "[nomounted]Grand Armored Gryphon"
+gr.Leo1 		= "[nomounted]Highlord's Golden Charger"
+fl.Leo1 		= "[nomounted]Grand Armored Gryphon"
 
 -- Liam
 gr.Liam 		= "[nomounted]Goldenmane"
+fl.Liam 		= "[nomounted]Violet Spellwing"
 hs.Liam			= "Tome of Town Portal"
 
 ----------------------------------------------------
--- 2	Ravenholdt
+-- Ravenholdt III
 ----------------------------------------------------
-
--- Gretchen
 
 -- Iro
 gr.Iro			= "[nomounted]Felsaber"
@@ -130,29 +238,13 @@ aq.Kathryn 		= "Darkwater Skate"
 gr.Lucas		= "[nomounted]Running Wild"
 fl.Lucas		= "[nomounted]Armored Bloodwing"
 
--- Mirko
-gr.Mirko 		= "[nomounted]Summon Great Exarch's Elekk"
-fl.Mirko 		= "[nomounted]Enchanted Fey Dragon"
-
 -- Pavla
 gr.Pavla 		= "[nomounted]Shadowhide Pearltusk"
 fl.Pavla 		= "[nomounted]Farseer's Raging Tempest"
 
 -- Prue
-gr.Prue			= "[nomounted]Goldenmane"
-fl.Prue			= "[nomounted]Archmage's Prismatic Disc"
-
--- See
-gr.See 			= "[nomounted]Arcanist's Manasaber"
-fl.See 			= "[nomounted]Arcanist's Manasaber"
-
--- Selma
-gr.Selma 		= "[nomounted]Stormpike Battle Ram"
-hs.Selma 		= "Brewfest Reveler's Hearthstone"
-
--- Torvald
-gr.Torvald 		= "[nomounted]Beastlord's Warwolf"
-hs.Torvald 		= "The Innkeeper's Daughter"
+gr.Prue			= "[nomounted]Dapple Gray"
+fl.Prue			= "[nomounted]Glacial Tidestorm"
 
 -- Tracyanne
 gr.Tracyanne 	= "[nomounted]Vicious War Ram"
@@ -160,7 +252,28 @@ fl.Tracyanne 	= "[nomounted]Grand Gryphon"
 hs.Tracyanne 	= "The Innkeeper's Daughter"
 
 ----------------------------------------------------
--- 2	Sporeggar
+-- Scarshield Legion III
+----------------------------------------------------
+
+-- Beans
+
+-- Edith
+gr.Edith 		= "[nomounted]Dapple Gray"
+fl.Edith 		= "[nomounted]Stormsong Coastwatcher"
+
+-- Erika
+
+-- Errol
+gr.Errol 		= "[nomounted]Grove Warden"
+fl.Errol 		= "[nomounted]Grove Warden"
+hs.Errol 		= "Lunar Elder's Hearthstone"
+
+-- Violet
+gr.Violet 		= "[nomounted]Lucid Nightmare"
+fl.Violet 		= "[nomounted]Uncorrupted Voidwing"
+
+----------------------------------------------------
+-- Sporeggar III
 ----------------------------------------------------
 
 -- Elsa
@@ -168,6 +281,7 @@ gr.Elsa 		= "[nomounted]Summon Darkforge Ram"
 
 -- Isak
 gr.Isak 		= "[nomounted]Avenging Felcrusher"
+fl.Isak 		= "[nomounted]Vibrant Mana Ray"
 
 -- Jon
 gr.Jon 			= "[nomounted]Beastlord's Warwolf"
@@ -175,56 +289,73 @@ gr.Jon 			= "[nomounted]Beastlord's Warwolf"
 -- Karin
 gr.Karin 		= "[nomounted]Admiralty Stallion"
 
--- Ki
-gr.Ki 			= "[nomounted]Starcursed Voidstrider"
-
--- Mabel
-gr.Mabel 		= "[nomounted]Starcursed Voidstrider"
-fl.Mabel 		= "[nomounted]Twilight Harbinger"
-
--- Norah
-gr.Norah 		= "[nomounted]Smoky Charger"
+-- Monica
+gr.Monica 		= "[nomounted]Smoky Charger"
 
 ----------------------------------------------------
--- 2	Scarshield Legion
+-- Darkmoon Faire III
 ----------------------------------------------------
 
--- Beans
+-- Hilda
 
--- Errol
-gr.Errol 		= "[nomounted]Grove Warden"
-fl.Errol 		= "[nomounted]Grove Warden"
-hs.Errol 		= "Lunar Elder's Hearthstone"
-
--- Florence
-gr.Florence 	= "[nomounted]Dapple Gray"
-fl.Florence 	= "[nomounted]Stormsong Coastwatcher"
-
--- Veronika
-gr.Veronika 	= "[nomounted]Cerulean Ruinstrider"
+-- Tor
+gr.Tor 			= "[nomounted]Beastlord's Warwolf"
+hs.Tor 			= "The Innkeeper's Daughter"
 
 ----------------------------------------------------
--- 2	Al'Akir
+-- Al'Akir III
 ----------------------------------------------------
+
+-- Altair
+gr.Altair 		= "[nomounted]Prestigious Royal Courser"
+
+-- Ava
+gr.Ava 			= "[nomounted]Avenging Felcrusher"
 
 -- Fuzz
 hs.Fuzz 		= "Lunar Elder's Hearthstone"
-
--- Mak
-gr.Mak 			= "Scrapforged Mechaspider"
-fl.Mak 			= "Rustbolt Resistor"
-hs.Mak 			= "Holographic Digitalization Hearthstone"
 
 -- Rex
 gr.Rex 			= "[nomounted]Felsaber"
 fl.Rex 			= "[nomounted]Slayer's Felbroken Shrieker"
 
 ----------------------------------------------------
--- 3	Ravenholdt
+-- Sporeggar IV
 ----------------------------------------------------
 
--- Agon
-gr.Agon 		= "[nomounted]Blessed Felcrusher"
+-- Blanc
+gr.Blanc 		= "[nomounted]Lucid Nightmare"
+
+-- Grey
+gr.Grey 		= "[nomounted]Vicious Gilnean Warhorse"
+
+-- Ki
+gr.Ki 			= "[nomounted]Arcanist's Manasaber"
+fl.Ki 			= "[nomounted]Arcanist's Manasaber"
+
+-- Mab
+
+-- Milo
+gr.Milo			= "[nomounted]Scrapforged Mechaspider"
+fl.Milo 		= "[nomounted]Stormwind Skychaser"
+
+-- Nieve
+gr.Nieve 		= "[nomounted]Vicious Kaldorei Warsaber"
+fl.Nieve 		= "[nomounted]Teldrassil Hippogryph"
+
+-- Ty
+gr.Ty 			= "[nomounted]Gnomeregan Mechanostrider"
+
+-- Yessica
+gr.Yessica 		= "[nomounted]Beryl Ruinstrider"
+fl.Yessica 		= "[nomounted]Enchanted Fey Dragon"
+
+-- Zip
+gr.Zip 			= "[nomounted]Prestigious Bronze Courser"
+
+----------------------------------------------------
+-- Ravenholdt IV
+----------------------------------------------------
 
 -- Debbie
 gr.Debbie 		= "[nomounted]Mystic Runesaber"
@@ -236,12 +367,9 @@ fl.Elise 		= "[nomounted]Leyfeather Hippogryph"
 aq.Elise 		= "Crimson Tidestallion"
 hs.Elise 		= "Peddlefeet's Lovely Hearthstone"
 
--- Hiccup
-gr.Hiccup		= "[nomounted]Scrapforged Mechaspider"
-fl.Hiccup 		= "[nomounted]Stormwind Skychaser"
-
 -- Lisa
-gr.Lisa 		= "[nomounted]Admiralty Stallion"
+gr.Lisa 		= "[nomounted]Goldenmane"
+fl.Lisa 		= "[nomounted]High Priest's Lightsworn Seeker"
 
 -- Lua
 
@@ -249,79 +377,103 @@ gr.Lisa 		= "[nomounted]Admiralty Stallion"
 gr.Monade 		= "[nomounted]Felsaber"
 fl.Monade 		= "[nomounted]Slayer's Felbroken Shrieker"
 
--- Patricia
-gr.Patricia 	= "[nomounted]Dapple Gray"
-
 -- Ravioli
 gr.Ravioli		= "[nomounted]Vicious War Mechanostrider"
 fl.Ravioli		= "[nomounted]Mimiron's Head"
 
 -- Sook
-gr.Sook 		= "[nomounted]Great Blue Dragon Turtle"
+gr.Sook 		= "[nomounted]Golden Riding Crane"
 
 -- Vevica
 gr.Vevica		= "[nomounted]Vicious War Elekk"
 fl.Vevica		= "[nomounted]Darkspore Mana Ray"
 
 ----------------------------------------------------
--- 3	Sporeggar
+-- Al'Akir IV
 ----------------------------------------------------
 
--- Alec
-gr.Alec 		= "[nomounted]Bristling Hellboar"
-fl.Alec 		= "[nomounted]Valarjar Stormwing"
-
--- Blanc
-gr.Blanc 		= "[nomounted]Lucid Nightmare"
-
--- Brock
-gr.Brock 		= "[nomounted]Blackpaw"
-
--- En
-gr.En 			= "[nomounted]Sapphire Panther"
-
--- Jie
-gr.Jie 			= "[nomounted]Blue Shado-Pan Riding Tiger"
-
--- Lum
-gr.Lum 			= "[nomounted]Umber Ruinstrider"
-fl.Lum 			= "[nomounted]Enchanted Fey Dragon"
-
--- Mab
-
--- Nieve
-gr.Nieve 		= "[nomounted]Vicious Kaldorei Warsaber"
-fl.Nieve 		= "[nomounted]Teldrassil Hippogryph"
-
--- Yessica
-gr.Yessica 		= "[nomounted]Beryl Ruinstrider"
-fl.Yessica 		= "[nomounted]Enchanted Fey Dragon"
-
--- Yuna
-gr.Yuna 		= "[nomounted]Blue Shado-Pan Riding Tiger"
-
-----------------------------------------------------
--- 3	Al'Akir
-----------------------------------------------------
+-- Ludmila
+gr.Ludmila 		= "[nomounted]Avenging Felcrusher"
+fl.Ludmila 		= "[nomounted]Darkspore Mana Ray"
 
 -- Nix
 gr.Nix 			= "[nomounted]Netherlord's Chaotic Wrathsteed"
+fl.Nix 			= "[nomounted]Black Serpent of N'Zoth"
 
 -- Wu
 gr.Wu 			= "[nomounted]Ban-Lu, Grandmaster's Companion"
+fl.Wu 			= "[nomounted]Thundering Jade Cloud Serpent"
 
 ----------------------------------------------------
--- 4	Scarshield Legion
+-- Sporeggar V
+----------------------------------------------------
+
+-- Harebrain
+gr.Harebrain 	= "[nomounted]Scrapforged Mechaspider"
+
+-- Helena
+gr.Helena 		= "[nomounted]Lightforged Warframe"
+fl.Helena 		= "[nomounted]Lightforged Warframe"
+
+-- Hexan
+gr.Hexan 		= "[nomounted]Hellfire Infernal"
+
+-- How
+
+-- Lillian
+gr.Lillian 		= "[nomounted]Kul Tiran Charger"
+
+-- Matilda
+gr.Matilda 		= "[nomounted]KUl Tiran Charger"
+
+-- Niels
+
+-- Simeon
+
+-- Tek
+
+----------------------------------------------------
+-- Scarshield Legion V
+----------------------------------------------------
+
+-- Aska
+gr.Aska 		= "[nomounted]Summon Darkforge Ram"
+
+-- Claw
+
+-- Fix
+gr.Fix 			= "[nomounted]Ratstallion"
+
+-- Leaf
+
+-- Misty
+
+-- Olivia
+
+-- Sharaya
+
+-- Sigurd
+
+----------------------------------------------------
+-- Skullcrusher V
+----------------------------------------------------
+
+-- Missy
+
+-- Nancy
+gr.Nancy 		= "[nomounted]Scrapforged Mechaspider"
+
+-- Nora
+gr.Nora 		= "[nomounted]Core Hound"
+
+-- Pang
+
+----------------------------------------------------
+-- Scarshield Legion VI
 ----------------------------------------------------
 
 -- Cordelia
 gr.Cordelia 	= "[nomounted]Black Riding Goat"
-
--- Edith
-gr.Edith 		= "[nomounted]Umber Nightsaber"
-
--- Eric
-gr.Eric 		= "[nomounted]Dapple Gray"
 
 -- Frid
 
@@ -346,15 +498,12 @@ gr.Will 		= "[nomounted]Dapple Gray"
 fl.Will 		= "[nomounted]Stormsong Coastwatcher"
 
 ----------------------------------------------------
--- 4	The Venture Co
+-- The Venture Co VI
 ----------------------------------------------------
-
--- Barie
-gr.Barbie 		= "[nomounted]Swift Lovebird"
-fl.Barbie 		= "[nomounted]Leyfeather Hippogryph"
 
 -- Beryl
 gr.Beryl 		= "[nomounted]Lucid Nightmare"
+fl.Beryl 		= "[nomounted]Shadowbarb Drone"
 
 -- Eld
 gr.Eld 			= "[nomounted]Core Hound"
@@ -369,31 +518,35 @@ gr.Grace		= "[nomounted]Avenging Felcrusher"
 gr.Ivan 		= "[nomounted]Running Wild"
 fl.Ivan 		= "[nomounted]Obsidian Worldbreaker"
 
+-- Kit
+
+-- Mak
+gr.Mak 			= "[nomounted]Summon Darkforge Ram"
+fl.Mak 			= "[nomounted]Spawn of Galakras"
+
 -- Mikael
-gr.Mikael 		= "[nomounted]Summon Exarch's Elekk"
-
--- Nil
-gr.Nil 			= "[nomounted]Starcursed Voidstrider"
-
--- Or
-gr.Or 			= "[nomounted]Summon Darkforge Ram"
+gr.Mikael 		= "[nomounted]Summon Great Exarch's Elekk"
+fl.Mikael 		= "[nomounted]Enchanted Fey Dragon"
+hs.Mikael 		= "Holographic Digitalization Hearthstone"
 
 -- Sinikka
 gr.Sinikka 		= "[nomounted]Bristling Hellboar"
 fl.Sinikka 		= "[nomounted]Deathlord's Vilebrood Vanquisher"
 
 ----------------------------------------------------
--- 4	Ravenholdt
+-- Ravenholdt VI
 ----------------------------------------------------
-
--- Folki
-gr.Folki 		= "[nomounted]Blackpaw"
 
 -- Idunn
 gr.Idunn 		= "[nomounted]Dark Iron Core Hound"
+fl.Idunn 		= "[nomounted]Shadowblade's Crimson Omen"
+
+-- Wane
+gr.Wane 		= "[nomounted]Vile Fiend"
+fl.Wane 		= "[nomounted]Slayer's Felbroken Shrieker"
 
 ----------------------------------------------------
--- 4	Xavius
+-- Xavius VI
 ----------------------------------------------------
 
 -- Hel
@@ -401,36 +554,28 @@ gr.Hel 			= "[nomounted]Kaldorei Nightsaber"
 fl.Hel 			= "[nomounted]Shadowblade's Lethal Omen"
 hs.Hel 			= "Lunar Elder's Hearthstone"
 
--- Walt
-gr.Walt 		= "[nomounted]Yellow Marsh Hopper"
-hs.Walt 		= "Holographic Digitalization Hearthstone"
+-- Minerva
+
+-- Mischa
 
 ----------------------------------------------------
--- 5	Sporeggar
+-- Sporeggar VII
 ----------------------------------------------------
 
 -- Aldous
 gr.Aldous 		= "[nomounted]Starcursed Voidstrider"
+fl.Aldous 		= "[nomounted]Shadowbarb Drone"
 
 -- Brigitte
 gr.Brigitte 	= "[nomounted]Seabraid Stallion"
-
--- Demus
-gr.Demus		= "[nomounted]Felsaber"
-fl.Demus		= "[nomounted]Slayer's Felbroken Shrieker"
 
 -- Floyd
 gr.Floyd		= "[nomounted]Vicious War Bear"
 fl.Floyd		= "[nomounted]Stormsong Coastwatcher"
 hs.Floyd		= "Tome of Town Portal"
 
--- Franz
-
 -- Hekla
 gr.Hekla 		= "[nomounted]Bristling Hellboar"
-
--- Niels
-gr.Niels 		= "[nomounted]Blackpaw"
 
 -- Sonya
 gr.Sonya 		= "[nomounted]Summon Dawnforge Ram"
@@ -439,46 +584,23 @@ gr.Sonya 		= "[nomounted]Summon Dawnforge Ram"
 gr.Vidalia 		= "[nomounted]Ratstallion"
 fl.Vidalia 		= "[nomounted]Deathlord's Vilebrood Vanquisher"
 
-----------------------------------------------------
--- 5	Ravenholdt
-----------------------------------------------------
-
--- Anmar
-gr.Anmar 		= "[nomounted]Summon Dawnforge Ram"
-
--- Arnald
-gr.Arnald 		= "[nomounted]Highlord's Golden Charger"
-
--- Berg
-gr.Berg 		= "[nomounted]Vicious War Ram"
-fl.Berg 		= "[nomounted]Alabaster Stormtalon"
-
--- Mary
-gr.Mary 		= "[nomounted]Crimson Deathcharger"
-
--- Nyr
-gr.Nyr 			= "[nomounted]Smoky Charger"
-
--- Vilma
-gr.Vilma 		= "[nomounted]Ratstallion"
-
--- Wax
-gr.Wax 			= "[nomounted]Running Wild"
+-- Vidar
 
 ----------------------------------------------------
--- 5	The Venture Co
+-- The Venture Co VII
 ----------------------------------------------------
 
--- Geir
+-- Brock
 
--- Greta
-gr.Greta 		= "[nomounted]Stormpike Battle Ram"
+-- Hazel
+
+-- It
+gr.It 			= "[nomounted]Ratstallion"
 
 -- Katya
 gr.Katya 		= "[nomounted]Cerulean Ruinstrider"
 
--- Otus
-gr.Otus 		= "[nomounted]Swift Mountain Horse"
+-- Shanna
 
 -- Song
 gr.Song 		= "[nomounted]Bruce"
@@ -487,77 +609,88 @@ gr.Song 		= "[nomounted]Bruce"
 gr.Susie 		= "[nomounted]Highlord's Vengeful Charger"
 
 ----------------------------------------------------
--- 5	Xavius
+-- Ravenholdt VII
 ----------------------------------------------------
+
+-- Arnald
+gr.Arnald 		= "[nomounted]Highlord's Golden Charger"
+fl.Arnald 		= "[nomounted]Grand Armored Gryphon"
+
+-- Berg
+gr.Berg 		= "[nomounted]Vicious War Ram"
+fl.Berg 		= "[nomounted]Alabaster Stormtalon"
+
+-- Mary
+gr.Mary 		= "[nomounted]Crimson Deathcharger"
+fl.Mary 		= "[nomounted]Armored Bloodwing"
+
+-- Vilma
+gr.Vilma 		= "[nomounted]Ratstallion"
+fl.Vilma 		= "[nomounted]Shadowblade's Crimson Omen"
+
+----------------------------------------------------
+-- Xavius VII
+----------------------------------------------------
+
+-- Björn
 
 -- Claire
 gr.Claire 		= "[nomounted]Vicious War Ram"
+fl.Claire 		= "[nomounted]Proudmoore Sea Scout"
 
 -- Kenneth
 gr.Kenneth 		= "[nomounted]Prestigious Royal Courser"
 
+-- Visp
+gr.Visp 		= "[nomounted]Running Wild"
+
 ----------------------------------------------------
--- 6	Scarshield Legion
+-- Scarshield Legion VIII
 ----------------------------------------------------
+
+-- Eric
+gr.Eric 		= "[nomounted]Rocktusk Battleboar"
+fl.Eric 		= "[nomounted]Honeyback Harvester"
 
 -- Irene
 gr.Irene 		= "[nomounted]Cindermane Charger"
 fl.Irene 		= "[nomounted]Cindermane Charger"
 hs.Irene 		= "Fire Eater's Hearthstone"
 
--- Jiang
-gr.Jiang 		= "[nomounted]Qinsho's Eternal Hound"
-
 -- Oberon
 gr.Oberon 		= "[nomounted]Acherus Deathcharger"
-
--- Ophelia
-gr.Ophelia 		= "[nomounted]Prestigious Ivory Courser"
+fl.Oberon 		= "[nomounted]Black Serpent of N'Zoth"
 
 -- Rose
 gr.Rose 		= "[nomounted]Smoky Charger"
 
--- Ruth
-gr.Ruth 		= "[nomounted]Kul Tiran Charger"
-
--- Violet
-gr.Violet 		= "[nomounted]Gnomeregan Mechanostrider"
-hs.Violet 		= "Holographic Digitalization Hearthstone"
+-- Steve
+gr.Steve 		= "[nomounted]Warforged Nightmare"
+fl.Steve 		= "[nomounted]Warforged Nightmare"
+hs.Steve 		= "Holographic Digitalization Hearthstone"
 
 ----------------------------------------------------
--- 6	The Venture Co
+-- Defias Brotherhood VII
 ----------------------------------------------------
 
--- Betty
-gr.Betty 		= "[nomounted]Mechagon Mechanostrider"
-fl.Betty 		= "[nomounted]Mimiron's Head"
-hs.Betty 		= "Holographic Digitalization Hearthstone"
+-- Ghost
+gr.Ghost 		= "[nomounted]Running Wild"
 
--- Charles
-gr.Charles 		= "[nomounted]Prestigious Royal Courser"
+-- Julie
+gr.Julie 		= "[nomounted]Scrapforged Mechaspider"
+hs.Julie 		= "Holographic Digitalization Hearthstone"
 
--- Ed
-gr.Ed 			= "[nomounted]Scrapforged Mechaspider"
-hs.Ed 			= "Holographic Digitalization Hearthstone"
+-- Mark
+gr.Mark 		= "[nomounted]Smoky Charger"
+fl.Mark 		= "[nomounted]Dusky Waycrest Gryphon"
 
--- Frank
-gr.Frank 		= "[nomounted]X-995 Mechanocat"
-hs.Frank 		= "Holographic Digitalization Hearthstone"
-
--- Jack
-gr.Jack 		= "[nomounted]X-995 Mechanocat"
-fl.Jack 		= "[nomounted]Wonderwing 2.0"
-hs.Jack 		= "Holographic Digitalization Hearthstone"
-
--- Rob
-gr.Rob 			= "[nomounted]Vicious War Fox"
+-- Suzanne
+gr.Suzanne 		= "[nomounted]Black Riding Goat"
+fl.Suzanne 		= "[nomounted]Siltwing Albatross"
 
 ----------------------------------------------------
--- 6	Sporeggar
+-- Sporeggar VII
 ----------------------------------------------------
-
--- Ludmila
-gr.Ludmila 		= "[nomounted]Vicious War Elekk"
 
 -- Maria
 gr.Maria	 	= "[nomounted]Lightforged Felcrusher"
@@ -566,33 +699,35 @@ gr.Maria	 	= "[nomounted]Lightforged Felcrusher"
 gr.Melissa 		= "[nomounted]Prestigious Royal Courser"
 fl.Melissa 		= "[nomounted]Cobalt Netherwing Drake"
 
--- Monica
-gr.Monica 		= "[nomounted]X-995 Mechanocat"
-hs.Monica 		= "Holographic Digitalization Hearthstone"
+-- Sistine
+gr.Sistine 		= "[nomounted]Kaldorei Nightsaber"
 
--- Zip
-gr.Zip 			= "[nomounted]Jeweled Onyx Panther"
-hs.Zip 			= "Holographic Digitalization Hearthstone"
+-- Torunn
 
 ----------------------------------------------------
--- 6	Defias Brotherhood
+-- The Venture Co VII
 ----------------------------------------------------
 
--- Julie
-gr.Julie 		= "[nomounted]Scrapforged Mechaspider"
-hs.Julie 		= "Holographic Digitalization Hearthstone"
+-- Betty
+gr.Betty 		= "[nomounted]Mechagon Mechanostrider"
+fl.Betty 		= "[nomounted]Mimiron's Head"
+hs.Betty 		= "Holographic Digitalization Hearthstone"
 
--- Mark
-gr.Mark 		= "[nomounted]Vicious War Mechanostrider"
-fl.Mark 		= "[nomounted]Explorer's Jungle Hopper"
-hs.Mark 		= "Holographic Digitalization Hearthstone"
+-- Ed
+gr.Ed 			= "[nomounted]Scrapforged Mechaspider"
+fl.Ed 			= "[nomounted]Rustbolt Resistor"
+hs.Ed 			= "Holographic Digitalization Hearthstone"
 
--- Suzanne
-gr.Suzanne 		= "[nomounted]Black Riding Goat"
-fl.Suzanne 		= "[nomounted]Siltwing Albatross"
+-- Frank
+gr.Frank 		= "[nomounted]Netherlord's Chaotic Wrathsteed"
+fl.Frank 		= "[nomounted]Netherlord's Chaotic Wrathsteed"
+
+-- Jack
+gr.Jack 		= "[nomounted]Vicious Gilnean Warhorse"
+fl.Jack 		= "[nomounted]Shadowblade's Lethal Omen"
 
 ----------------------------------------------------
--- 6	Skullcrusher
+-- Skullcrusher VII
 ----------------------------------------------------
 
 -- Gunnar
@@ -602,23 +737,137 @@ hs.Gunnar 		= "The Innkeeper's Daughter"
 -- Sam
 gr.Sam 			= "[nomounted]Vicious War Elekk"
 
--- Vigg
-gr.Vigg 		= "[nomounted]Vicious War Ram"
-hs.Vigg 		= "The Innkeeper's Daughter"
+----------------------------------------------------
+-- Xavius VII
+----------------------------------------------------
 
 -- Britney
 gr.Britney 		= "[nomounted]Swift Mountain Horse"
 
-----------------------------------------------------
--- 		HORDE
-----------------------------------------------------
--- 1	The Sha'tar
+-- Joe
+gr.Joe 			= "[nomounted]Kul Tiran Charger"
+
 ----------------------------------------------------
 
--- Aguna
-gr.Aguna 		= "[nomounted]Kor'kron War Wolf"
-fl.Aguna		= "[nomounted]Violet Netherwing Drake"
-hs.Aguna		= "Lunar Elder's He"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------
+-- Horde
+----------------------------------------------------
+-- The Sha'tar I
+----------------------------------------------------
+
+-- Aka
+gr.Aka 			= "[nomounted]Highmountain Thunderhoof"
+fl.Aka 			= "[nomounted]Clutch of Ji-Kun"
+
+-- Ap
+gr.Ap 			= "[nomounted]Highmountain Elderhorn"
+
+-- Grime
+gr.Grime 		= "[nomounted]Mag'har Direwolf"
+
+-- Hao
+gr.Hao 			= "[nomounted]Great Blue Dragon Turtle"
+
+-- Wuso
+gr.Wuso 		= "[nomounted]Black Primal Raptor"
+
+----------------------------------------------------
+-- Steamwheedle Cartel I
+----------------------------------------------------
+
+-- Desna
+gr.Desna 		= "[nomounted]Frostwolf Snarler"
+
+-- Shu
+
+-- Vivianne
+gr.Vivianne 	= "[nomounted]Rivendare's Deathcharger"
+
+-- Xi
+gr.Xi 			= "[nomounted]Ashhide Mushan Beast"
+
+----------------------------------------------------
+-- Kor'gall I
+----------------------------------------------------
+
+-- Cain
+
+-- Luke
+gr.Luke 		= "[nomounted]Vicious War Trike"
+
+-- Martha
+
+-- Zac
+gr.Zac 			= "[nomounted]Prestigious Ivory Courser"
+fl.Zac 			= "[nomounted]Cloudwing Hippogryph"
+
+----------------------------------------------------
+-- Terokkar I
+----------------------------------------------------
+
+-- Joana
+gr.Joana		= "[nomounted]Swift Purple Raptor"
+fl.Joana		= "[nomounted]Cobalt Pterrordax"
+
+-- Ophelia
+gr.Ophelia 		= "[nomounted]White Skeletal Warhorse"
+
+-- Paul
+
+-- Vincent
+gr.Vincent 		= "[nomounted]Netherlord's Chaotic Wrathsteed"
+
+----------------------------------------------------
+-- Bloodfeather I
+----------------------------------------------------
+
+-- Byrne
+
+-- Ian
+
+-- Marjorie
+gr.Marjorie 	= "[nomounted]Thunder Bluff Kodo"
+
+----------------------------------------------------
+-- The Sha'tar II
+----------------------------------------------------
+
+-- Alce
 
 -- Dia
 gr.Dia 			= "[nomounted]Mag'har Direwolf"
@@ -635,12 +884,13 @@ co.Emily		= "Brilliant Bloodfeather"
 -- Galinha
 hs.Galinha		= "Lunar Elder's Hearthstone"
 
--- Grime
-gr.Grime		= "[nomounted]Mag'har Direwolf"
-
 -- Lynn
 gr.Lynn			= "[nomounted]Arcanist's Manasaber"
 fl.Lynn			= "[nomounted]Arcanist's Manasaber"
+
+-- Malaclypse
+gr.Malaclypse 	= "[nomounted]Warforged Nightmare"
+fl.Malaclypse 	= "[nomounted]Warforged Nightmare"
 
 -- Sandy
 gr.Sandy 		= "[nomounted]Grinning Reaver"
@@ -655,46 +905,12 @@ fl.Viktor		= "[nomounted]Witherbark Direwing"
 gr.Wyle 		= "[nomounted]Skullripper"
 fl.Wyle 		= "[nomounted]Witherbark Direwing"
 
--- Zee
-gr.Zee			= "[nomounted]Emerald Raptor"
+-- Zo
+gr.Zo			= "[nomounted]Emerald Raptor"
+fl.Zo 			= "[nomounted]Yu'lei, Daughter of Jade"
 
 ----------------------------------------------------
--- 1	Steamwheedle Cartel
-----------------------------------------------------
-
--- Agata
-gr.Agata 		= "[nomounted]Rivendare's Deathcharger"
-fl.Agata 		= "[nomounted]Witherbark Direwing"
-
--- Aip
-gr.Aip 			= "[nomounted]Highmountain Elderhorn"
-
--- Bab
-gr.Bab 			= "[nomounted]Midnight"
-fl.Bab 			= "[nomounted]Smoldering Ember Wyrm"
-
--- Glue
-gr.Glue			= "[nomounted]Ironside Warwolf"
-fl.Glue			= "[nomounted]Crimson Pandaren Phoenix"
-
--- Jessie
-gr.Jessie 		= "[nomounted]Illidari Felstalker"
-
--- Lif
-gr.Lif 			= "[nomounted]Golden Riding Crane"
-fl.Lif 			= "[nomounted]Violet Pandaren Phoenix"
-aq.Lif 			= "Crimson Tidestallion"
-
--- Seska
-gr.Seska		= "[nomounted]Vicious Warstrider"
-fl.Seska		= "[nomounted]Shadowblade's Murderous Omen"
-
--- Sybil
-gr.Sybil 		= "[nomounted]Black Primal Raptor"
-fl.Sybil 		= "[nomounted]Witherbark Direwing"
-
-----------------------------------------------------
--- 1	Moonglade
+-- Moonglade II
 ----------------------------------------------------
 
 -- Akasia
@@ -705,12 +921,12 @@ gr.Bess 		= "[nomounted]Summon Great Sunwalker Kodo"
 fl.Bess 		= "[nomounted]Clutch of Ji-Kun"
 
 -- Cafuné
---hs["Cafuné"] 	= ""
+gr["Cafuné"] 	= "Grove Warden"
 
--- Hazel
-gr.Hazel		= "[nomounted]Vicious Warstrider"
-fl.Hazel		= "[nomounted]Ashes of Al'ar"
-aq.Hazel 		= "Crimson Tidestallion"
+-- Gary
+gr.Gary			= "[nomounted]Alabaster Hyena"
+fl.Gary			= "[nomounted]Wastewander Skyterror"
+aq.Gary 		= "Saltwater Seahorse"
 
 -- Solene
 gr.Solene 		= "[nomounted]Swift Red Hawkstrider"
@@ -726,7 +942,36 @@ gr.Zoom 		= "[nomounted]Brown Riding Goat"
 fl.Zoom			= "[nomounted]Darkmoon Dirigible"
 
 ----------------------------------------------------
--- 1	Kor'gall
+-- Steamwheedle Cartel II
+----------------------------------------------------
+
+-- Agata
+gr.Agata 		= "[nomounted]Rivendare's Deathcharger"
+fl.Agata 		= "[nomounted]Witherbark Direwing"
+
+-- Bab
+gr.Bab 			= "[nomounted]Midnight"
+fl.Bab 			= "[nomounted]Smoldering Ember Wyrm"
+
+-- Glue
+gr.Glue			= "[nomounted]Ironside Warwolf"
+fl.Glue			= "[nomounted]Crimson Pandaren Phoenix"
+
+-- Lif
+gr.Lif 			= "[nomounted]Golden Riding Crane"
+fl.Lif 			= "[nomounted]Violet Pandaren Phoenix"
+aq.Lif 			= "Crimson Tidestallion"
+
+-- Rebecca
+gr.Rebecca 		= "[nomounted]Vicious Warstrider"
+fl.Rebecca 		= "[nomounted]Ashes of Al'ar"
+
+-- Seska
+gr.Seska		= "[nomounted]Vicious Warstrider"
+fl.Seska		= "[nomounted]Shadowblade's Murderous Omen"
+
+----------------------------------------------------
+-- Kor'gall II
 ----------------------------------------------------
 
 -- Miranda
@@ -737,65 +982,20 @@ fl.Miranda 		= "[nomounted]Armored Red Dragonhawk"
 gr.Raz 			= "[nomounted]Predatory Bloodgazer"
 fl.Raz 			= "[nomounted]Spectral Pterrorwing"
 
-----------------------------------------------------
--- 2	Steamwheedle Cartel
-----------------------------------------------------
-
--- Ahu
-gr.Ahu			= "[nomounted]Bristling Hellboar"
-fl.Ahu 			= "[nomounted,spec:1] Deathlord's Vilebrood Vanquisher; [nomounted]Armored Bloodwing"
-
--- Astra
-gr.Astra 		= "[nomounted]Nightborne Manasaber"
-fl.Astra 		= "[nomounted,spec:1] High Priest's Lightsworn Seeker; [nomounted]Long-Forgotten Hippogryph"
-hs.Astra 		= "Lunar Elder's Hearthstone"
-
--- Echo
-gr.Echo			= "[nomounted]Swift Purple Raptor"
-fl.Echo			= "[nomounted]Armored Skyscreamer"
-
--- Francesca
-gr.Francesca 	= "[nomounted]Ivory Hawkstrider"
-fl.Francesca 	= "[nomounted]Infinite Timereaver"
-aq.Francesca 	= "Saltwater Seahorse"
-hs.Francesca 	= "Tome of Town Portal"
-
--- Krosh
-gr.Krosh		= "[nomounted]Beastlord's Warwolf"
-fl.Krosh		= "[nomounted,spec:1] Farseer's Raging Tempest; [nomounted]Iron Skyreaver"
-
--- Leão
---hs["Leão"]		= "[nomounted]"
-
--- Liou
-gr.Liou			= "[nomounted]Ban-Lu, Grandmaster's Companion"
-fl.Liou			= "[nomounted]Ban-Lu, Grandmaster's Companion"
-
--- Nyoka
-gr.Nyoka 		= "[nomounted]Yellow Marsh Hopper"
-
--- Salyssra
-gr.Salyssra		= "[nomounted]Lucid Nightmare"
-fl.Salyssra		= "[nomounted]Onyxian Drake"
-hs.Salyssra 	= "Tome of Town Portal"
-
--- Sokwe
-gr.Sokwe 		= "[nomounted]Swift Zulian Panther"
-
--- Won
-gr.Won 			= "[nomounted]Beastlord's Warwolf"
+-- Venom
+gr.Venom 		= "[nomounted]Green Primal Raptor"
 
 ----------------------------------------------------
--- 2	The Sha'tar
+-- The Sha'tar III
 ----------------------------------------------------
+
+-- Anna
+gr.Anna			= "Highmountain Thunderhoof"
+fl.Anna			= "[nomounted,spec:3] Farseer's Raging Tempest; [nomounted]Vitreous Stone Drake"
 
 -- Apera
 gr.Apera 		= "[nomounted]Highmountain Elderhorn"
 fl.Apera 		= "[nomounted]Huntmaster's Loyal Wolfhawk"
-
--- Beth
-gr.Beth 		= "[nomounted]Felsaber"
-fl.Beth 		= "[nomounted]Slayer's Felbroken Shrieker"
 
 -- Bite
 
@@ -806,10 +1006,6 @@ fl.Erin			= "[nomounted]Highlord's Golden Charger"
 -- Etu
 gr.Etu			= "[nomounted]Vicious War Kodo"
 fl.Etu			= "[nomounted]Clutch of Ji-Kun"
-
--- Myu
-gr.Myu			= "Highmountain Thunderhoof"
-fl.Myu			= "[nomounted,spec:3] Farseer's Raging Tempest; [nomounted]Vitreous Stone Drake"
 
 -- Nea
 gr.Nea			= "[nomounted]Warforged Nightmare"
@@ -831,39 +1027,82 @@ fl.Suri			= "[nomounted]Huntmaster's Loyal Wolfhawk"
 gr.Voo 			= "Grove Warden"
 
 ----------------------------------------------------
--- 2	Bloodfeather
+-- Steamwheedle Cartel III
 ----------------------------------------------------
 
--- Hye
-gr.Hye 			= "[nomounted]Ashhide Mushan Beast"
-hs.Hye 			= "Brewfest Reveler's Hearthstone"
+-- Aponi
+gr.Aponi		= "[nomounted]Spirit of Eche'ro"
+fl.Aponi 		= "[nomounted]Spirit of Eche'ro"
+
+-- Astra
+gr.Astra 		= "[nomounted]Nightborne Manasaber"
+fl.Astra 		= "[nomounted,spec:1] High Priest's Lightsworn Seeker; [nomounted]Long-Forgotten Hippogryph"
+hs.Astra 		= "Lunar Elder's Hearthstone"
+
+-- Echo
+gr.Echo			= "[nomounted]Swift Purple Raptor"
+fl.Echo			= "[nomounted]Armored Skyscreamer"
+
+-- Francesca
+gr.Francesca 	= "[nomounted]Ivory Hawkstrider"
+fl.Francesca 	= "[nomounted]Infinite Timereaver"
+aq.Francesca 	= "Saltwater Seahorse"
+hs.Francesca 	= "Tome of Town Portal"
+
+-- Leão
+--gr["Leão"]		= "[nomounted]"
+
+-- Liou
+gr.Liou			= "[nomounted]Ban-Lu, Grandmaster's Companion"
+fl.Liou			= "[nomounted]Ban-Lu, Grandmaster's Companion"
+
+-- Nyoka
+gr.Nyoka 		= "[nomounted]Yellow Marsh Hopper"
+
+-- Salyssra
+gr.Salyssra		= "[nomounted]Lucid Nightmare"
+fl.Salyssra		= "[nomounted]Onyxian Drake"
+hs.Salyssra 	= "Tome of Town Portal"
+
+-- Won
+gr.Won 			= "[nomounted]Beastlord's Warwolf"
+
+----------------------------------------------------
+-- Bloodfeather III
+----------------------------------------------------
+
+-- Alec
+gr.Alec 		= "[nomounted]Nightborne Manasaber"
+
+-- Chai
+gr.Chai 		= "[nomounted]Regal Riding Crane"
+fl.Chai 		= "[nomounted]Heavenly Crimson Cloud Serpent"
+hs.Chai 		= "Peddlefeet's Lovely Hearthstone"
 
 -- Serena
-gr.Serena 		= "[nomounted]Arcanist's Manasaber"
-fl.Serena 		= "[nomounted]Arcanist's Manasaber"
+gr.Serena 		= "[nomounted]Vicious Warstrider"
+fl.Serena 		= "[nomounted]Ashes of Al'ar"
 hs.Serena 		= "Tome of Town Portal"
 
--- Steven
-gr.Steven 		= "[nomounted]Rivendare's Deathcharger"
-hs.Steven 		= "Tome of Town Portal"
+----------------------------------------------------
+-- Moonglade IV
+----------------------------------------------------
 
-----------------------------------------------------
--- 3	Moonglade
-----------------------------------------------------
+-- Aip
+gr.Aip			= "[nomounted]Vicious War Kodo"
+fl.Aip			= "[nomounted]Battlelord's Bloodthirsty War Wyrm"
 
 -- Flerm
 gr.Flerm 		= "[nomounted]Kor'kron War Wolf"
 fl.Flerm 		= "[nomounted]Volcanic Stone Drake"
 
 -- Frango
+gr.Frango 		= "[nomounted]Grove Warden"
+fl.Frango 		= "[nomounted]Grove Warden"
 
 -- Gizzard
 gr.Gizzard 		= "[nomounted]Vicious War Raptor"
 fl.Gizzard 		= "[nomounted]Soaring Skyterror"
-
--- Goom
-gr.Goom			= "[nomounted]Vicious War Raptor"
-fl.Goom			= "[nomounted]Armored Skyscreamer"
 
 -- Norega
 gr.Norega 		= "[nomounted]Ironbound Wraithcharger"
@@ -877,10 +1116,6 @@ fl.Ozulu 		= "[nomounted]Deathlord's Vilebrood Vanquisher"
 gr.Vicki 		= "[nomounted]Illidari Felstalker"
 fl.Vicki 		= "[nomounted]Felglow Mana Ray"
 
--- Wishbone
-gr.Wishbone		= "[nomounted]Vicious War Kodo"
-fl.Wishbone		= "[nomounted]Battlelord's Bloodthirsty War Wyrm"
-
 -- Zoal
 gr.Zoal			= "[nomounted]Green Skeletal Warhorse"
 fl.Zoal			= "[nomounted]Deathlord's Vilebrood Vanquisher"
@@ -890,7 +1125,7 @@ gr.Zorp			= "[nomounted]Brawler's Burly Basilisk"
 fl.Zorp			= "[nomounted]Mechanized Lumber Extractor"
 
 ----------------------------------------------------
--- 3	Steamwheedle Cartel
+-- Steamwheedle Cartel IV
 ----------------------------------------------------
 
 -- Carolyn
@@ -927,7 +1162,7 @@ gr.Yarn			= "[nomounted]Ashhide Mushan Beast"
 fl.Yarn			= "[nomounted]Clutch of Ji-Kun"
 
 ----------------------------------------------------
--- 3	The Sha'tar
+-- The Sha'tar IV
 ----------------------------------------------------
 
 -- Appi
@@ -945,12 +1180,7 @@ fl.Colette 		= "[nomounted]Eclipse Dragonhawk"
 
 -- Esme
 gr.Esme			= "[nomounted]Highmountain Thunderhoof"
-
--- Joan
-gr.Joan			= "[nomounted]Red Primal Raptor"
-fl.Joan			= "[nomounted]Voldunai Dunescraper"
-aq.Joan 		= "Crimson Tidestallion"
-hs.Joan 		= "Fire Eater's Hearthstone"
+fl.Esme 		= "[nomounted]Spirit of Eche'ro"
 
 -- Nour
 gr.Nour			= "[nomounted]Raven Lord"
@@ -959,10 +1189,13 @@ hs.Nour 		= "Fire Eater's Hearthstone"
 
 -- Syrah
 gr.Syrah		= "[nomounted]Nightborne Manasaber"
+fl.Syrah 		= "[nomounted]Arcanist's Manasaber"
 
 ----------------------------------------------------
--- 3	Bloodfeather
+-- Bloodfeather IV
 ----------------------------------------------------
+
+-- Bree
 
 -- Oren
 gr.Oren 		= "[nomounted]Midnight"
@@ -970,44 +1203,79 @@ fl.Oren 		= "[nomounted]Armored Bloodwing"
 
 -- Teo
 gr.Teo 			= "[nomounted]Snapback Scuttler"
+fl.Teo 			= "[nomounted]Voldunai Dunescraper"
 
 ----------------------------------------------------
--- 4	The Sha'tar
+-- Moonglade V
 ----------------------------------------------------
 
--- Anna
-gr.Anna 		= "[nomounted]Great Northern Elderhorn"
+-- Aluni
 
--- Cosmia
-gr.Cosmia		= "[nomounted]Arcanist's Manasaber"
-fl.Cosmia		= "[nomounted]Arcanist's Manasaber"
+-- Bryan
+gr.Bryan 		= "[nomounted]Mollie"
 
--- Noicha
-gr.Noicha 		= "[nomounted]Vicious War Kodo"
-fl.Noicha 		= "[nomounted]High Priest's Lightsworn Seeker"
-aq.Noicha 		= "Saltwater Seahorse"
-hs.Noicha 		= "Peddlefeet's Lovely Hearthstone"
+-- Daka
 
--- Nonagon
+-- Guo
 
--- Polygon
-gr.Polygon 		= "[nomounted]Amber Primordial Direhorn"
-fl.Polygon 		= "[nomounted]Captured Swampstalker"
+-- Kala
 
--- Wawa
-gr.Wawa 		= "[nomounted]Crimson Primal Direhorn"
+-- Lurch
 
--- Xel
-gr.Xel 			= "[nomounted]Crusader's Direhorn"
-
--- Zahara
-gr.Zahara 		= "[nomounted]Crusader's Direhorn"
-
--- Zap
-gr.Zap 			= "[nomounted]Armored Frostwolf"
+-- Sandra
+gr.Sandra 		= "[nomounted]Mollie"
 
 ----------------------------------------------------
--- 4	Moonglade
+-- The Sha'tar V
+----------------------------------------------------
+
+-- Aguna
+gr.Aguna 		= "[nomounted]Kor'kron War Wolf"
+fl.Aguna		= "[nomounted]Violet Netherwing Drake"
+hs.Aguna		= "Lunar Elder's Hearthstone"
+
+-- Ao
+gr.Ao 			= "[nomounted]Trained Icehoof"
+fl.Ao 			= "[nomounted]Icebound Frostbrood Vanquisher"
+
+-- Hye
+gr.Hye 			= "[nomounted]Vile Fiend"
+fl.Hye 			= "[nomounted]Malevolent Drone"
+
+-- Krosh
+
+-- Thrash
+
+-- Zea
+
+-- Zolani
+
+----------------------------------------------------
+-- Bloodfeather V
+----------------------------------------------------
+
+-- Agnes
+
+-- Rhys
+gr.Rhys 		= "[nomounted]Spirit of Eche'ro"
+fl.Rhys 		= "[nomounted]Spirit of Eche'ro"
+
+-- Ryan
+gr.Ryan 		= "[nomounted]Mollie"
+
+-- Sven
+
+-- Volt
+
+----------------------------------------------------
+-- Darkspear V
+----------------------------------------------------
+
+-- Nox
+gr.Nox 			= "[nomounted]Netherlord's Accursed Wrathsteed"
+
+----------------------------------------------------
+-- Moonglade VI
 ----------------------------------------------------
 
 -- Boom
@@ -1040,7 +1308,7 @@ fl.Reesh 		= "[nomounted]Witherbark Direwing"
 gr.Wugzark 		= "[nomounted]Garn Nighthowl"
 
 ----------------------------------------------------
--- 4	Steamwheedle Cartel
+-- Steamwheedle Cartel VI
 ----------------------------------------------------
 
 -- Ax
@@ -1072,34 +1340,51 @@ gr.Sadie		= "[nomounted]Highmountain Thunderhoof"
 gr.Victoria 	= "[nomounted]Vicious Warstrider"
 
 ----------------------------------------------------
--- 4	Burning Steppes
+-- The Sha'tar VI
 ----------------------------------------------------
 
--- Elan
-gr.Elan 		= "[nomounted]Thunder Bluff Kodo"
+-- Noicha
+gr.Noicha 		= "[nomounted]Vicious War Kodo"
+fl.Noicha 		= "[nomounted]High Priest's Lightsworn Seeker"
+aq.Noicha 		= "Saltwater Seahorse"
+hs.Noicha 		= "Peddlefeet's Lovely Hearthstone"
+
+-- Nonagon
+
+-- Polygon
+gr.Polygon 		= "[nomounted]Amber Primordial Direhorn"
+fl.Polygon 		= "[nomounted]Captured Swampstalker"
+
+-- Zahara
+gr.Zahara 		= "[nomounted]Crusader's Direhorn"
+
+----------------------------------------------------
+-- Burning Steppes VI
+----------------------------------------------------
+
+-- Cosmia
+gr.Cosmia		= "[nomounted]Arcanist's Manasaber"
+fl.Cosmia		= "[nomounted]Arcanist's Manasaber"
+
+-- Ella
 
 -- Linda
 gr.Linda 		= "[nomounted]Snapback Scuttler"
+fl.Linda 		= "[nomounted]Unshackled Waveray"
 
 ----------------------------------------------------
--- 5	The Sha'tar
+-- The Sha'tar VII
 ----------------------------------------------------
-
--- Alce
 
 -- Azela
 gr.Azela 		= "[nomounted]Black Primal Raptor"
+fl.Azela 		= "[nomounted]Cobalt Pterrordax"
 
--- Goma
-
--- Hao
-gr.Hao 			= "[nomounted]Qinsho's Eternal Hound"
+-- Goom
+gr.Goom 		= "[nomounted]Vicious War Raptor"
 
 -- Oscar
 gr.Oscar 		= "[nomounted]Vicious Skeletal Warhorse"
-
--- Scruff
-gr.Scruff 		= "[nomounted]Vicious War Wolf"
 
 -- Spoon
 gr.Spoon  		= "[nomounted]Vicious War Kodo"
@@ -1107,22 +1392,17 @@ fl.Spoon 		= "[nomounted]Farseer's Raging Tempest"
 aq.Spoon 		= "Saltwater Seahorse"
 hs.Spoon 		= "Fire Eater's Hearthstone"
 
--- Tezeta
-
 -- Vendegast
 gr.Vendegast 	= "[nomounted]Ratstallion"
 
 -- Zumaridi
 
 ----------------------------------------------------
--- 5	Steamwheedle Cartel
+-- Steamwheedle Cartel VII
 ----------------------------------------------------
 
--- Aluni
-gr.Aluni		= "[nomounted]Bloodfang Widow"
-fl.Aluni		= "[nomounted]Armored Bloodwing"
-
--- Bear
+-- Ako
+gr.Ako 			= "[nomounted]Highmountain Thunderhoof"
 
 -- Gabriel
 gr.Gabriel 		= "[nomounted]White Skeletal Warhorse"
@@ -1130,44 +1410,32 @@ gr.Gabriel 		= "[nomounted]White Skeletal Warhorse"
 -- Hocus
 gr.Hocus 		= "[nomounted]Vicious Skeletal Warhorse"
 
--- Hui
-gr.Hui 			= "[nomounted]Great Brown Dragon Turtle"
-
 -- Janis
 gr.Janis 		= "[nomounted]Slate Primordial Direhorn"
-
--- Kun
-gr.Kun 			= "[nomounted]Great Blue Dragon Turtle"
-
--- Malaclypse
-gr.Malaclypse 	= "[nomounted]Netherlord's Brimstone Wrathsteed"
 
 -- Sithandra
 gr.Sithandra	= "[nomounted]Acherus Deathcharger"
 fl.Sithandra 	= "[nomounted]Deathlord's Vilebrood Vanquisher"
 
 ----------------------------------------------------
--- 5	Moonglade
+-- Moonglade VII
 ----------------------------------------------------
 
--- Chai
-gr.Chai 		= "[nomounted]Great Blue Dragon Turtle"
-
--- Denzel
-gr.Denzel 		= "[nomounted]Mag'har Direwolf"
+-- Bones
 
 -- Edna
-gr.Edna 		= "[nomounted]Acherus Deathcharger"
-fl.Edna 		= "[nomounted]Icebound Frostbrood Vanquisher"
-
--- Guo
-gr.Guo 			= "[nomounted]Great Purple Dragon Turtle"
 
 -- Kiwi
 
 ----------------------------------------------------
--- 5	Shattered Hand
+-- Shattered Hand VII
 ----------------------------------------------------
+
+-- Celeste
+gr.Celeste 		= "[nomounted]Nightborne Manasaber"
+
+-- Jerry
+gr.Jerry 		= "[nomounted]Mollie"
 
 -- Maya
 
@@ -1175,7 +1443,31 @@ gr.Guo 			= "[nomounted]Great Purple Dragon Turtle"
 gr.Njord 		= "[nomounted]Snapdragon Kelpstalker"
 
 ----------------------------------------------------
--- 6	Steamwheedle Cartel
+-- The Sha'tar VIII
+----------------------------------------------------
+
+-- Cassiopeia
+gr.Cassiopeia 	= "[nomounted]Arcanist's Manasaber"
+fl.Cassiopeia 	= "[nomounted]Arcanist's Manasaber"
+
+-- Elan
+
+-- Revna
+gr.Revna 		= "[nomounted]Coalfist Gronnling"
+fl.Revna 		= "[nomounted]Soaring Skyterror"
+
+-- Scott
+gr.Scott 		= "[nomounted]Dune Scavenger"
+
+-- Wawa
+gr.Wawa 		= "[nomounted]Gilded Ravasaur"
+
+-- Zap
+gr.Zap 			= "[nomounted]Frostwolf Snarler"
+fl.Zap 			= "[nomounted]Island Thunderscale"
+
+----------------------------------------------------
+-- Steamwheedle Cartel VIII
 ----------------------------------------------------
 
 -- Carrie
@@ -1189,90 +1481,97 @@ hs.Felix 		= "Tome of Town Portal"
 -- June
 gr.June 		= "[nomounted]Springfur Alpaca"
 
--- Leslie
-gr.Leslie 		= "[nomounted]Elusive Quickhoof"
-fl.Leslie 		= "[nomounted]Waste Marauder"
-
 -- Pest
 gr.Pest 		= "[nomounted]Elusive Quickhoof"
-
--- Rebecca
-gr.Rebecca 		= "[nomounted]Caravan Hyena"
-
--- Shu
-gr.Shu 			= "[nomounted]"
+fl.Pest 		= "[nomounted]Deathlord's Vilebrood Vanquisher"
 
 -- Tim
-gr.Tim 			= "[nomounted]Mollie"
+gr.Tim 			= "[nomounted]Elusive Quickhoof"
+fl.Tim 			= "[nomounted]Waste Marauder"
 
 ----------------------------------------------------
--- 6	The Sha'tar
+-- Moonglade VIII
 ----------------------------------------------------
 
--- Aponi
-gr.Aponi 		= "[nomounted]Spirit of Eche'ro"
+-- Ewa
 
--- Cassiopeia
-gr.Cassiopeia 	= "[nomounted]Arcanist's Manasaber"
-
--- Joyce
-gr.Joyce 		= "[nomounted]Elusive Quickhoof"
-
--- Revna
-gr.Revna 		= "[nomounted]Infernal Direwolf"
-
--- Rick
-gr.Rick 		= "[nomounted]Springfur Alpaca"
-
--- Scott
-gr.Scott 		= "[nomounted]Dune Scavenger"
-
--- Thomas
-gr.Thomas 		= "[nomounted]Springfur Alpaca"
+-- Zek
+gr.Zek 			= "[nomounted]Crusader's Direhorn"
 
 ----------------------------------------------------
--- 6	Moonglade
+-- Burning Steppes VIII
 ----------------------------------------------------
 
--- Daka
-gr.Daka 		= "[nomounted]Frostwolf Snarler"
+-- Bonk
 
--- David
-gr.David 		= "[nomounted]Mollie"
-
--- Gary
-gr.Gary 		= "[nomounted]Mollie"
-
--- James
-gr.James		= "[nomounted]Vicious Warstrider"
-
--- Kala
-gr.Kala 		= "[nomounted]Vicious War Kodo"
-
--- Ogo
-gr.Ogo 			= "[nomounted]Vicious War Raptor"
-
-----------------------------------------------------
--- 6	Burning Steppes
-----------------------------------------------------
-
--- Fak
-gr.Fak 			= "[nomounted]Red Primal Raptor"
-fl.Fak 			= "[nomounted]Witherbark Direwing"
-aq.Fak 			= "Saltwater Seahorse"
-hs.Fak 			= "Fire Eater's Hearthstone"
-
--- Loko
-gr.Loko 		= "[nomounted]Vicious War Raptor"
+-- Leo
+gr.Leo2 		= "[nomounted]Raven Lord"
+fl.Leo2 		= "[nomounted]Dread Raven"
 
 -- Magda
 gr.Magda 		= "[nomounted]Netherlord's Accursed Wrathsteed"
 fl.Magda 		= "[nomounted]Uncorrupted Voidwing"
 
+-- Luna
+
+-- Magda
+
 -- New
 gr.New 			= "[nomounted]Crusader's Direhorn"
+fl.New 			= "[nomounted]Cobalt Pterrordax"
 
 ----------------------------------------------------
+-- Executus VIII
+----------------------------------------------------
+
+-- Fred
+gr.Fred 		= "[nomounted]Mollie"
+
+-- Leah
+gr.Leah 		= "[nomounted]Fossilized Raptor"
+fl.Leah 		= "[nomounted]Expedition Bloodswarmer"
+
+-- No
+gr.No 			= "[nomounted]Llothien Prowler"
+fl.No 			= "[nomounted]Violet Pandaren Phoenix"
+aq.No 			= "[nomounted]Crimson Tidestallion"
+
+-- Sylvia
+
+----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1280,6 +1579,7 @@ local frame = CreateFrame("FRAME", "Automagic")
 
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:RegisterEvent("VARIABLES_LOADED")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 frame:RegisterEvent("BAG_UPDATE")
@@ -1342,6 +1642,16 @@ local groundAreas = {
 	["Crapapolis - Scenario"] = true,
 	["Vale of Eternal Twilight"] = true, -- Vision of N'Zoth
 	["Vision of the Twisting Sands"] = true, -- Vision of N'Zoth
+	-- Shadowlands
+	["The Shadowlands"] = true,
+	["Shadowlands"] = true,
+	["Oribos"] = true,
+	["Ardenweald"] = true,
+	["Bastion"] = true,
+	["Maldraxxus"] = true,
+	["Maldraxxus Broker Islands"] = true,
+	["The Maw"] = true,
+	["Torghast"] = true,
 }
 
 -- Garrisons Map IDs
@@ -1358,9 +1668,15 @@ local function macro(name, text, icon)
 		icon = "INV_MISC_QUESTIONMARK"
 	end
 
-	text = "#showtooltip\n/use " .. text
+	EditMacro(string.format("G%03d", name), nil, icon, text, 1)
+end
 
-	EditMacro(name, nil, icon, text, 1, 1)
+local function cmacro(name, text, icon)
+	if not icon then
+		icon = "INV_MISC_QUESTIONMARK"
+	end
+
+	EditMacro(string.format("C%02d", name), nil, icon, text, 1)
 end
 
 
@@ -1370,12 +1686,235 @@ local function eventHandler(self, event)
 	else
 		frame:UnregisterEvent("PLAYER_REGEN_ENABLED")
 
+		if event ~= "ZONE_CHANGED_NEW_AREA" and event ~= "BAG_UPDATE" then
+			-- Replace Global Macros
+			for i = 1, 120 do
+				if GetMacroBody(i) then
+					EditMacro(i, string.format("G%03d", i), "INV_MISC_QUESTIONMARK", "", 1, 1)
+				else
+					CreateMacro(string.format("G%03d", i), "INV_MISC_QUESTIONMARK", "", nil)
+				end
+			end
+
+
+			-- Global Keys
+
+			-- Fishing
+			SetBindingSpell("CTRL-Z", "Fishing")
+
+			-- Survey
+			SetBindingSpell("CTRL-X", "Survey")
+
+			-- Loot-A-Rang
+			-- Macro built based on continent below
+			SetBindingMacro("§", "G001")
+
+			-- Belt
+			macro(2, "#showtooltip\n/use 6", 3552794)
+			SetBindingMacro("=", "G002")
+			SetBindingMacro("NUMPADEQUALS", "G002")
+			SetBindingMacro("0", "G002")
+
+			-- Cloak
+			macro(3, "#showtooltip\n/cancelaura Nitro Boosts\n/use 15", 3555130)
+			SetBindingMacro("NUMPADDIVIDE", "G003")
+
+			-- Gloves
+			macro(4, "#showtooltip\n/use 10", 3552836)
+			SetBindingMacro("NUMPADMULTIPLY", "G004")
+
+			-- Tinker: Nitro Boosts
+			macro(5, "/use Engineering\n/run C_TradeSkillUI.CraftRecipe(55016)\n/use Engineering\n/click CharacterWaistSlot", 136243)
+			SetBindingMacro("ALT-CTRL-SHIFT-N", "G005")
+
+			-- Tinker: Goblin Glider
+			macro(6, "/use Engineering\n/run C_TradeSkillUI.CraftRecipe(126392)\n/use Engineering\n/click CharacterBackSlot", 136243)
+			SetBindingMacro("ALT-CTRL-SHIFT-G", "G006")
+
+			-- Mount
+			-- Dynamic (7)
+			SetBindingMacro("BUTTON3", "G007")
+
+			-- Aquatic Mount
+			-- Dynamic (8)
+			SetBindingMacro("SHIFT-BUTTON3", "G008")
+
+			-- Gathering Mount
+			macro(9, "/use [nomounted]Sky Golem\n/dismount [mounted]\n/leavevehicle", 413588)
+			SetBindingMacro("CTRL-BUTTON5", "G009")
+
+			-- Passenger Mount
+			-- Dynamic (10)
+			SetBindingMacro("ALT-BUTTON5", "G010")
+
+			-- Summon Favorite Companion
+			-- Dynamic (11)
+			--SetBindingMacro("ALT-NUMPAD3", "G011")
+
+			-- Revive Battle Pets
+			--SetBindingSpell("ALT-NUMPAD4", "Revive Battle Pets")
+
+			-- Dismiss Companion
+			macro(12, "/dismisspet", 132599)
+			--SetBindingMacro("ALT-NUMPAD5", "G012")
+
+			-- Favorite Hearthstone
+			-- Dynamic (13)
+
+			-- Call Pet 1
+			macro(14, "#showtooltip\n/use Call Pet 1", 132161)
+
+			-- Call Pet 2
+			macro(15, "#showtooltip\n/use Call Pet 2", 132161)
+
+			-- Call Pet 3
+			macro(16, "#showtooltip\n/use Call Pet 3", 132161)
+
+			-- Call Pet 4
+			macro(17, "#showtooltip\n/use Call Pet 4", 132161)
+
+			-- Call Pet 5
+			macro(18, "#showtooltip\n/use Call Pet 5", 132161)
+
+			-- Pet Ability
+			macro(19, "#showtooltip\n/use Tame Beast", 132164)
+
+			-- Exotic Pet Ability
+			macro(20, "#showtooltip\n/use Tame Beast", 132164)
+
+			-- Loot Spec 1
+			macro(21, "/run SetLootSpecialization(GetSpecializationInfo(1))", 237281)
+			SetBindingMacro("ALT-NUMPAD1", "G021")
+
+			-- Loot Spec 2
+			macro(22, "/run SetLootSpecialization(GetSpecializationInfo(2))", 237281)
+			SetBindingMacro("ALT-NUMPAD2", "G022")
+
+			-- Loot Spec 3
+			macro(23, "/run local _,_,c=UnitClass(\"player\") if c~=12 then SetLootSpecialization(GetSpecializationInfo(3)) end", 237281)
+			SetBindingMacro("ALT-NUMPAD3", "G023")
+
+			-- Loot Spec 4
+			macro(24, "/run local _,_,c=UnitClass(\"player\") if c==11 then SetLootSpecialization(GetSpecializationInfo(4)) end", 237281)
+			SetBindingMacro("ALT-NUMPAD4", "G024")
+
+			-- Cancel Auras
+			macro(25, "/cancelaura Ice Block\n/cancelaura Divine Shield\n/cancelaura Dispersion\n/cancelaura Aspect of the Turtle\n/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Goblin Glider\n/cancelaura Arcane Runelock", 135739)
+			SetBindingMacro("SHIFT-BUTTON5", "G025")
+
+			-- Trinket 1
+			macro(26, "#showtooltip\n/use 13")
+
+			-- Trinket 2
+			macro(27, "#showtooltip\n/use 14")
+
+			-- Healthstone
+			macro(28, "#showtooltip\n/use Healthstone", 237477)
+			
+			-- Tonic
+			macro(29, "#showtooltip\n/use Spiritual Healing Potion", 134865)
+
+			-- Potion
+			macro(30, "#showtooltip\n/use Potion of Prolonged Power", 132380)
+
+			-- Zone Ability
+			macro(31, "#showtooltip\n/use Garrison Ability", 975738)
+			SetBindingMacro(".", "G031")
+
+			-- Kyrian Phial of Serenity
+			macro(32, "#showtooltip\n/use Phial of Serenity", 975738)
+
+			-- Signature Ability
+			macro(33, "#showtooltip\n/use Signature Ability")
+
+			-- Covenant Ability
+			macro(34, "#showtooltip\n/use Covenant Ability")
+
+			-- Combat Ally
+			macro(35, "#showtooltip\n/use Combat Ally")
+			SetBindingMacro("-", "G035")
+
+			-- Reload
+			macro(108, "/reload", 236372)
+			SetBindingMacro("CTRL-SHIFT-PAGEDOWN", "G108")
+
+			-- BugSack
+			macro(109, "/bugsack show", 237144)
+			SetBindingMacro("END", "G109")
+
+			-- Volume Low
+			macro(110, "/run SetCVar(\"Sound_MasterVolume\", 0.1)", 133014)
+			SetBindingMacro("F11", "G110")
+
+			-- Volume High
+			macro(111, "/run SetCVar(\"Sound_MasterVolume\", 0.3)", 133014)
+			SetBindingMacro("F12", "G111")
+
+			-- Invite Guild Members
+			macro(112, "/run local n,r=UnitFullName(\"player\") local p=n..\"-\"..r local t=GetNumGuildMembers() for i=1,t do local c,_,g,_,_,_,_,_,o=GetGuildRosterInfo(i) if g<=1 and c~=p and o then C_PartyInfo.InviteUnit(c) end end", 413583)
+			SetBindingMacro("CTRL-SHIFT-NUMPADDIVIDE", "G112")
+
+			-- Reset Instances
+			macro(113, "/run ResetInstances()", 525134)
+			SetBindingMacro("CTRL-SHIFT-HOME", "G113")
+
+			-- Leave
+			macro(114, "/run C_PartyInfo.LeaveParty()", 236347)
+			SetBindingMacro("CTRL-SHIFT-NUMPADMULTIPLY", "G114")
+
+			-- Temp
+			macro(115, "", 892831)
+
+			-- Placer
+			macro(116, "/placer", 450905)
+			SetBindingMacro("CTRL-SHIFT-END", "G116")
+
+			-- Wholly
+			macro(117, "/wholly", 236669)
+			SetBindingMacro("HOME", "G117")
+
+			-- ATT Main
+			macro(118, "/att", 236679)
+			SetBindingMacro("PAGEDOWN", "G118")
+
+			-- ATT Mini List
+			macro(119, "/att minilist", 236677)
+			SetBindingMacro("PAGEUP", "G119")
+
+			-- Camp
+			macro(120, "/camp", 3193418)
+			SetBindingMacro("CTRL-SHIFT-PAGEUP", "G120")
+		end
+
 		local instanceName, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
 		local _, class, _ = UnitClass("player")
-		local playerName, _ = UnitName("player")
+		local playerName, realm = UnitFullName("player")
 		local faction,_ = UnitFactionGroup("player")
 		local spec = GetSpecialization() or 0
 		local level = UnitLevel("player") or 1
+
+		if event ~= "BAG_UPDATE" then
+			if instanceName == "Draenor" or instanceName == "Tanaan Jungle Intro" then
+				if class == "ROGUE" then
+					macro(1, "#showtooltip Findle's Loot-A-Rang\n/use [stealth,harm,nodead]Pick Pocket;[@mouseover,harm,dead][harm,dead][]Findle's Loot-A-Rang", 986491)
+				else
+					macro(1, "#showtooltip Findle's Loot-A-Rang\n/use [@mouseover,harm,dead][harm,dead][]Findle's Loot-A-Rang", 986490)
+				end
+			else
+				if class == "ROGUE" then
+					macro(1, "#showtooltip Loot-A-Rang\n/use [stealth,harm,nodead]Pick Pocket;[@mouseover,harm,dead][harm,dead][]Loot-A-Rang", 986491)
+				else
+					macro(1, "#showtooltip Loot-A-Rang\n/use [@mouseover,harm,dead][harm,dead][]Loot-A-Rang", 986490)
+				end
+			end
+		end
+
+		-- Leo workaround
+		if playerName == "Leo" and realm == "Xavius" then
+			playerName = "Leo1"
+		elseif playerName == "Leo" then
+			playerName = "Leo2"
+		end
 
 		local role = "dps"
 		if (class == "DEATHKNIGHT" and spec == 1) or (class == "DEMONHUNTER" and spec == 2) or (class == "DRUID" and spec == 3) or (class == "MONK" and spec == 1) or (class == "PALADIN" and spec == 2) or (class == "WARRIOR" and spec == 3) then
@@ -1395,84 +1934,158 @@ local function eventHandler(self, event)
 		if event ~= "ZONE_CHANGED_NEW_AREA" then
 			-- Healthstone
 			if bags("Healthstone") >= 1 then
-				macro("Healthstone", "Healthstone")
+				-- Healthstone
+				macro(28, "#showtooltip\n/use Healthstone")
 			else
-				macro("Healthstone", "Healthstone", 237477)
+				-- No Healthstone Available
+				macro(28, "#showtooltip\n/use Healthstone", 237477)
+			end
+
+			-- Mana Gem
+			if bags("Mana Gem") >= 1 then
+				-- Mana Gem
+				macro(36, "#showtooltip\n/use Mana Gem")
+			else
+				-- No Mana Gem Available
+				macro(36, "#showtooltip\n/use Mana Gem", 1379187)
 			end
 
 			-- Tonic
-			if bags("Crimson Vial") >= 1 then macro("Tonic", "Crimson Vial")
-
-			-- Battleground
-			elseif instanceType == "pvp" and bags("\"Third Wind\" Potion") >= 1 then macro("Tonic", "\"Third Wind\" Potion")
-
-			-- Darkmoon Faire
-			elseif bags("Darkmoon Healing Tonic") >= 1 then macro("Tonic", "Darkmoon Healing Tonic")
-
-			-- Kul Tiras/Zandalar
-			elseif bags("Abyssal Healing Potion") >= 1 and level >= 110 then macro("Tonic", "Abyssal Healing Potion")
-			elseif bags("Coastal Healing Potion") >= 1 and level >= 100 then macro("Tonic", "Coastal Healing Potion")
-
-			-- Broken Isles
-			elseif bags("Astral Healing Potion") >= 1 and level >= 110 then macro("Tonic", "Astral Healing Potion")
-			elseif bags("Ancient Healing Potion") >= 1 and level >= 100 then macro("Tonic", "Ancient Healing Potion")
-
-			-- Draenor
-			elseif bags("Healing Tonic") >= 1 and level >= 91 then macro("Tonic", "Healing Tonic")
-
-			-- Pandaria
-			elseif bags("Master Healing Potion") >= 1 and level >= 85 then macro("Tonic", "Master Healing Potion")
-
-			-- Cataclysm
-			elseif bags("Mythical Healing Potion") >= 1 and level >= 80 then macro("Tonic", "Mythical Healing Potion")
-
-			-- Northrend
-			elseif bags("Crazy Alchemist's Potion") >= 1 and level >= 70 then macro("Tonic", "Crazy Alchemist's Potion")
-			elseif bags("Runic Healing Potion") >= 1 and level >= 70 then macro("Tonic", "Runic Healing Potion")
-			elseif bags("Powerful Rejuvenation Potion") >= 1 and level >= 70 then macro("Tonic", "Powerful Rejuvenation Potion")
-			elseif bags("Resurgent Healing Potion") >= 1 and level >= 65 then macro("Tonic", "Resurgent Healing Potion")
-
-			-- Outland
-			elseif bags("Fel Regeneration Potion") >= 1 and level >= 60 then macro("Tonic", "Fel Regeneration Potion")
-			elseif bags("Super Healing Potion") >= 1 and level >= 55 then macro("Tonic", "Super Healing Potion")
-			elseif bags("Volatile Healing Potion") >= 1 and level >= 55 then macro("Tonic", "Volatile Healing Potion")
-
-			-- Classic
-			elseif bags("Major Healing Potion") >= 1 and level >= 45 then macro("Tonic", "Major Healing Potion")
-			elseif bags("Superior Healing Potion") >= 1 and level >= 35 then macro("Tonic", "Superior Healing Potion")
-			elseif bags("Greater Healing Potion") >= 1 and level >= 21 then macro("Tonic", "Greater Healing Potion")
-			elseif bags("Healing Potion") >= 1 and level >= 12 then macro("Tonic", "Healing Potion")
-			elseif bags("Lesser Healing Potion") >= 1 and level >= 3 then macro("Tonic", "Lesser Healing Potion")
-			elseif bags("Minor Healing Potion") >= 1 then macro("Tonic", "Minor Healing Potion")
-
-			-- Fallback to best current content potion
-			else macro("Tonic", "Abyssal Healing Potion", 134865) end
+			if bags("Crimson Vial") >= 1 then
+				-- Crimson Vial (Conjured by Rogue PvP talent)
+				macro(29, "#showtooltip\n/use 137222")
+			elseif instanceType == "pvp" and bags("\"Third Wind\" Potion") >= 1 then
+				-- Battlegrounds
+				macro(29, "#showtooltip\n/use \"Third Wind\" Potion")
+			elseif instanceType == "none" and bags("Darkmoon Healing Tonic") >= 1 then
+				-- Outdoors only (20%)
+				macro(29, "#showtooltip\n/use Darkmoon Healing Tonic")
+			elseif bags("Soulful Healing Potion") >= 1 and level >= 51 then
+				-- Shadowlands (random drop), level 51 (10,000)
+				macro(29, "#showtooltip\n/use Soulful Healing Potion")
+			elseif bags("Spiritual Healing Potion") >= 1 and level >= 51 then
+				-- Shadowlands, level 51 (10,000)
+				macro(29, "#showtooltip\n/use Spiritual Healing Potion")
+			elseif bags("Abyssal Healing Potion") >= 1 and level >= 40 then
+				-- Nazjatar, level 40 (12k, probably not squished properly)
+				macro(29, "#showtooltip\n/use Abyssal Healing Potion")
+			elseif bags("Astral Healing Potion") >= 1 and level >= 45 then
+				-- Argus, level 45 (4950)
+				macro(29, "#showtooltip\n/use Astral Healing Potion")
+			elseif bags("Coastal Healing Potion") >= 1 and level >= 40 then
+				-- Kul Tiras/Zandalar, level 40
+				macro(29, "#showtooltip\n/use Coastal Healing Potion")
+			elseif bags("Ancient Healing Potion") >= 1 and level >= 45 then
+				-- Broken Isles, level 45 (2200)
+				macro(29, "#showtooltip\n/use Ancient Healing Potion")
+			elseif bags("Healing Tonic") >= 1 and level >= 91 then
+				-- Draenor
+				macro(29, "#showtooltip\n/use Healing Tonic")
+			elseif bags("Master Healing Potion") >= 1 and level >= 85 then
+				-- Pandaria
+				macro(29, "#showtooltip\n/use Master Healing Potion")
+			elseif bags("Mythical Healing Potion") >= 1 and level >= 80 then
+				-- Cataclysm
+				macro(29, "#showtooltip\n/use Mythical Healing Potion")
+			elseif bags("Crazy Alchemist's Potion") >= 1 and level >= 70 then
+				-- Northrend
+				macro(29, "#showtooltip\n/use Crazy Alchemist's Potion")
+			elseif bags("Runic Healing Potion") >= 1 and level >= 70 then
+				-- Northrend
+				macro(29, "#showtooltip\n/use Runic Healing Potion")
+			elseif bags("Powerful Rejuvenation Potion") >= 1 and level >= 70 then
+				-- Northrend
+				macro(29, "#showtooltip\n/use Powerful Rejuvenation Potion")
+			elseif bags("Resurgent Healing Potion") >= 1 and level >= 65 then
+				-- Northrend
+				macro(29, "#showtooltip\n/use Resurgent Healing Potion")
+			elseif bags("Fel Regeneration Potion") >= 1 and level >= 60 then
+				-- Outland
+				macro(29, "#showtooltip\n/use Fel Regeneration Potion")
+			elseif bags("Super Healing Potion") >= 1 and level >= 55 then
+				-- Outland
+				macro(29, "#showtooltip\n/use Super Healing Potion")
+			elseif bags("Volatile Healing Potion") >= 1 and level >= 55 then
+				-- Outland
+				macro(29, "#showtooltip\n/use Volatile Healing Potion")
+			elseif bags("Major Healing Potion") >= 1 and level >= 45 then
+				-- Classic
+				macro(29, "#showtooltip\n/use Major Healing Potion")
+			elseif bags("Superior Healing Potion") >= 1 and level >= 35 then
+				-- Classic
+				macro(29, "#showtooltip\n/use Superior Healing Potion")
+			elseif bags("Greater Healing Potion") >= 1 and level >= 21 then
+				-- Classic
+				macro(29, "#showtooltip\n/use Greater Healing Potion")
+			elseif bags("Expedition Healing Potion") >= 1 then
+				-- Exile's Reach
+				macro(29, "#showtooltip\n/use Expedition Healing Potion")
+			elseif bags("Healing Potion") >= 1 and level >= 12 then
+				-- Classic
+				macro(29, "#showtooltip\n/use Healing Potion")
+			elseif bags("Lesser Healing Potion") >= 1 and level >= 3 then
+				-- Classic
+				macro(29, "#showtooltip\n/use Lesser Healing Potion")
+			elseif bags("Minor Healing Potion") >= 1 then
+				-- Classic
+				macro(29, "#showtooltip\n/use Minor Healing Potion")
+			else
+				-- No Tonic Available
+				macro(29, "#showtooltip\n/use Spiritual Healing Potion", 134865)
+			end
 
 
 			-- Potion
-			if instanceType == "pvp" and bags("Saltwater Potion") >= 1 then macro("Potion", "Saltwater Potion")
-			elseif instanceName == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then macro("Potion", "Experimental Vial")
-			elseif primary == "int" and bags("Potion of Unbridled Fury") >= 1 then macro("Potion", "Potion of Unbridled Fury")
-			elseif primary == "int" and bags("Superior Battle Potion of Intellect") >= 1 then macro("Potion", "Superior Battle Potion of Intellect")
-			elseif primary == "agi" and bags("Superior Battle Potion of Agility") >= 1 then macro("Potion", "Superior Battle Potion of Agility")
-			elseif primary == "str" and bags("Superior Battle Potion of Strength") >= 1 then macro("Potion", "Superior Battle Potion of Strength")
-			elseif primary == "int" and bags("Battle Potion of Intellect") >= 1 then macro("Potion", "Battle Potion of Intellect")
-			elseif primary == "agi" and bags("Battle Potion of Agility") >= 1 then macro("Potion", "Battle Potion of Agility")
-			elseif primary == "str" and bags("Battle Potion of Strength") >= 1 then macro("Potion", "Battle Potion of Strength")
-			elseif bags("Potion of Prolonged Power") >= 1 then macro("Potion", "Potion of Prolonged Power")
-			else macro("Potion", "Potion of Prolonged Power", 132380) end
+			if instanceType == "pvp" and bags("Saltwater Potion") >= 1 then
+				macro(30, "#showtooltip\n/use Saltwater Potion")
+			elseif instanceName == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then
+				macro(30, "#showtooltip\n/use Experimental Vial")
+			elseif primary == "int" and bags("Potion of Unbridled Fury") >= 1 then
+				macro(30, "#showtooltip\n/use Potion of Unbridled Fury")
+			elseif primary == "int" and bags("Superior Battle Potion of Intellect") >= 1 then
+				macro(30, "#showtooltip\n/use Superior Battle Potion of Intellect")
+			elseif primary == "agi" and bags("Superior Battle Potion of Agility") >= 1 then
+				macro(30, "#showtooltip\n/use Superior Battle Potion of Agility")
+			elseif primary == "str" and bags("Superior Battle Potion of Strength") >= 1 then
+				macro(30, "#showtooltip\n/use Superior Battle Potion of Strength")
+			elseif primary == "int" and bags("Battle Potion of Intellect") >= 1 then
+				macro(30, "#showtooltip\n/use Battle Potion of Intellect")
+			elseif primary == "agi" and bags("Battle Potion of Agility") >= 1 then
+				macro(30, "#showtooltip\n/use Battle Potion of Agility")
+			elseif primary == "str" and bags("Battle Potion of Strength") >= 1 then
+				macro(30, "#showtooltip\n/use Battle Potion of Strength")
+			elseif bags("Potion of Prolonged Power") >= 1 then
+				macro(30, "#showtooltip\n/use Potion of Prolonged Power")
+			else
+				-- No Potion Available
+				macro(30, "#showtooltip\n/use Potion of Prolonged Power", 132380)
+			end
 
 			-- Zone Ability
 			if instanceName == "Draenor" then
-				macro("Zone Ability", "Garrison Ability")
+				-- Draenor: Garrison Ability
+				macro(31, "#showtooltip\n/use Garrison Ability")
 			elseif instanceName == "Argus" then
-				macro("Zone Ability", "Vindicaar Matrix Crystal")
+				-- Argus: Vindicaar Matrix Crystal
+				macro(31, "#showtooltip\n/use Vindicaar Matrix Crystal")
 			elseif (instanceName == "Horrific Vision of Orgrimmar" or instanceName == "Horrific Vision of Stormwind") and IsSpellKnown(314955) then
-				macro("Zone Ability", "Sanity Restoration Orb")
+				-- Horrific Vision: Sanity Restoration Orb
+				macro(31, "#showtooltip\n/use Sanity Restoration Orb")
 			elseif instanceName == "Vision of the Twisting Sands" or instanceName == "Vale of Eternal Twilight" then
-				macro("Zone Ability", "Resilient Soul", 458722)
+				-- Minor Horrific Vision: Resilient Soul
+				macro(31, "#showtooltip\n/use Resilient Soul", 458722)
 			else
-				macro("Zone Ability", "Garrison Ability")
+				-- No Zone Ability Available
+				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
+			end
+
+			-- Signature Ability
+			local _, _, _, _, _, _, kyrian = GetSpellInfo("Summon Steward")
+
+			if bags("Phial of Serenity") >= 1 then
+				macro(32, "#showtooltip\n/use Phial of Serenity")
+			else
+				macro(32, "#showtooltip\n/use Summon Steward")
 			end
 
 			-- Hunter Pet
@@ -1515,7 +2128,7 @@ local function eventHandler(self, event)
 					["Quilen"] = "Stone Armor",
 					["Raptor"] = "Savage Rend",
 					["Ravager"] = "Ravage",
-					["Ray"] = "Nether Shock",
+					["Ray"] = "Nether Energy",
 					["Riverbeast"] = "Gruesome Bite",
 					["Rodent"] = "Gnaw",
 					["Scalehide"] = "Scale Shield",
@@ -1524,7 +2137,7 @@ local function eventHandler(self, event)
 					["Shale Spider"] = "Solid Shell",
 					["Silithid"] = "Tendon Rip",
 					["Spider"] = "Web Spray",
-					["Spirit Beast"] = "Spirit Shock",
+					["Spirit Beast"] = "Spirit Pulse",
 					["Sporebat"] = "Spore Cloud",
 					["Stag"] = "Nature's Grace",
 					["Tallstrider"] = "Dust Cloud",
@@ -1560,6 +2173,7 @@ local function eventHandler(self, event)
 
 				for i = 1, 5 do
 					local petIcon, petName, _, family = GetStablePetInfo(i)
+					local macroID = 13 + i
 
 					if family and petAbilities[family] then
 						petAbilityMacro = petAbilityMacro .. "[pet:" .. family .. "]" .. petAbilities[family] .. ";"
@@ -1574,15 +2188,15 @@ local function eventHandler(self, event)
 					end
 
 					if ZA and ZA.PetIcons then
-						EditMacro("Call Pet " .. i, nil, ZA.PetIcons[petName] or petIcon or 132161, "#showtooltip\n#icon " .. (ZA.PetIcons[petName] or petIcon or 132161) .. "\n/use Call Pet " .. i, 1, 1)
+						macro(macroID, "#showtooltip\n#icon " .. (ZA.PetIcons[petName] or petIcon or 132161) .. "\n/use Call Pet " .. i, ZA.PetIcons[petName] or petIcon or 132161)
 					end
 				end
 
 				petAbilityMacro = petAbilityMacro .. "Tame Beast"
 				petExoticMacro = petExoticMacro .. "Tame Beast"
 
-				EditMacro("Pet Ability", nil, nil, petAbilityMacro, 1, 1)
-				EditMacro("Pet Exotic", nil, nil, petExoticMacro, 1, 1)
+				macro(19, petAbilityMacro)
+				macro(20, petExoticMacro)
 			end
 		end
 
@@ -1594,50 +2208,6 @@ local function eventHandler(self, event)
 			-- Keybinds
 
 			-- Mounts
-			SetBindingMacro("BUTTON3", "Mount")
-			SetBindingMacro("SHIFT-BUTTON3", "Mount Aquatic")
-			SetBindingMacro("CTRL-BUTTON5", "Mount Gathering")
-			SetBindingMacro("ALT-BUTTON5", "Mount Passenger")
-
-			-- Pets
-			SetBindingMacro("ALT-NUMPAD3", "Companion")
-			SetBindingSpell("ALT-NUMPAD4", "Revive Battle Pets")
-			SetBindingMacro("ALT-NUMPAD5", "No Companion")
-
-			-- General
-			SetBindingMacro("§", "Loot-A-Rang")
-			SetBindingMacro("SHIFT-BUTTON5", "Cancel")
-			SetBindingSpell("CTRL-B", "Fishing")
-			SetBindingSpell("CTRL-N", "Survey")
-			SetBindingMacro(".", "Zone Ability")
-
-			-- UI
-			SetBindingMacro("F11", "Volume Low")
-			SetBindingMacro("F12", "Volume High")
-
-			SetBindingMacro("ALT-CTRL-NUMPAD6", "Placer")
-			SetBindingMacro("ALT-CTRL-NUMPAD8", "Reset Instances")
-			SetBindingMacro("ALT-CTRL-NUMPAD9", "Camp")
-			SetBindingMacro("CTRL-SHIFT-NUMPADDIVIDE", "Invite Guild")
-			SetBindingMacro("CTRL-SHIFT-NUMPADMULTIPLY", "Leave")
-
-			-- Loot Spec
-			SetBindingMacro("ALT-F9", "Loot Spec 1")
-			SetBindingMacro("ALT-F10", "Loot Spec 2")
-			SetBindingMacro("ALT-F11", "Loot Spec 3")
-			SetBindingMacro("ALT-F12", "Loot Spec 4")
-
-			-- Tinkers
-			SetBindingMacro("=", "Belt")
-			SetBindingMacro("NUMPADEQUALS", "Belt")
-			SetBindingMacro("0", "Belt")
-			SetBindingMacro("NUMPADDIVIDE", "Cloak")
-			SetBindingMacro("NUMPADMULTIPLY", "Gloves")
-
-			SetBindingMacro("ALT-CTRL-SHIFT-G", "Goblin Glider")
-			SetBindingMacro("ALT-CTRL-SHIFT-N", "Nitro Boosts")
-
-
 			local z, m, mA, mP = GetZoneText(), "", "", ""
 			local mountType, preferAquatic = "", false
 
@@ -1662,12 +2232,12 @@ local function eventHandler(self, event)
 				-- Vashj'ir
 				preferAquatic = true
 
-				if IsQuestFlaggedCompleted(25371) and class ~= "DRUID" then -- Quest to unlock the Vashj'ir Seahorse
+				if C_QuestLog.IsQuestFlaggedCompleted(25371) and class ~= "DRUID" then -- Quest to unlock the Vashj'ir Seahorse
 					aq[playerName] = "[nomounted]Vashj'ir Seahorse" -- Force Vashj'ir Seahorse in Vashj'ir
 				end
 			elseif z == "Nazjatar" or z == "Damprock Cavern" or z == "The Forgotten Tunnel" or z == "Highborne Estates" then
 				-- Nazjatar
-				if (faction == "Alliance" and IsQuestFlaggedCompleted(56350)) or (faction == "Horde" and IsQuestFlaggedCompleted(55481)) then -- Quest that gives 20 Manapearls
+				if (faction == "Alliance" and C_QuestLog.IsQuestFlaggedCompleted(56350)) or (faction == "Horde" and C_QuestLog.IsQuestFlaggedCompleted(55481)) then -- Quest that gives 20 Manapearls
 					preferAquatic = true
 				end
 			end
@@ -1698,40 +2268,33 @@ local function eventHandler(self, event)
 			-- Mount + Aquatic Mount
 			if class == "DRUID" then
 				if mountType == "flying" then
-					EditMacro("Mount", nil, nil, pre .. "/use [swimming][nocombat,nomounted]!Travel Form\n/dismount [mounted]\n/leavevehicle", 1, 1)
-				elseif mountType == "ground" or level >= 18 then
-					EditMacro("Mount", nil, nil, pre .. "/use [nomounted]!Travel Form\n/dismount [mounted]\n/leavevehicle", 1, 1)
+					macro(7, pre .. "/use [swimming][nocombat,nomounted]!Travel Form\n/dismount [mounted]\n/leavevehicle", 413588)
+				elseif mountType == "ground" or level >= 10 or IsSpellKnown(783) then
+					macro(7, pre .. "/use [nomounted]!Travel Form\n/dismount [mounted]\n/leavevehicle", 413588)
 				else
-					EditMacro("Mount", nil, nil, pre .. "/use " .. m .. "\n/dismount [mounted]\n/leavevehicle", 1, 1)
+					macro(7, pre .. "/use " .. m .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 				end
 
-				EditMacro("Mount Aquatic", nil, nil, pre .. "/use " .. m .."\n/dismount [mounted]\n/leavevehicle", 1, 1)
+				macro(8, pre .. "/use " .. m .."\n/dismount [mounted]\n/leavevehicle", 413588)
 			elseif preferAquatic then
-				EditMacro("Mount", nil, nil, "/use ".. (aq[playerName] or default_aq) .. "\n/dismount [mounted]\n/leavevehicle", 1, 1)
-				EditMacro("Mount Aquatic", nil, nil, pre .. "/use " .. m .."\n/dismount [mounted]\n/leavevehicle", 1, 1)
+				macro(7, "/use ".. (aq[playerName] or default_aq) .. "\n/dismount [mounted]\n/leavevehicle", 413588)
+				macro(8, pre .. "/use " .. m .."\n/dismount [mounted]\n/leavevehicle", 413588)
 			else
-				EditMacro("Mount", nil, nil, pre .. "/use " .. m .. "\n/dismount [mounted]\n/leavevehicle", 1, 1)
-				EditMacro("Mount Aquatic", nil, nil, "/use " .. (aq[playerName] or default_aq) .."\n/dismount [mounted]\n/leavevehicle", 1, 1)
+				macro(7, pre .. "/use " .. m .. "\n/dismount [mounted]\n/leavevehicle", 413588)
+				macro(8, "/use " .. (aq[playerName] or default_aq) .."\n/dismount [mounted]\n/leavevehicle", 413588)
 			end
 			
 			-- Passenger Mount
-			EditMacro("Mount Passenger", nil, nil, "/use " .. (pa[playerName] or default_pa), 1, 1)
+			macro(10, "/use " .. (pa[playerName] or default_pa), 413588)
 
 			-- Hearthstone
-			EditMacro("Hearthstone", nil, nil, "#showtooltip\n/use " .. (hs[playerName] or default_hs), 1, 1)
+			macro(13, "#showtooltip\n/use " .. (hs[playerName] or default_hs) )
 
 			-- Companion
 			if co[playerName] then
-				EditMacro("Companion", nil, nil, "/sp " .. co[playerName], 1, 1)
+				macro(11, "/sp " .. co[playerName], 613074)
 			else
-				EditMacro("Companion", nil, nil, "/rfp", 1, 1)
-			end
-
-			-- Loot-A-Rang
-			if class == "ROGUE" then
-				EditMacro("Loot-A-Rang", nil, nil, "#showtooltip Loot-A-Rang\n/use [stealth,harm,nodead]Pick Pocket;[@mouseover,harm,dead][harm,dead][]Loot-A-Rang", 1, 1)
-			else
-				EditMacro("Loot-A-Rang", nil, nil, "#showtooltip Loot-A-Rang\n/use [@mouseover,harm,dead][harm,dead][]Loot-A-Rang", 1, 1)
+				macro(11, "/rfp", 613074)
 			end
 		end
 	end
