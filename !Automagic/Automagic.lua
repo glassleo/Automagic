@@ -1,6 +1,5 @@
 local gr, fl, aq, su, pa, hs, co = {}, {}, {}, {}, {}, {}, {}
-local bindingsSet = false
-local macrosReset = false
+local throttled = {}
 -------------------------------
 
 
@@ -47,7 +46,7 @@ local default_hs = "Eternal Traveler's Hearthstone"
 
 
 
--- Character specific mounts
+-- Character specific
 
 ----------------------------------------------------
 -- Alliance
@@ -57,64 +56,85 @@ local default_hs = "Eternal Traveler's Hearthstone"
 
 -- Agon
 gr.Agon 		= "[nomounted]Avenging Felcrusher"
+fl.Agon 		= "[nomounted]High Priest's Lightsworn Seeker"
 
 -- Chow
 gr.Chow 		= "[nomounted]Blue Shado-Pan Riding Tiger"
 
 -- Ellika
 gr.Ellika 		= "[nomounted]Beryl Ruinstrider"
+fl.Ellika 		= "[nomounted]Ankoan Waveray"
 
 -- Ethan
+gr.Ethan 		= "[nomounted]Vicious War Fox"
+fl.Ethan 		= "[nomounted]Armored Blue Dragonhawk"
 
 -- Fax
 gr.Fax 			= "[nomounted]Explorer's Dunetrekker"
+fl.Fax 			= "[nomounted]Explorer's Jungle Hopper"
 
 -- Ólafur
+gr["Ólafur"] 	= "[nomounted]Summon Dawnforge Ram"
+fl["Ólafur"] 	= "[nomounted]Time-Lost Proto-Drake"
 
 -- Skuggi
+gr.Skuggi 		= "[nomounted]Midnight"
+fl.Skuggi 		= "[nomounted]Malevolent Drone"
 
 ----------------------------------------------------
 -- Sporeggar I
 ----------------------------------------------------
 
 -- Aero
-gr.Aero 		= "[nomounted]Prestigious Forest Courser"
+gr.Aero 		= "[nomounted]Pureheart Courser"
+fl.Aero 		= "[nomounted]Cloudwing Hippogryph"
 
 -- Asami
 gr.Asami 		= "[nomounted]Regal Riding Crane"
 fl.Asami 		= "[nomounted]Rajani Warserpent"
 
 -- Castor
+gr.Castor 		= "[nomounted]Vicious Kaldorei Warsaber"
+fl.Castor 		= "[nomounted]Teldrassil Hippogryph"
 
 -- Desmond
 gr.Desmond 		= "[nomounted]Starcursed Voidstrider"
+fl.Desmond 		= "[nomounted]Uncorrupted Voidwing"
 
 -- Dreki
 gr.Dreki 		= "[nomounted]Core Hound"
+fl.Dreki 		= "[nomounted]Pureblood Fire Hawk"
 
 ----------------------------------------------------
 -- The Venture Co I
 ----------------------------------------------------
 
 -- Asteria
-gr.Asteria 		= "[nomounted]Kaldorei Nightsaber"
+gr.Asteria 		= "[nomounted]Priestess' Moonsaber"
+fl.Asteria 		= "[nomounted]Teldrassil Hippogryph"
 
 -- Coeus
+gr.Coeus 		= "[nomounted]Kaldorei Nightsaber"
+fl.Coeus 		= "[nomounted]Silver Covenant Hippogryph"
 
 -- Eris
 gr.Eris 		= "[nomounted]Felsaber"
+fl.Eris 		= "[nomounted]Slayer's Felbroken Shrieker"
 
 -- Hecate
 gr.Hecate 		= "[nomounted]Bloodfang Widow"
 fl.Hecate 		= "[nomounted]Nazjatar Blood Serpent"
 
 -- Sacha
+gr.Sacha 		= "[nomounted]Blessed Felcrusher"
 
 ----------------------------------------------------
 -- Skullcrusher I
 ----------------------------------------------------
 
 -- Bruce
+gr.Bruce 		= "[nomounted]Regal Riding Crane"
+fl.Bruce 		= "[nomounted]Azure Cloud Serpent"
 
 -- Ingrid
 gr.Ingrid 		= "[nomounted]Invincible"
@@ -208,9 +228,12 @@ fl.Yulia		= "[nomounted]Felglow Mana Ray"
 ----------------------------------------------------
 
 -- Aleksandr
+gr.Aleksandr 	= "[nomounted]Vicious War Elekk"
+fl.Aleksandr 	= "[nomounted]Vibrant Mana Ray"
 
 -- Hart
 gr.Hart 		= "[nomounted]Highlord's Golden Charger"
+fl.Hart 		= "[nomounted]Grand Armored Gryphon"
 
 -- Leo
 gr.Leo1 		= "[nomounted]Highlord's Golden Charger"
@@ -297,6 +320,8 @@ gr.Monica 		= "[nomounted]Smoky Charger"
 ----------------------------------------------------
 
 -- Hilda
+gr.Hilda 		= "[nomounted]Summon Dawnforge Ram"
+fl.Hilda 		= "[nomounted]Grand Armored Gryphon"
 
 -- Tor
 gr.Tor 			= "[nomounted]Beastlord's Warwolf"
@@ -307,7 +332,7 @@ hs.Tor 			= "The Innkeeper's Daughter"
 ----------------------------------------------------
 
 -- Altair
-gr.Altair 		= "[nomounted]Prestigious Royal Courser"
+gr.Altair 		= "[nomounted]Prestigious Forest Courser"
 
 -- Ava
 gr.Ava 			= "[nomounted]Avenging Felcrusher"
@@ -459,6 +484,7 @@ gr.Fix 			= "[nomounted]Ratstallion"
 ----------------------------------------------------
 
 -- Missy
+gr.Missy 		= "[nomounted]Smoky Charger"
 
 -- Nancy
 gr.Nancy 		= "[nomounted]Scrapforged Mechaspider"
@@ -613,7 +639,7 @@ gr.Susie 		= "[nomounted]Highlord's Vengeful Charger"
 ----------------------------------------------------
 
 -- Arnald
-gr.Arnald 		= "[nomounted]Highlord's Golden Charger"
+gr.Arnald 		= "[nomounted]Highlord's Vigilant Charger"
 fl.Arnald 		= "[nomounted]Grand Armored Gryphon"
 
 -- Berg
@@ -639,7 +665,8 @@ gr.Claire 		= "[nomounted]Vicious War Ram"
 fl.Claire 		= "[nomounted]Proudmoore Sea Scout"
 
 -- Kenneth
-gr.Kenneth 		= "[nomounted]Prestigious Royal Courser"
+gr.Kenneth 		= "[nomounted]Lil' Donkey"
+fl.Kenneth 		= "[nomounted]Shadowbarb Drone"
 
 -- Visp
 gr.Visp 		= "[nomounted]Running Wild"
@@ -703,6 +730,8 @@ fl.Melissa 		= "[nomounted]Cobalt Netherwing Drake"
 gr.Sistine 		= "[nomounted]Kaldorei Nightsaber"
 
 -- Torunn
+gr.Torunn 		= "[nomounted]Stormpike Battle Ram"
+fl.Torunn 		= "[nomounted]Battlelord's Bloodthirsty War Wyrm"
 
 ----------------------------------------------------
 -- The Venture Co VII
@@ -745,7 +774,8 @@ gr.Sam 			= "[nomounted]Vicious War Elekk"
 gr.Britney 		= "[nomounted]Swift Mountain Horse"
 
 -- Joe
-gr.Joe 			= "[nomounted]Kul Tiran Charger"
+gr.Joe 			= "[nomounted]Seabraid Stallion"
+fl.Joe 			= "[nomounted]Proudmoore Sea Scout"
 
 ----------------------------------------------------
 
@@ -796,15 +826,19 @@ fl.Aka 			= "[nomounted]Clutch of Ji-Kun"
 
 -- Ap
 gr.Ap 			= "[nomounted]Highmountain Elderhorn"
+fl.Ap 			= "[nomounted]Huntmaster's Loyal Wolfhawk"
 
 -- Grime
 gr.Grime 		= "[nomounted]Mag'har Direwolf"
+fl.Grime 		= "[nomounted]Iron Skyreaver"
 
 -- Hao
 gr.Hao 			= "[nomounted]Great Blue Dragon Turtle"
+fl.Hao 			= "[nomounted]Golden Cloud Serpent"
 
 -- Wuso
-gr.Wuso 		= "[nomounted]Black Primal Raptor"
+gr.Wuso 		= "[nomounted]Vicious War Raptor"
+fl.Wuso 		= "[nomounted]Witherbark Direwing"
 
 ----------------------------------------------------
 -- Steamwheedle Cartel I
@@ -826,6 +860,8 @@ gr.Xi 			= "[nomounted]Ashhide Mushan Beast"
 ----------------------------------------------------
 
 -- Cain
+gr.Cain 		= "[nomounted]Pureheart Courser"
+fl.Cain 		= "[nomounted]Sunreaver Dragonhawk"
 
 -- Luke
 gr.Luke 		= "[nomounted]Vicious War Trike"
@@ -857,8 +893,12 @@ gr.Vincent 		= "[nomounted]Netherlord's Chaotic Wrathsteed"
 ----------------------------------------------------
 
 -- Byrne
+gr.Byrne 		= "[nomounted]Netherlord's Brimstone Wrathsteed"
+fl.Byrne 		= "[nomounted]Antoran Charhound"
 
 -- Ian
+gr.Ian 			= "[nomounted]Summon Thalassian Charger"
+fl.Ian 			= "[nomounted]Gilded Prowler"
 
 -- Marjorie
 gr.Marjorie 	= "[nomounted]Thunder Bluff Kodo"
@@ -904,6 +944,7 @@ fl.Viktor		= "[nomounted]Witherbark Direwing"
 -- Wyle
 gr.Wyle 		= "[nomounted]Skullripper"
 fl.Wyle 		= "[nomounted]Witherbark Direwing"
+hs.Wyle 		= "Venthyr Sinstone"
 
 -- Zo
 gr.Zo			= "[nomounted]Emerald Raptor"
@@ -1075,7 +1116,7 @@ gr.Won 			= "[nomounted]Beastlord's Warwolf"
 gr.Alec 		= "[nomounted]Nightborne Manasaber"
 
 -- Chai
-gr.Chai 		= "[nomounted]Regal Riding Crane"
+gr.Chai 		= "[nomounted]Swift Lovebird"
 fl.Chai 		= "[nomounted]Heavenly Crimson Cloud Serpent"
 hs.Chai 		= "Peddlefeet's Lovely Hearthstone"
 
@@ -1221,6 +1262,8 @@ gr.Bryan 		= "[nomounted]Mollie"
 -- Kala
 
 -- Lurch
+gr.Lurch 		= "[nomounted]Lurid Bloodtusk"
+fl.Lurch 		= "[nomounted]Archmage's Prismatic Disc"
 
 -- Sandra
 gr.Sandra 		= "[nomounted]Mollie"
@@ -1390,7 +1433,7 @@ gr.Oscar 		= "[nomounted]Vicious Skeletal Warhorse"
 gr.Spoon  		= "[nomounted]Vicious War Kodo"
 fl.Spoon 		= "[nomounted]Farseer's Raging Tempest"
 aq.Spoon 		= "Saltwater Seahorse"
-hs.Spoon 		= "Fire Eater's Hearthstone"
+hs.Spoon 		= "Necrolord Hearthstone"
 
 -- Vendegast
 gr.Vendegast 	= "[nomounted]Ratstallion"
@@ -1441,6 +1484,7 @@ gr.Jerry 		= "[nomounted]Mollie"
 
 -- Njord
 gr.Njord 		= "[nomounted]Snapdragon Kelpstalker"
+fl.Njord 		= "[nomounted]Abyss Worm"
 
 ----------------------------------------------------
 -- The Sha'tar VIII
@@ -1503,6 +1547,7 @@ gr.Zek 			= "[nomounted]Crusader's Direhorn"
 ----------------------------------------------------
 
 -- Bonk
+fl.Bonk 		= "[nomounted]Captured Swampstalker"
 
 -- Leo
 gr.Leo2 		= "[nomounted]Raven Lord"
@@ -1526,6 +1571,7 @@ fl.New 			= "[nomounted]Cobalt Pterrordax"
 
 -- Fred
 gr.Fred 		= "[nomounted]Mollie"
+fl.Fred 		= "[nomounted]Wastewander Skyterror"
 
 -- Leah
 gr.Leah 		= "[nomounted]Fossilized Raptor"
@@ -1586,6 +1632,7 @@ frame:RegisterEvent("BAG_UPDATE")
 frame:RegisterEvent("PET_STABLE_CLOSED")
 frame:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 frame:RegisterEvent("PLAYER_LEVEL_UP")
+frame:RegisterEvent("LEARNED_SPELL_IN_TAB")
 frame:RegisterUnitEvent("PLAYER_SPECIALIZATION_CHANGED", "player")
 
 
@@ -1686,7 +1733,34 @@ local function eventHandler(self, event)
 	else
 		frame:UnregisterEvent("PLAYER_REGEN_ENABLED")
 
+		if throttled[event] then
+			return
+		else
+			throttled[event] = true
+			C_Timer.After(1, function()
+				throttled[event] = false
+			end)
+		end
+
 		if event ~= "ZONE_CHANGED_NEW_AREA" and event ~= "BAG_UPDATE" then
+			-- Ongoing Calendar Events
+			local events = {}
+
+			if C_Calendar and C_DateAndTime then
+				local monthDay = C_DateAndTime.GetCurrentCalendarTime().monthDay or 1
+				C_Calendar.SetMonth(0)
+				local numEvents = C_Calendar.GetNumDayEvents(0, monthDay) or 0
+
+				if numEvents >= 1 then
+					for i = 1, numEvents do
+						if C_Calendar.GetDayEvent(0, monthDay, i) and C_Calendar.GetDayEvent(0, monthDay, i).eventType == 4 then
+							events[C_Calendar.GetDayEvent(0, monthDay, i).title] = true
+						end
+					end
+				end
+			end
+
+
 			-- Replace Global Macros
 			for i = 1, 120 do
 				if GetMacroBody(i) then
@@ -1834,6 +1908,10 @@ local function eventHandler(self, event)
 			macro(35, "#showtooltip\n/use Combat Ally")
 			SetBindingMacro("-", "G035")
 
+			-- Autofollow
+			macro(107, "/autofollow", 132328)
+			SetBindingMacro("SHIFT-å", "G107")
+
 			-- Reload
 			macro(108, "/reload", 236372)
 			SetBindingMacro("CTRL-SHIFT-PAGEDOWN", "G108")
@@ -1888,10 +1966,31 @@ local function eventHandler(self, event)
 
 		local instanceName, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
 		local _, class, _ = UnitClass("player")
+		local _,race = UnitRace("player")
 		local playerName, realm = UnitFullName("player")
 		local faction,_ = UnitFactionGroup("player")
 		local spec = GetSpecialization() or 0
 		local level = UnitLevel("player") or 1
+		local covenant = C_Covenants and C_Covenants.GetActiveCovenantID() or 0
+		-- 1 Kyrian
+		-- 2 Venthyr
+		-- 3 Night Fae
+		-- 4 Necrolord
+
+		local role = "dps"
+		if (class == "DEATHKNIGHT" and spec == 1) or (class == "DEMONHUNTER" and spec == 2) or (class == "DRUID" and spec == 3) or (class == "MONK" and spec == 1) or (class == "PALADIN" and spec == 2) or (class == "WARRIOR" and spec == 3) then
+			role = "tank"
+		elseif (class == "DRUID" and spec == 4) or (class == "MONK" and spec == 2) or (class == "PALADIN" and spec == 1) or (class == "PRIEST" and spec ~= 3) or (class == "SHAMAN" and spec == 3) then
+			role = "healer"
+		end
+
+		local primary = "int"
+		if (class == "DEMONHUNTER") or (class == "DRUID" and (spec == 2 or spec == 3)) or (class == "HUNTER") or (class == "MONK" and spec ~= 2) or (class == "ROGUE") or (class == "SHAMAN" and spec == 2) then
+			primary = "agi"
+		elseif (class == "DEATHKNIGHT") or (class == "WARRIOR") or (class == "PALADIN" and spec ~= 1) then
+			primary = "str"
+		end
+
 
 		if event ~= "BAG_UPDATE" then
 			if instanceName == "Draenor" or instanceName == "Tanaan Jungle Intro" then
@@ -1916,20 +2015,6 @@ local function eventHandler(self, event)
 			playerName = "Leo2"
 		end
 
-		local role = "dps"
-		if (class == "DEATHKNIGHT" and spec == 1) or (class == "DEMONHUNTER" and spec == 2) or (class == "DRUID" and spec == 3) or (class == "MONK" and spec == 1) or (class == "PALADIN" and spec == 2) or (class == "WARRIOR" and spec == 3) then
-			role = "tank"
-		elseif (class == "DRUID" and spec == 4) or (class == "MONK" and spec == 2) or (class == "PALADIN" and spec == 1) or (class == "PRIEST" and spec ~= 3) or (class == "SHAMAN" and spec == 3) then
-			role = "healer"
-		end
-
-		local primary = "int"
-		if (class == "DEMONHUNTER") or (class == "DRUID" and (spec == 2 or spec == 3)) or (class == "HUNTER") or (class == "MONK" and spec ~= 2) or (class == "ROGUE") or (class == "SHAMAN" and spec == 2) then
-			primary = "agi"
-		elseif (class == "DEATHKNIGHT") or (class == "WARRIOR") or (class == "PALADIN" and spec ~= 1) then
-			primary = "str"
-		end
-
 
 		if event ~= "ZONE_CHANGED_NEW_AREA" then
 			-- Healthstone
@@ -1951,7 +2036,10 @@ local function eventHandler(self, event)
 			end
 
 			-- Tonic
-			if bags("Crimson Vial") >= 1 then
+			if instanceName == "Torghast, Tower of the Damned" and bags("Rejuvenating Siphoned Essence") >= 1 then
+				-- Torghast
+				macro(29, "#showtooltip\n/use Rejuvenating Siphoned Essence")
+			elseif bags("Crimson Vial") >= 1 then
 				-- Crimson Vial (Conjured by Rogue PvP talent)
 				macro(29, "#showtooltip\n/use 137222")
 			elseif instanceType == "pvp" and bags("\"Third Wind\" Potion") >= 1 then
@@ -2036,7 +2124,10 @@ local function eventHandler(self, event)
 
 
 			-- Potion
-			if instanceType == "pvp" and bags("Saltwater Potion") >= 1 then
+			if instanceName == "Torghast, Tower of the Damned" and bags("Fleeting Frenzy Potion") >= 1 then
+				-- Torghast
+				macro(30, "#showtooltip\n/use Fleeting Frenzy Potion")
+			elseif instanceType == "pvp" and bags("Saltwater Potion") >= 1 then
 				macro(30, "#showtooltip\n/use Saltwater Potion")
 			elseif instanceName == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then
 				macro(30, "#showtooltip\n/use Experimental Vial")
@@ -2074,6 +2165,9 @@ local function eventHandler(self, event)
 			elseif instanceName == "Vision of the Twisting Sands" or instanceName == "Vale of Eternal Twilight" then
 				-- Minor Horrific Vision: Resilient Soul
 				macro(31, "#showtooltip\n/use Resilient Soul", 458722)
+			elseif instanceName == "The Shadowlands" and covenant == 4 then
+				-- Shadowlands: Construct Ability
+				macro(31, "#showtooltip\n/use Construct Ability")
 			else
 				-- No Zone Ability Available
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
@@ -2205,16 +2299,18 @@ local function eventHandler(self, event)
 			--UIWidgetTopCenterContainerFrame:ClearAllPoints()
 			--UIWidgetTopCenterContainerFrame:SetPoint("CENTER", 0, 400)
 
-			-- Keybinds
-
 			-- Mounts
 			local z, m, mA, mP = GetZoneText(), "", "", ""
-			local mountType, preferAquatic = "", false
+			local mountType, preferAquatic, overrideMount = "", false, false
 
 			-- Check if the character has riding skill
 			if instanceName == "The Deaths of Chromie" then
 				mountType = "flying" -- Force flying in the Deaths of Chromie scenario
-			elseif IsSpellKnown(34090) or IsSpellKnown(34091) or IsSpellKnown(90265) then -- Expert, Artisan or Master Riding
+			elseif instanceName == "Torghast, Tower of the Damned" then
+				overrideMount = "Mawrat Harness" -- Mawrat Harness is the only "mount" that is useable inside Torghast
+			elseif z == "The Maw" and class ~= "DRUID" then
+				overrideMount = "[nomounted]Corridor Creeper" -- The Maw
+			elseif IsSpellKnown(34090) or IsSpellKnown(34091) or IsSpellKnown(90265) then -- Expert, Artisan, Master Riding
 				mountType = "flying" -- We can use flying mounts
 
 				if (instanceType ~= "none" and not garrisonId[mapID]) or groundAreas[z] or groundAreas[instanceName] then
@@ -2252,7 +2348,7 @@ local function eventHandler(self, event)
 				end
 
 				if class == "SHAMAN" then
-					pre = "/use [nomounted,@player]Water Walking\n"
+					pre = "/use [nomounted,nocombat,@player]Water Walking\n"
 				end
 			elseif mountType == "flying" then
 				if GetItemCount("Magic Broom", false) >= 1 then -- Check if we have a Magic Broom in bags
@@ -2280,6 +2376,7 @@ local function eventHandler(self, event)
 				macro(7, "/use ".. (aq[playerName] or default_aq) .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 				macro(8, pre .. "/use " .. m .."\n/dismount [mounted]\n/leavevehicle", 413588)
 			else
+				if overrideMount then m = overrideMount end
 				macro(7, pre .. "/use " .. m .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 				macro(8, "/use " .. (aq[playerName] or default_aq) .."\n/dismount [mounted]\n/leavevehicle", 413588)
 			end
