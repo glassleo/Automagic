@@ -1,8 +1,8 @@
-## Interface: 90002
+## Interface: 90100
 ## Title: !Automagic
 ## Notes: Automagic
 ## Author: Leo Bolin
-## Version: 9.0.2
+## Version: 9.1.0
 ## OptionalDeps: !ZigiAuras
 
 Automagic.lua
