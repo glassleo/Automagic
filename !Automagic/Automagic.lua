@@ -440,6 +440,7 @@ fl.Wu 			= "[nomounted]Thundering Jade Cloud Serpent"
 
 -- Harebrain
 gr.Harebrain 	= "[nomounted]Scrapforged Mechaspider"
+fl.Harebrain 	= "[nomounted]Shadowbarb Drone"
 
 -- Helena
 gr.Helena 		= "[nomounted]Lightforged Warframe"
@@ -457,6 +458,7 @@ gr.Lillian 		= "[nomounted]Kul Tiran Charger"
 
 -- Matilda
 gr.Matilda 		= "[nomounted]KUl Tiran Charger"
+fl.Matilda 		= "[nomounted]Proudmoore Sea Scout"
 
 -- Niels
 gr.Niels 		= "[nomounted]Garn Nighthowl"
@@ -2280,6 +2282,9 @@ local function eventHandler(self, event)
 			elseif instanceName == "Vision of the Twisting Sands" or instanceName == "Vale of Eternal Twilight" then
 				-- Minor Horrific Vision: Resilient Soul
 				macro(31, "#showtooltip\n/use Resilient Soul", 458722)
+			elseif IsInJailersTower() then
+				-- Torghast: Activate Empowerment
+				macro(31, "#showtooltip\n/use Activate Empowerment")
 			elseif instanceName == "The Shadowlands" and covenant == 4 then
 				-- Shadowlands: Construct Ability
 				macro(31, "#showtooltip\n/use Construct Ability")
