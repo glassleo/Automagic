@@ -5,4 +5,5 @@
 ## Version: 9.1.0
 ## OptionalDeps: !ZigiAuras
 
+Custom.lua
 Automagic.lua
