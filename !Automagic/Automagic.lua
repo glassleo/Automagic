@@ -1,6 +1,30 @@
-local A = Automagic or {}
 local gr, fl, aq, su, pa, hs, co = {}, {}, {}, {}, {}, {}, {}
 local throttled = {}
+
+
+Automagic.PetIcons["DETHKNIGHT"] = {
+	["Geist"] = 336781,
+	["Ghoul"] = 1100170,
+	["Skeleton"] = 136187,
+}
+Automagic.PetIcons["MAGE"] = {
+	["Water Elemental"] = 135862,
+}
+Automagic.PetIcons["MONK"] = {
+	["Chi-Ji"] = 877514,
+	["Niuzao"] = 627607,
+	["Xuen"] = 620832,
+	["Yu'lon"] = 877408,
+}
+Automagic.PetIcons["SHAMAN"] = {
+	["Greater Earth Elemental"] = 136024,
+	["Greater Fire Elemental"] = 135790,
+	["Greater Storm Elemental"] = 2065626,
+	["Primal Earth Elemental"] = 136024,
+	["Primal Fire Elemental"] = 651081,
+	["Primal Storm Elemental"] = 2065626,
+}
+
 
 local frame = CreateFrame("FRAME", "AutomagicFrame")
 frame:RegisterEvent("PLAYER_LOGIN")
@@ -596,7 +620,7 @@ local function eventHandler(self, event)
 				macro(32, "#showtooltip\n/use Summon Steward")
 			end
 
-			-- Hunter Pet
+			-- Pets
 			if class == "HUNTER" then
 				local petAbilityMacro, petExoticMacro = "#showtooltip\n/use ", "#showtooltip\n/use "
 
@@ -624,8 +648,8 @@ local function eventHandler(self, event)
 					["Dragonhawk"] = "Dragon's Guile",
 					["Feathermane"] = "Feather Flurry",
 					["Fox"] = "Agile Reflexes",
-					["Goat"] = "Gruff",
 					["Gorilla"] = "Silverback",
+					["Gruffhorn"] = "Gruff",
 					["Hydra"] = "Acid Bite",
 					["Hyena"] = "Infected Bite",
 					["Krolusk"] = "Bulwark",
@@ -682,6 +706,12 @@ local function eventHandler(self, event)
 					["Worm"] = "Burrow Attack",
 				}
 
+				local PetIcons = {}
+
+				if Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name] then
+					PetIcons = Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name]
+				end
+
 				for i = 1, 5 do
 					local petIcon, petName, _, family = GetStablePetInfo(i)
 					local macroID = 13 + i
@@ -697,10 +727,8 @@ local function eventHandler(self, event)
 							petExoticMacro = petExoticMacro .. "[pet:" .. family .. "]" .. petExoticAbilities[family] .. ";"
 						end
 					end
-
-					if ZA and ZA.PetIcons then
-						macro(macroID, "#showtooltip\n#icon " .. (ZA.PetIcons[petName] or petIcon or 132161) .. "\n/use Call Pet " .. i, ZA.PetIcons[petName] or petIcon or 132161)
-					end
+					--print(petName, PetIcons[petName] or petIcon or 132161)
+					macro(macroID, "#showtooltip\n#icon " .. (PetIcons[petName] or petIcon or 132161) .. "\n/use Call Pet " .. i, tonumber(PetIcons[petName]) or petIcon or 132161)
 				end
 
 				petAbilityMacro = petAbilityMacro .. "Tame Beast"
@@ -708,6 +736,14 @@ local function eventHandler(self, event)
 
 				macro(19, petAbilityMacro)
 				macro(20, petExoticMacro)
+			elseif class == "MAGE" then
+				local PetIcons = {}
+
+				if Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name] then
+					PetIcons = Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name]
+				end
+
+				macro(14, "#showtooltip\n#icon " .. (PetIcons["Water Elemental"] or 135862) .. "\n/use Summon Water Elemental", tonumber(PetIcons["Water Elemental"]) or 135862)
 			end
 		end
 
@@ -720,15 +756,15 @@ local function eventHandler(self, event)
 			local z, m, mA, mP = GetZoneText(), "", "", ""
 			local mountType, preferAquatic, overrideMount = "", false, false
 
-			local ground = A.Characters["defaults"]["ground"]
-			local flying = A.Characters["defaults"]["flying"]
-			local aquatic = A.Characters["defaults"]["aquatic"]
-			local passenger = A.Characters["defaults"]["passenger"]
-			local hs = (covenant == 1) and "Kyrian Hearthstone" or (covenant == 2) and "Venthyr Sinstone" or (covenant == 3) and "Night Fae Hearthstone" or (covenant == 4) and "Necrolord Hearthstone" or A.Characters["defaults"]["hs"]
+			local ground = Automagic.Characters["defaults"]["ground"]
+			local flying = Automagic.Characters["defaults"]["flying"]
+			local aquatic = Automagic.Characters["defaults"]["aquatic"]
+			local passenger = Automagic.Characters["defaults"]["passenger"]
+			local hs = (covenant == 1) and "Kyrian Hearthstone" or (covenant == 2) and "Venthyr Sinstone" or (covenant == 3) and "Night Fae Hearthstone" or (covenant == 4) and "Necrolord Hearthstone" or Automagic.Characters["defaults"]["hs"]
 			local pets = nil
 
-			if A.Characters[name.."-"..realm] or A.Characters[name] then
-				local c = A.Characters[name.."-"..realm] or A.Characters[name]
+			if Automagic.Characters[name.."-"..realm] or Automagic.Characters[name] then
+				local c = Automagic.Characters[name.."-"..realm] or Automagic.Characters[name]
 
 				if c["flying:"..spec] or c["flying"] then
 					flying = c["flying:"..spec] or c["flying"]
