@@ -83,13 +83,14 @@ local groundAreas = {
 	-- Argus
 	["Krokuun"] = true,
 	["Antoran Wastes"] = true,
-	["Mac'Aree"] = true, -- Removed in 9.1.5?
+	["Mac'Aree"] = true, -- Removed in 9.1.5 but still used in API in some places
 	["Eredath"] = true,
 	["Invasion Points"] = true,
 	-- Battle for Azeroth
 	["8.1 Darkshore Alliance Quests"] = true, -- Darkshore Unlock Scenario
 	["8.1 Darkshore Horde Quests"] = true, -- Darkshore Unlock Scenario
 	["Mechagon City"] = true,
+	["The Great Sea Horde"] = true, -- Horde War Campaign Scenario
 	["Crapapolis"] = true, -- Goblin Heritage
 	["Crapapolis - Scenario"] = true,
 	["Vale of Eternal Twilight"] = true, -- Vision of N'Zoth
@@ -143,13 +144,10 @@ local function SetGlobalBinds()
 		SetBindingMacro("§", "G001")
 		SetBindingMacro("SHIFT-§", "G001")
 
-		-- Reply to Message
-		SetBinding("<", "REPLY")
-		SetBinding("SHIFT-<", "REPLY2")
-
 		-- Belt
 		SetBindingMacro("=", "G002")
 		SetBindingMacro("NUMPADEQUALS", "G002")
+		SetBindingMacro("SHIFT-0", "G002")
 		SetBindingMacro("0", "G002")
 
 		-- Cloak
@@ -248,6 +246,237 @@ local function SetGlobalBinds()
 
 		-- Camp
 		SetBindingMacro("CTRL-SHIFT-PAGEUP", "G120")
+
+		-------------------------------
+
+		SetBinding("+", "MACRO G003")
+		SetBinding(",", "EXTRAACTIONBUTTON1")
+		SetBinding("-", "MACRO G035")
+		SetBinding(".", "MACRO G031")
+		SetBinding("0", "MACRO G002")
+		SetBinding("8", "NONE")
+		SetBinding("9", "NONE")
+		SetBinding("<", "REPLY")
+		SetBinding("=", "MACRO G002")
+		SetBinding("ALT-BUTTON3", "CLICK BT4Button28:LeftButton")
+		SetBinding("ALT-BUTTON4", "MACRO Mount Passenger")
+		SetBinding("ALT-BUTTON5", "MACRO G010")
+		SetBinding("ALT-C", "TOGGLECHARACTER0")
+		SetBinding("ALT-CTRL-BUTTON3", "MACRO Mount Aquatic")
+		SetBinding("ALT-CTRL-NUMPAD6", "MACRO G116")
+		SetBinding("ALT-CTRL-NUMPAD8", "MACRO G113")
+		SetBinding("ALT-CTRL-NUMPAD9", "MACRO G120")
+		SetBinding("ALT-CTRL-NUMPADMULTIPLY", "MACRO Leave")
+		SetBinding("ALT-CTRL-SHIFT--", "CLICK BindPadMacro:Flight Paths")
+		SetBinding("ALT-CTRL-SHIFT-BUTTON3", "CLICK BindPadKey:MACRO Mount Aquatic")
+		SetBinding("ALT-CTRL-SHIFT-G", "MACRO G006")
+		SetBinding("ALT-CTRL-SHIFT-N", "MACRO G005")
+		SetBinding("ALT-E", "CLICK BT4Button20:LeftButton")
+		SetBinding("ALT-F", "CLICK BT4Button29:LeftButton")
+		SetBinding("ALT-F10", "MACRO G022")
+		SetBinding("ALT-F11", "MACRO G023")
+		SetBinding("ALT-F12", "MACRO G024")
+		SetBinding("ALT-F16", "MACRO Loot Spec 1")
+		SetBinding("ALT-F17", "MACRO Loot Spec 2")
+		SetBinding("ALT-F18", "MACRO Loot Spec 3")
+		SetBinding("ALT-F19", "MACRO Loot Spec 4")
+		SetBinding("ALT-F9", "MACRO G021")
+		SetBinding("ALT-I", "TOGGLECHARACTER4")
+		SetBinding("ALT-J", "TOGGLEGUILDTAB")
+		SetBinding("ALT-N", "TOGGLETALENTS")
+		SetBinding("ALT-NUMPAD1", "MACRO G021")
+		SetBinding("ALT-NUMPAD2", "MACRO G022")
+		SetBinding("ALT-NUMPAD3", "MACRO G023")
+		SetBinding("ALT-NUMPAD4", "MACRO G024")
+		SetBinding("ALT-NUMPAD5", "MACRO G012")
+		SetBinding("ALT-NUMPAD6", "TOGGLEENCOUNTERJOURNAL")
+		SetBinding("ALT-NUMPAD7", "TOGGLECOLLECTIONSPETJOURNAL")
+		SetBinding("ALT-NUMPAD8", "TOGGLECOLLECTIONSTOYBOX")
+		SetBinding("ALT-NUMPAD9", "TOGGLECOLLECTIONSWARDROBE")
+		SetBinding("ALT-O", "CLICK BindPadMacro:Garrison")
+		SetBinding("ALT-SPACE", "TOGGLEWORLDSTATESCORES")
+		SetBinding("ALT-T", "CLICK BT4Button40:LeftButton")
+		SetBinding("ALT-U", "NONE")
+		SetBinding("ALT-X", "SITORSTAND")
+		SetBinding("ALT-§", "CLICK BT4Button99:LeftButton")
+		SetBinding("ALT-¨", "MACRO Mount Passenger")
+		SetBinding("ALT-ö", "TOGGLEFPS")
+		SetBinding("BUTTON3", "MACRO G007")
+		SetBinding("BUTTON4", "NONE")
+		SetBinding("BUTTON5", "TOGGLEAUTORUN")
+		SetBinding("C", "CLICK BT4Button61:LeftButton")
+		SetBinding("CTRL--", "NONE")
+		SetBinding("CTRL-0", "NONE")
+		SetBinding("CTRL-1", "NONE")
+		SetBinding("CTRL-2", "NONE")
+		SetBinding("CTRL-3", "NONE")
+		SetBinding("CTRL-4", "NONE")
+		SetBinding("CTRL-5", "NONE")
+		SetBinding("CTRL-6", "NONE")
+		SetBinding("CTRL-7", "NONE")
+		SetBinding("CTRL-8", "NONE")
+		SetBinding("CTRL-9", "NONE")
+		SetBinding("CTRL-=", "NONE")
+		SetBinding("CTRL-B", "SPELL Fishing")
+		SetBinding("CTRL-BUTTON3", "CLICK BT4Button41:LeftButton")
+		SetBinding("CTRL-BUTTON4", "MACRO Mount Gathering")
+		SetBinding("CTRL-BUTTON5", "MACRO G009")
+		SetBinding("CTRL-C", "CLICK BT4Button73:LeftButton")
+		SetBinding("CTRL-E", "ACTIONBUTTON8")
+		SetBinding("CTRL-F", "CLICK BT4Button30:LeftButton")
+		SetBinding("CTRL-F1", "NONE")
+		SetBinding("CTRL-F10", "NONE")
+		SetBinding("CTRL-F2", "NONE")
+		SetBinding("CTRL-F3", "NONE")
+		SetBinding("CTRL-F4", "NONE")
+		SetBinding("CTRL-F5", "NONE")
+		SetBinding("CTRL-F6", "NONE")
+		SetBinding("CTRL-F7", "ALLTHETHINGS_TOGGLEACCOUNTMODE")
+		SetBinding("CTRL-F8", "NONE")
+		SetBinding("CTRL-F9", "NONE")
+		SetBinding("CTRL-H", "CLICK BT4Button74:LeftButton")
+		SetBinding("CTRL-I", "NONE")
+		SetBinding("CTRL-J", "CLICK BT4Button27:LeftButton")
+		SetBinding("CTRL-M", "NONE")
+		SetBinding("CTRL-N", "NONE")
+		SetBinding("CTRL-PAGEDOWN", "NONE")
+		SetBinding("CTRL-PAGEUP", "NONE")
+		SetBinding("CTRL-Q", "CLICK BT4Button54:LeftButton")
+		SetBinding("CTRL-R", "CLICK BT4Button17:LeftButton")
+		SetBinding("CTRL-S", "NONE")
+		SetBinding("CTRL-SHIFT-BUTTON3", "MACRO Mount Aquatic")
+		SetBinding("CTRL-SHIFT-BUTTON4", "CLICK BindPadKey:MACRO Mount Passenger")
+		SetBinding("CTRL-SHIFT-END", "MACRO G116")
+		SetBinding("CTRL-SHIFT-F16", "MACRO Placer")
+		SetBinding("CTRL-SHIFT-F18", "MACRO Reset Instances")
+		SetBinding("CTRL-SHIFT-F19", "MACRO Camp")
+		SetBinding("CTRL-SHIFT-HOME", "MACRO G113")
+		SetBinding("CTRL-SHIFT-NUMPAD0", "CLICK BindPadMacro:Pull 0")
+		SetBinding("CTRL-SHIFT-NUMPAD1", "CLICK BindPadMacro:Pull 10")
+		SetBinding("CTRL-SHIFT-NUMPAD2", "CLICK BindPadMacro:Pull 12")
+		SetBinding("CTRL-SHIFT-NUMPAD3", "CLICK BindPadMacro:Pull 3")
+		SetBinding("CTRL-SHIFT-NUMPAD4", "CLICK BindPadMacro:Pull 15")
+		SetBinding("CTRL-SHIFT-NUMPAD5", "CLICK BindPadMacro:Pull 5")
+		SetBinding("CTRL-SHIFT-NUMPAD6", "CLICK BindPadMacro:Pull 30")
+		SetBinding("CTRL-SHIFT-NUMPAD7", "CLICK BindPadMacro:Pull 7")
+		SetBinding("CTRL-SHIFT-NUMPAD8", "CLICK BindPadMacro:Pull 20")
+		SetBinding("CTRL-SHIFT-NUMPAD9", "CLICK BindPadMacro:Pull 60")
+		SetBinding("CTRL-SHIFT-NUMPADDECIMAL", "CLICK BindPadMacro:Ready Check")
+		SetBinding("CTRL-SHIFT-NUMPADDIVIDE", "MACRO G112")
+		SetBinding("CTRL-SHIFT-NUMPADMULTIPLY", "MACRO G114")
+		SetBinding("CTRL-SHIFT-PAGEDOWN", "MACRO G108")
+		SetBinding("CTRL-SHIFT-PAGEUP", "MACRO G120")
+		SetBinding("CTRL-SHIFT-SPACE", "INTERACTTARGET")
+		SetBinding("CTRL-SPACE", "NONE")
+		SetBinding("CTRL-T", "CLICK BT4Button39:LeftButton")
+		SetBinding("CTRL-V", "CLICK BT4Button44:LeftButton")
+		SetBinding("CTRL-X", "SPELL Survey")
+		SetBinding("CTRL-Z", "SPELL Fishing")
+		SetBinding("CTRL-¨", "MACRO Mount Gathering")
+		SetBinding("DELETE", "NONE")
+		SetBinding("DOWN", "NONE")
+		SetBinding("E", "CLICK BT4Button64:LeftButton")
+		SetBinding("END", "MACRO G109")
+		SetBinding("F", "CLICK BT4Button32:LeftButton")
+		SetBinding("F1", "CLICK BT4Button49:LeftButton")
+		SetBinding("F10", "TOGGLESOUND")
+		SetBinding("F11", "MACRO G110")
+		SetBinding("F12", "MACRO G111")
+		SetBinding("F14", "SPELL Revive Battle Pets")
+		SetBinding("F15", "MACRO No Companion")
+		SetBinding("F16", "MACRO Army")
+		SetBinding("F17", "MACRO Wholly")
+		SetBinding("F18", "MACRO Army")
+		SetBinding("F2", "CLICK BT4Button50:LeftButton")
+		SetBinding("F3", "CLICK BT4Button51:LeftButton")
+		SetBinding("F4", "CLICK BT4Button52:LeftButton")
+		SetBinding("F5", "CLICK BT4Button53:LeftButton")
+		SetBinding("F6", "DEJUNK_TOGGLE_OPTIONS_FRAME")
+		SetBinding("F7", "ALLTHETHINGS_TOGGLEMINILIST")
+		SetBinding("F8", "TOGGLEMUSIC")
+		SetBinding("F9", "NONE")
+		SetBinding("G", "CLICK BT4Button65:LeftButton")
+		SetBinding("H", "CLICK BT4Button18:LeftButton")
+		SetBinding("HOME", "MACRO G106")
+		SetBinding("I", "TOGGLEDUNGEONSANDRAIDS")
+		SetBinding("INSERT", "NONE")
+		SetBinding("J", "CLICK BT4Button25:LeftButton")
+		SetBinding("L", "NONE")
+		SetBinding("LEFT", "NONE")
+		SetBinding("N", "CLICK BT4Button13:LeftButton")
+		SetBinding("NUMLOCK", "NONE")
+		SetBinding("NUMPAD0", "RAIDTARGET8")
+		SetBinding("NUMPAD1", "RAIDTARGET7")
+		SetBinding("NUMPAD2", "RAIDTARGET6")
+		SetBinding("NUMPAD3", "RAIDTARGET5")
+		SetBinding("NUMPAD4", "RAIDTARGET4")
+		SetBinding("NUMPAD5", "RAIDTARGET3")
+		SetBinding("NUMPAD6", "RAIDTARGET2")
+		SetBinding("NUMPAD7", "RAIDTARGET1")
+		SetBinding("NUMPAD8", "MACRO G105")
+		SetBinding("NUMPAD9", "RAIDTARGETNONE")
+		SetBinding("NUMPADDIVIDE", "MACRO G003")
+		SetBinding("NUMPADEQUALS", "MACRO G002")
+		SetBinding("NUMPADMINUS", "NAMEPLATES")
+		SetBinding("NUMPADMULTIPLY", "MACRO G004")
+		SetBinding("NUMPADPLUS", "FRIENDNAMEPLATES")
+		SetBinding("PAGEDOWN", "MACRO G012")
+		SetBinding("PAGEUP", "MACRO G011")
+		SetBinding("PRINTSCREEN", "MACRO Companion")
+		SetBinding("Q", "CLICK BT4Button63:LeftButton")
+		SetBinding("R", "CLICK BT4Button15:LeftButton")
+		SetBinding("RIGHT", "NONE")
+		SetBinding("SHIFT-0", "MACRO G002")
+		SetBinding("SHIFT-1", "NONE")
+		SetBinding("SHIFT-2", "NONE")
+		SetBinding("SHIFT-3", "NONE")
+		SetBinding("SHIFT-4", "NONE")
+		SetBinding("SHIFT-5", "NONE")
+		SetBinding("SHIFT-6", "NONE")
+		SetBinding("SHIFT-<", "REPLY2")
+		SetBinding("SHIFT-B", "NONE")
+		SetBinding("SHIFT-BUTTON3", "MACRO G008")
+		SetBinding("SHIFT-BUTTON4", "MACRO Cancel")
+		SetBinding("SHIFT-BUTTON5", "MACRO G025")
+		SetBinding("SHIFT-C", "CLICK BT4Button62:LeftButton")
+		SetBinding("SHIFT-DOWN", "NONE")
+		SetBinding("SHIFT-E", "CLICK BT4Button68:LeftButton")
+		SetBinding("SHIFT-F", "CLICK BT4Button31:LeftButton")
+		SetBinding("SHIFT-F1", "NONE")
+		SetBinding("SHIFT-F2", "NONE")
+		SetBinding("SHIFT-F3", "NONE")
+		SetBinding("SHIFT-F4", "NONE")
+		SetBinding("SHIFT-F5", "NONE")
+		SetBinding("SHIFT-F7", "ALLTHETHINGS_TOGGLEMAINLIST")
+		SetBinding("SHIFT-G", "CLICK BT4Button66:LeftButton")
+		SetBinding("SHIFT-H", "CLICK BT4Button19:LeftButton")
+		SetBinding("SHIFT-I", "NONE")
+		SetBinding("SHIFT-J", "CLICK BT4Button26:LeftButton")
+		SetBinding("SHIFT-M", "NONE")
+		SetBinding("SHIFT-MOUSEWHEELDOWN", "NONE")
+		SetBinding("SHIFT-MOUSEWHEELUP", "NONE")
+		SetBinding("SHIFT-N", "CLICK BT4Button14:LeftButton")
+		SetBinding("SHIFT-P", "TOGGLECOLLECTIONSMOUNTJOURNAL")
+		SetBinding("SHIFT-PAGEDOWN", "NONE")
+		SetBinding("SHIFT-Q", "CLICK BT4Button42:LeftButton")
+		SetBinding("SHIFT-R", "CLICK BT4Button16:LeftButton")
+		SetBinding("SHIFT-SPACE", "NONE")
+		SetBinding("SHIFT-T", "CLICK BT4Button38:LeftButton")
+		SetBinding("SHIFT-UP", "NONE")
+		SetBinding("SHIFT-V", "CLICK BT4Button43:LeftButton")
+		SetBinding("SHIFT-X", "CLICK BT4Button55:LeftButton")
+		SetBinding("SHIFT-§", "MACRO G001")
+		SetBinding("SHIFT-¨", "MACRO Cancel")
+		SetBinding("SHIFT-å", "MACRO G107")
+		SetBinding("T", "CLICK BT4Button37:LeftButton")
+		SetBinding("UP", "NONE")
+		SetBinding("V", "CLICK BT4Button67:LeftButton")
+		SetBinding("X", "CLICK BT4Button56:LeftButton")
+		SetBinding("§", "MACRO G001")
+		SetBinding("¨", "NONE")
+		SetBinding("ä", "FOCUSTARGET")
+		SetBinding("å", "FOLLOWTARGET")
+		SetBinding("ö", "TOGGLERUN")
 	end
 end
 
@@ -272,8 +501,8 @@ local function BuildGlobalMacros()
 		-- Gathering Mount
 		macro(9, "/use [nomounted]Sky Golem\n/dismount [mounted]\n/leavevehicle", 413588)
 
-		-- Dismiss Companion
-		macro(12, "/dismisspet", 132599)
+		-- Dismiss Companion / Remove Chef's Hat
+		macro(12, "/dismisspet\n/cancelaura Cooking Speed", 132599)
 
 		-- Loot Spec 1
 		macro(21, "/run SetLootSpecialization(GetSpecializationInfo(1))", 237281)
@@ -295,6 +524,9 @@ local function BuildGlobalMacros()
 
 		-- Trinket 2
 		macro(27, "#showtooltip\n/use 14")
+
+		-- Phial of Serenity
+		macro(32, "#showtooltip\n/use Phial of Serenity", 463534)
 
 		-- Signature Ability
 		macro(33, "#showtooltip\n/use Signature Ability")
@@ -343,15 +575,190 @@ local function BuildGlobalMacros()
 
 		-- Camp
 		macro(120, "/camp", 3193418)
+
+		-- Pets
+		Automagic.UpdatePets()
+	end
+end
+
+
+function Automagic.UpdatePets()
+	if InCombatLockdown() then return end
+
+	-- Pets
+	local instanceName, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
+	local _, class, _ = UnitClass("player")
+	local _,race = UnitRace("player")
+	local name = GetUnitName("player", false)
+	local realm = GetRealmName()
+	local faction,_ = UnitFactionGroup("player")
+	local spec = GetSpecialization() or 0
+	local level = UnitLevel("player") or 1
+	local covenant = C_Covenants and C_Covenants.GetActiveCovenantID() or 0
+
+	if not realm then return end
+	
+	if class == "HUNTER" and GetStablePetInfo(1) then
+		local petAbilityMacro, petExoticMacro = "#showtooltip\n/use ", "#showtooltip\n/use "
+
+		local petAbilities = {
+			["Basilisk"] = "Petrifying Gaze",
+			["Bat"] = "Sonic Blast",
+			["Bear"] = "Thick Fur",
+			["Beetle"] = "Harden Carapace",
+			["Bird of Prey"] = "Talon Rend",
+			["Blood Beast"] = "Blood Bolt",
+			["Boar"] = "Bristle",
+			["Camel"] = "Hardy",
+			["Carrion Bird"] = "Bloody Screech",
+			["Cat"] = "Catlike Reflexes",
+			["Chimaera"] = "Frost Breath",
+			["Clefthoof"] = "Thick Hide",
+			["Core Hound"] = "Obsidian Skin",
+			["Courser"] = "Fleethoof",
+			["Crab"] = "Pin",
+			["Crane"] = "Chi-Ji's Tranquility",
+			["Crocolisk"] = "Ankle Crack",
+			["Devilsaur"] = "Monstrous Bite",
+			["Direhorn"] = "Gore",
+			["Dog"] = "Lock Jaw",
+			["Dragonhawk"] = "Dragon's Guile",
+			["Feathermane"] = "Feather Flurry",
+			["Fox"] = "Agile Reflexes",
+			["Gorilla"] = "Silverback",
+			["Gruffhorn"] = "Gruff",
+			["Hydra"] = "Acid Bite",
+			["Hyena"] = "Infected Bite",
+			["Krolusk"] = "Bulwark",
+			["Lizard"] = "Grievous Bite",
+			["Mammoth"] = "Trample",
+			["Mechanical"] = "Defense Matrix",
+			["Monkey"] = "Primal Agility",
+			["Moth"] = "Serenity Dust",
+			["Oxen"] = "Niuzao's Fortitude",
+			["Pterrordax"] = "Ancient Hide",
+			["Quilen"] = "Stone Armor",
+			["Raptor"] = "Savage Rend",
+			["Ravager"] = "Ravage",
+			["Ray"] = "Nether Energy",
+			["Riverbeast"] = "Gruesome Bite",
+			["Rodent"] = "Gnaw",
+			["Scalehide"] = "Scale Shield",
+			["Scorpid"] = "Deadly Sting",
+			["Serpent"] = "Serpent's Swiftness",
+			["Shale Spider"] = "Solid Shell",
+			["Silithid"] = "Tendon Rip",
+			["Spider"] = "Web Spray",
+			["Spirit Beast"] = "Spirit Pulse",
+			["Sporebat"] = "Spore Cloud",
+			["Stag"] = "Nature's Grace",
+			["Tallstrider"] = "Dust Cloud",
+			["Toad"] = "Swarm of Flies",
+			["Turtle"] = "Shell Shield",
+			["Warp Stalker"] = "Warp Time",
+			["Wasp"] = "Toxic Sting",
+			["Wind Serpent"] = "Winged Agility",
+			["Wolf"] = "Furious Bite",
+			["Worm"] = "Acid Spit",
+		}
+
+		local petExoticAbilities = {
+			["Spirit Beast"] = "Spirit Mend",
+			["Bear"] = "Rest",
+			["Bird of Prey"] = "Trick",
+			["Cat"] = "Prowl",
+			["Chimaera"] = "Froststorm Breath",
+			["Clefthoof"] = "Blood of the Rhino",
+			["Core Hound"] = "Molten Hide",
+			["Crane"] = "Trick",
+			["Devilsaur"] = "Feast",
+			["Feathermane"] = "Updraft",
+			["Fox"] = "Play",
+			["Krolusk"] = "Calcified Carapace",
+			["Pterrordax"] = "Updraft",
+			["Quilen"] = "Eternal Guardian",
+			["Rodent"] = "Rest",
+			["Shale Spider"] = "Shimmering Scale",
+			["Silithid"] = "Dune Strider",
+			["Worm"] = "Burrow Attack",
+		}
+
+		local PetIcons = {}
+
+		if Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name] then
+			PetIcons = Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name]
+		end
+
+		for i = 1, 5 do
+			local petIcon, petName, _, family = GetStablePetInfo(i)
+			local macroID = 13 + i
+
+			if family and petAbilities[family] then
+				petAbilityMacro = petAbilityMacro .. "[pet:" .. family .. "]" .. petAbilities[family] .. ";"
+			end
+
+			if family and petExoticAbilities[family] then
+				if family == "Spirit Beast" then
+					petExoticMacro = petExoticMacro .. "[pet:Spirit Beast,mod:alt]Spirit Walk;[pet:Spirit Beast,mod:shift,@pet][pet:Spirit Beast,help][pet:Spirit Beast,@player]Spirit Mend;"
+				else
+					petExoticMacro = petExoticMacro .. "[pet:" .. family .. "]" .. petExoticAbilities[family] .. ";"
+				end
+			end
+			macro(macroID, "#showtooltip\n#icon " .. (PetIcons[petName] or petIcon or 132161) .. "\n/use Call Pet " .. i, tonumber(PetIcons[petName]) or petIcon or 132161)
+		end
+
+		petAbilityMacro = petAbilityMacro .. "Tame Beast"
+		petExoticMacro = petExoticMacro .. "Tame Beast"
+
+		macro(19, petAbilityMacro)
+		macro(20, petExoticMacro)
+	elseif class == "MAGE" then
+		local PetIcons = {}
+
+		if Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name] then
+			PetIcons = Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name]
+		end
+
+		macro(14, "#showtooltip\n#icon " .. (PetIcons["Water Elemental"] or 135862) .. "\n/use Summon Water Elemental", tonumber(PetIcons["Water Elemental"]) or 135862)
 	end
 end
 
 
 local function eventHandler(self, event)
+	if event == "PLAYER_ENTERING_WORLD" then
+		-- UI Scale
+		if AutomagicOptions and AutomagicOptions.EnableScaling == false then
+			SetCVar("useuiscale", 0)
+		else
+			SetCVar("useuiscale", 1)
+			SetCVar("uiscale", 1)
+			local _, height = GetPhysicalScreenSize()
+			UIParent:SetScale(768 / height)
+
+			for _, frame in next, {
+			    "CharacterFrame",
+			    "TradeFrame",
+			    "MerchantFrame",
+			    "PVEFrame",
+			    "GossipFrame",
+			    "InterfaceOptionsFrame",
+			    "GameMenuFrame",
+			    "ChatFrame1EditBox",
+			} do
+			    _G[frame]:SetScale(1.2)
+			end
+		end
+	end
+
 	if InCombatLockdown() then
 		frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 	else
 		frame:UnregisterEvent("PLAYER_REGEN_ENABLED")
+
+		if event == "PET_STABLE_CLOSED" then
+			Automagic.UpdatePets()
+			return
+		end
 
 		if event ~= "PLAYER_REGEN_ENABLED" and throttled[event] then
 			return
@@ -360,7 +767,7 @@ local function eventHandler(self, event)
 			C_Timer.After(1, function()
 				throttled[event] = false
 
-				if event ~= "BAG_UPDATE" and event ~= "LEARNED_SPELL_IN_TAB" then
+				if event ~= "BAG_UPDATE" and event ~= "LEARNED_SPELL_IN_TAB" and event ~="ACTIVE_TALENT_GROUP_CHANGED" and event ~= "ZONE_CHANGED_NEW_AREA" and event ~= "PLAYER_REGEN_ENABLED" and event ~= "PET_STABLE_CLOSED" and event ~= "PLAYER_LEVEL_UP" then
 					SetGlobalBinds()
 				end
 			end)
@@ -385,7 +792,7 @@ local function eventHandler(self, event)
 			--end
 
 
-			if event ~= "LEARNED_SPELL_IN_TAB" and event ~= "PLAYER_REGEN_ENABLED" then
+			if event ~= "LEARNED_SPELL_IN_TAB" and event ~= "PLAYER_REGEN_ENABLED" and event ~="ACTIVE_TALENT_GROUP_CHANGED" then
 				-- Replace Global Macros
 				for i = 1, 120 do
 					if GetMacroBody(i) then
@@ -396,7 +803,10 @@ local function eventHandler(self, event)
 				end
 			
 				BuildGlobalMacros()
-				SetGlobalBinds()
+
+				if event ~= "PET_STABLE_CLOSED" and event ~= "PLAYER_LEVEL_UP" then
+					SetGlobalBinds()
+				end
 			end
 		end
 
@@ -427,6 +837,8 @@ local function eventHandler(self, event)
 		elseif (class == "DEATHKNIGHT") or (class == "WARRIOR") or (class == "PALADIN" and spec ~= 1) then
 			primary = "str"
 		end
+
+		if not name or not class or not race or not faction or not spec or not level then return end
 
 
 		if event ~= "BAG_UPDATE" then
@@ -564,7 +976,7 @@ local function eventHandler(self, event)
 				macro(30, "#showtooltip\n/use Saltwater Potion")
 			elseif instanceName == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then
 				macro(30, "#showtooltip\n/use Experimental Vial")
-			elseif primary == "int" and bags("Potion of Unbridled Fury") >= 1 then
+			elseif bags("Potion of Unbridled Fury") >= 1 then
 				macro(30, "#showtooltip\n/use Potion of Unbridled Fury")
 			elseif primary == "int" and bags("Superior Battle Potion of Intellect") >= 1 then
 				macro(30, "#showtooltip\n/use Superior Battle Potion of Intellect")
@@ -611,139 +1023,6 @@ local function eventHandler(self, event)
 			else
 				-- No Zone Ability Available
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
-			end
-
-			-- Signature Ability
-			if bags("Phial of Serenity") >= 1 then
-				macro(32, "#showtooltip\n/use Phial of Serenity")
-			else
-				macro(32, "#showtooltip\n/use Summon Steward")
-			end
-
-			-- Pets
-			if class == "HUNTER" then
-				local petAbilityMacro, petExoticMacro = "#showtooltip\n/use ", "#showtooltip\n/use "
-
-				local petAbilities = {
-					["Basilisk"] = "Petrifying Gaze",
-					["Bat"] = "Sonic Blast",
-					["Bear"] = "Thick Fur",
-					["Beetle"] = "Harden Carapace",
-					["Bird of Prey"] = "Talon Rend",
-					["Blood Beast"] = "Blood Bolt",
-					["Boar"] = "Bristle",
-					["Camel"] = "Hardy",
-					["Carrion Bird"] = "Bloody Screech",
-					["Cat"] = "Catlike Reflexes",
-					["Chimaera"] = "Frost Breath",
-					["Clefthoof"] = "Thick Hide",
-					["Core Hound"] = "Obsidian Skin",
-					["Courser"] = "Fleethoof",
-					["Crab"] = "Pin",
-					["Crane"] = "Chi-Ji's Tranquility",
-					["Crocolisk"] = "Ankle Crack",
-					["Devilsaur"] = "Monstrous Bite",
-					["Direhorn"] = "Gore",
-					["Dog"] = "Lock Jaw",
-					["Dragonhawk"] = "Dragon's Guile",
-					["Feathermane"] = "Feather Flurry",
-					["Fox"] = "Agile Reflexes",
-					["Gorilla"] = "Silverback",
-					["Gruffhorn"] = "Gruff",
-					["Hydra"] = "Acid Bite",
-					["Hyena"] = "Infected Bite",
-					["Krolusk"] = "Bulwark",
-					["Lizard"] = "Grievous Bite",
-					["Mammoth"] = "Trample",
-					["Mechanical"] = "Defense Matrix",
-					["Monkey"] = "Primal Agility",
-					["Moth"] = "Serenity Dust",
-					["Oxen"] = "Niuzao's Fortitude",
-					["Pterrordax"] = "Ancient Hide",
-					["Quilen"] = "Stone Armor",
-					["Raptor"] = "Savage Rend",
-					["Ravager"] = "Ravage",
-					["Ray"] = "Nether Energy",
-					["Riverbeast"] = "Gruesome Bite",
-					["Rodent"] = "Gnaw",
-					["Scalehide"] = "Scale Shield",
-					["Scorpid"] = "Deadly Sting",
-					["Serpent"] = "Serpent's Swiftness",
-					["Shale Spider"] = "Solid Shell",
-					["Silithid"] = "Tendon Rip",
-					["Spider"] = "Web Spray",
-					["Spirit Beast"] = "Spirit Pulse",
-					["Sporebat"] = "Spore Cloud",
-					["Stag"] = "Nature's Grace",
-					["Tallstrider"] = "Dust Cloud",
-					["Toad"] = "Swarm of Flies",
-					["Turtle"] = "Shell Shield",
-					["Warp Stalker"] = "Warp Time",
-					["Wasp"] = "Toxic Sting",
-					["Wind Serpent"] = "Winged Agility",
-					["Wolf"] = "Furious Bite",
-					["Worm"] = "Acid Spit",
-				}
-
-				local petExoticAbilities = {
-					["Spirit Beast"] = "Spirit Mend",
-					["Bear"] = "Rest",
-					["Bird of Prey"] = "Trick",
-					["Cat"] = "Prowl",
-					["Chimaera"] = "Froststorm Breath",
-					["Clefthoof"] = "Blood of the Rhino",
-					["Core Hound"] = "Molten Hide",
-					["Crane"] = "Trick",
-					["Devilsaur"] = "Feast",
-					["Feathermane"] = "Updraft",
-					["Fox"] = "Play",
-					["Krolusk"] = "Calcified Carapace",
-					["Pterrordax"] = "Updraft",
-					["Quilen"] = "Eternal Guardian",
-					["Rodent"] = "Rest",
-					["Shale Spider"] = "Shimmering Scale",
-					["Silithid"] = "Dune Strider",
-					["Worm"] = "Burrow Attack",
-				}
-
-				local PetIcons = {}
-
-				if Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name] then
-					PetIcons = Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name]
-				end
-
-				for i = 1, 5 do
-					local petIcon, petName, _, family = GetStablePetInfo(i)
-					local macroID = 13 + i
-
-					if family and petAbilities[family] then
-						petAbilityMacro = petAbilityMacro .. "[pet:" .. family .. "]" .. petAbilities[family] .. ";"
-					end
-
-					if family and petExoticAbilities[family] then
-						if family == "Spirit Beast" then
-							petExoticMacro = petExoticMacro .. "[pet:Spirit Beast,mod:alt]Spirit Walk;[pet:Spirit Beast,mod:shift,@pet][pet:Spirit Beast,help][pet:Spirit Beast,@player]Spirit Mend;"
-						else
-							petExoticMacro = petExoticMacro .. "[pet:" .. family .. "]" .. petExoticAbilities[family] .. ";"
-						end
-					end
-					--print(petName, PetIcons[petName] or petIcon or 132161)
-					macro(macroID, "#showtooltip\n#icon " .. (PetIcons[petName] or petIcon or 132161) .. "\n/use Call Pet " .. i, tonumber(PetIcons[petName]) or petIcon or 132161)
-				end
-
-				petAbilityMacro = petAbilityMacro .. "Tame Beast"
-				petExoticMacro = petExoticMacro .. "Tame Beast"
-
-				macro(19, petAbilityMacro)
-				macro(20, petExoticMacro)
-			elseif class == "MAGE" then
-				local PetIcons = {}
-
-				if Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name] then
-					PetIcons = Automagic.PetIcons[name.."-"..realm] or Automagic.PetIcons[name]
-				end
-
-				macro(14, "#showtooltip\n#icon " .. (PetIcons["Water Elemental"] or 135862) .. "\n/use Summon Water Elemental", tonumber(PetIcons["Water Elemental"]) or 135862)
 			end
 		end
 

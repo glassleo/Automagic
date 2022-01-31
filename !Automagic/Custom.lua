@@ -141,7 +141,7 @@ Automagic.Characters = {
 	["Mary"] = { ["ground"] = "Crimson Deathcharger", ["flying"] = "Armored Bloodwing", },
 	["Matilda"] = { ["ground"] = "Kul Tiran Charger", ["flying"] = "Proudmoore Sea Scout", },
 	["Mayhem"] = { ["ground"] = "Vile Fiend", ["flying"] = "Slayer's Felbroken Shrieker", },
-	["Medea"] = { ["ground"] = "Lucid Nightmare", ["flying"] = "Twilight Drake", },
+	["Medea"] = { ["ground"] = "Lucid Nightmare", ["flying"] = "Ardenweald Wilderling", },
 	["Melissa"] = { ["ground"] = "Prestigious Royal Courser", ["flying"] = "Cobalt Netherwing Drake", },
 	["Mikael"] = { ["ground"] = "Summon Great Exarch's Elekk", ["flying"] = "Enchanted Fey Dragon", ["hs"] = "Holographic Digitalization Hearthstone", },
 	["Milo"] = { ["ground"] = "Scrapforged Mechaspider", ["flying"] = "Stormwind Skychaser", },
@@ -357,7 +357,7 @@ Automagic.Characters = {
 	["Scott"] = { ["ground"] = "Dune Scavenger", ["flying"] = "Wastewander Skyterror", },
 	["Serena"] = { ["ground"] = "Vicious Warstrider", ["flying"] = "Ashes of Al'ar", ["hs"] = "Tome of Town Portal", },
 	["Seska"] = { ["ground"] = "Vicious Warstrider", ["flying"] = "Shadowblade's Murderous Omen", },
-	["Shu"] = { ["ground"] = "Onyx Jeweled Panther", ["flying"] = "Shadowblade's Crimson Omen", },
+	["Shu"] = { ["ground"] = "Jeweled Onyx Panther", ["flying"] = "Shadowblade's Crimson Omen", },
 	["Sithandra"] = { ["ground"] = "Acherus Deathcharger", ["flying"] = "Deathlord's Vilebrood Vanquisher", },
 	["Solene"] = { ["ground"] = "Swift Red Hawkstrider", ["flying"] = "Red Dragonhawk", ["aquatic"] = "Crimson Tidestallion", },
 	["Spoon"] = { ["ground"] = "Vicious War Kodo", ["flying"] = "Farseer's Raging Tempest", ["aquatic"] = "Saltwater Seahorse", },
@@ -408,22 +408,23 @@ Automagic.Characters = {
 
 Automagic.PetIcons = {
 	-- Hunters
+	["Aldous"] = { ["Zoey"] = 1861689, },
+	["Auros"] = { ["Yros"] = 1602322, },
 	["Alec"] = { ["Mana"] = "Interface/AddOns/Media_Newsom/Pets/ManasaberBlue", },
-	["Appi"] = {
-		["Andy"] = 1504874,
-		["Blep"] = 1390637,
-		["Frank"] = 464160,
-		["Ravioli"] = "Interface/AddOns/Media_Newsom/Pets/CoreHoundPurple",
-		["Toothpaste"] = 1570766,
-	},
+	["Apera"] = { ["Anna"] = 1392564, ["Arra'chea"] = 132245, },
+	["Appi"] = { ["Andy"] = 1504874, ["Blep"] = 1390637, ["Frank"] = 464160, ["Ravioli"] = "Interface/AddOns/Media_Newsom/Pets/CoreHoundPurple", ["Toothpaste"] = 1570766, },
+	["Claire"] = { ["Bernard"] = 132183, ["Daisy"] = 2027853, },
 	["Ella"] = { ["Kiki"] = 656342, },
 	["Goom"] = { ["Doris"] = 838687, },
 	["Janis"] = { ["Bobby"] = 838687, },
 	["Linda"] = { ["Mondays"] = 2027886, },
+	["Ravioli"] = { ["Betsy"] = 656513, },
 	["Suri"] = { ["Marg"] = 1279719, },
 	["Syrah"] = { ["Escoutatz"] = "Interface/AddOns/Media_Newsom/Pets/ManasaberBlue", },
 	["Zolani"] = { ["Bibi"] = 132193, },
 
 	-- Mages
-	["Zoom"] = { ["Water Elemental"] = "Interface/AddOns/Media_Newsom/Pets/WaterElementalStormsWake", }
+	["Floyd"] = { ["Water Elemental"] = "Interface/AddOns/Media_Newsom/Pets/WaterElementalTheTides", },
+	["Medea"] = { ["Water Elemental"] = "Interface/AddOns/Media_Newsom/Pets/WaterElementalStormsWake", },
+	["Zoom"] = { ["Water Elemental"] = "Interface/AddOns/Media_Newsom/Pets/WaterElementalStormsWake", },
 }
