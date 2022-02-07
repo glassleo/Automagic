@@ -80,6 +80,7 @@ local groundAreas = {
 	["Malorne's Nightmare"] = true, -- Druid Emerald Dream Scenario
 	["Artifact - The Vortex Pinnacle - Shaman Order Hall"] = true, -- Shaman Skywall Scenario
 	["Firelands_Artifact"] = true, -- Shaman Firelands Scenario
+	["Death Knight Campaign - Scarlet Monastery"] = true, -- Death Knight Scarlet Monastery Scenario
 	-- Argus
 	["Krokuun"] = true,
 	["Antoran Wastes"] = true,
