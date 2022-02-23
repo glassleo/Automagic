@@ -467,17 +467,21 @@ local function SetGlobalBinds()
 		SetBinding("SHIFT-UP", "NONE")
 		SetBinding("SHIFT-V", "CLICK BT4Button43:LeftButton")
 		SetBinding("SHIFT-X", "CLICK BT4Button55:LeftButton")
-		SetBinding("SHIFT-§", "MACRO G001")
+		SetBinding("SHIFT-§", "MACRO G001") -- bugged in 9.2
+		SetBinding("SHIFT-\\", "MACRO G001")
 		SetBinding("SHIFT-¨", "MACRO Cancel")
 		SetBinding("SHIFT-å", "MACRO G107")
 		SetBinding("T", "CLICK BT4Button37:LeftButton")
 		SetBinding("UP", "NONE")
 		SetBinding("V", "CLICK BT4Button67:LeftButton")
 		SetBinding("X", "CLICK BT4Button56:LeftButton")
-		SetBinding("§", "MACRO G001")
+		SetBinding("§", "MACRO G001") -- buggedn in 9.2
+		SetBinding("\\", "MACRO G001")
 		SetBinding("¨", "NONE")
-		SetBinding("ä", "FOCUSTARGET")
-		SetBinding("å", "FOLLOWTARGET")
+		SetBinding("ä", "FOCUSTARGET") -- bugged in 9.2
+		SetBinding("'", "FOCUSTARGET")
+		SetBinding("å", "FOLLOWTARGET") -- bugged in 9.2
+		SetBinding("]", "FOLLOWTARGET")
 		SetBinding("ö", "TOGGLERUN")
 	end
 end
