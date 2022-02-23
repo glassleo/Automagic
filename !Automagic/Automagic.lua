@@ -255,6 +255,7 @@ local function SetGlobalBinds()
 		SetBinding("-", "MACRO G035")
 		SetBinding(".", "MACRO G031")
 		SetBinding("0", "MACRO G002")
+		SetBinding("SHIFT-0", "MACRO G002")
 		SetBinding("8", "NONE")
 		SetBinding("9", "NONE")
 		SetBinding("<", "REPLY")
@@ -543,6 +544,9 @@ local function BuildGlobalMacros()
 
 		-- Close BugSack
 		macro(106, "/run BugSack:CloseSack()", 237144)
+
+		-- LFG Teleport
+		macro(106, "/run LFGTeleport(IsInLFGDungeon())", 397907)
 
 		-- Autofollow
 		macro(107, "/autofollow", 132328)
