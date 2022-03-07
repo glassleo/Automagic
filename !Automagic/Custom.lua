@@ -422,6 +422,7 @@ Automagic.PetIcons = {
 	["Suri"] = { ["Marg"] = 1279719, },
 	["Syrah"] = { ["Escoutatz"] = "Interface/AddOns/Media_Newsom/Pets/ManasaberBlue", },
 	["Zolani"] = { ["Bibi"] = 132193, },
+	["Zip"] = { ["Dusk"] = 1861689, },
 
 	-- Mages
 	["Floyd"] = { ["Water Elemental"] = "Interface/AddOns/Media_Newsom/Pets/WaterElementalTheTides", },
