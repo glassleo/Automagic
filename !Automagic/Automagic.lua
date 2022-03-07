@@ -105,6 +105,8 @@ local groundAreas = {
 	["Caverns of Contemplation"] = true, -- Korthia
 	["Torghast"] = true,
 	["Font of Fealty"] = true, -- Chains of Domination Campaign Scenario
+	["Tazavesh, the Veiled Market"] = true,
+	["Zereth Mortis"] = true,
 }
 
 -- Garrisons Map IDs
