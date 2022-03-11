@@ -110,7 +110,7 @@ Automagic.Characters = {
 	["Irene"] = { ["flying"] = "Cindermane Charger", ["hs"] = "Fire Eater's Hearthstone", },
 	["Iro"] = { ["ground"] = "Felsaber", ["flying"] = "Cloudwing Hippogryph", },
 	["Isak"] = { ["ground"] = "Avenging Felcrusher", ["flying"] = "Vibrant Mana Ray", },
-	["It"] = { ["ground"] = "Ratstallion", },
+	["It"] = { ["ground"] = "Ratstallion", ["flying"] = "Scrapforged Mechaspider", },
 	["Ivan"] = { ["ground"] = "Running Wild", ["flying"] = "Obsidian Worldbreaker", },
 	["Jack"] = { ["ground"] = "Vicious Gilnean Warhorse", ["flying"] = "Shadowblade's Lethal Omen", },
 	["Janet"] = { ["ground"] = "Starcursed Voidstrider", ["flying"] = "Twilight Avenger", },
