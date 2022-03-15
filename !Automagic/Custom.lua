@@ -392,6 +392,7 @@ Automagic.Characters = {
 	["Zea"] = {},
 	["Zek"] = { ["ground"] = "Crusader's Direhorn", ["flying"] = "Cobalt Pterrordax", },
 	["Zev"] = { ["ground"] = "Prestigious Azure Courser", },
+	["Zigi"] = { ["ground"] = "Gilded Ravasaur", },
 	["Ziguni"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Bloodthirsty Dreadwing", },
 	["Zo"] = { ["ground"] = "Swift Purple Raptor", ["flying"] = "Drake of the Four Winds", },
 	["Zoal"] = { ["ground"] = "Green Skeletal Warhorse", ["flying"] = "Maldraxxian Corpsefly", },
