@@ -671,7 +671,6 @@ function Automagic.UpdatePets()
 		}
 
 		local petExoticAbilities = {
-			["Spirit Beast"] = "Spirit Mend",
 			["Bear"] = "Rest",
 			["Bird of Prey"] = "Trick",
 			["Cat"] = "Prowl",
@@ -688,6 +687,7 @@ function Automagic.UpdatePets()
 			["Rodent"] = "Rest",
 			["Shale Spider"] = "Shimmering Scale",
 			["Silithid"] = "Dune Strider",
+			["Spirit Beast"] = "Spirit Mend",
 			["Worm"] = "Burrow Attack",
 		}
 
@@ -734,6 +734,8 @@ end
 
 local function eventHandler(self, event)
 	if event == "PLAYER_ENTERING_WORLD" then
+		SetCVar("BlockTrades", 0)
+
 		-- UI Scale
 		if AutomagicOptions and AutomagicOptions.EnableScaling == false then
 			SetCVar("useuiscale", 0)
