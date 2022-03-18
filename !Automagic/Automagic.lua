@@ -106,7 +106,6 @@ local groundAreas = {
 	["Torghast"] = true,
 	["Font of Fealty"] = true, -- Chains of Domination Campaign Scenario
 	["Tazavesh, the Veiled Market"] = true,
-	["Zereth Mortis"] = true,
 }
 
 -- Garrisons Map IDs
@@ -1030,6 +1029,9 @@ local function eventHandler(self, event)
 			elseif instanceName == "The Shadowlands" and covenant == 4 then
 				-- Shadowlands: Construct Ability
 				macro(31, "#showtooltip\n/use Construct Ability")
+			elseif instanceName == "Zereth Mortis" then
+				-- Zereth Mortis: Summon Pocopoc
+				macro(31, "#showtooltip\n/use Summon Pocopoc")
 			else
 				-- No Zone Ability Available
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
