@@ -392,7 +392,6 @@ Automagic.Characters = {
 	["Zea"] = {},
 	["Zek"] = { ["ground"] = "Crusader's Direhorn", ["flying"] = "Cobalt Pterrordax", },
 	["Zev"] = { ["ground"] = "Prestigious Azure Courser", },
-	["Zigi"] = { ["ground"] = "Gilded Ravasaur", },
 	["Ziguni"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Bloodthirsty Dreadwing", },
 	["Zo"] = { ["ground"] = "Swift Purple Raptor", ["flying"] = "Drake of the Four Winds", },
 	["Zoal"] = { ["ground"] = "Green Skeletal Warhorse", ["flying"] = "Maldraxxian Corpsefly", },
@@ -400,6 +399,10 @@ Automagic.Characters = {
 	["Zoom"] = { ["ground"] = "Brown Riding Goat", ["flying"] = "Darkmoon Dirigible", },
 	["Zorp"] = { ["ground"] = "Brawler's Burly Basilisk", ["flying"] = "Mechanized Lumber Extractor", },
 	["Zumaridi"] = {},
+
+	-- Twinks
+	["Flop"] = { ["ground"] = "Tazavesh Gearglider", }, ["Flopping"] = { ["ground"] = "Tazavesh Gearglider", },
+	["Zigi"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigina"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigimortis"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigimortina"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigidoodad"] = { ["ground"] = "Gilded Ravasaur", },
 }
 
 
