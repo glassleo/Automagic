@@ -240,7 +240,7 @@ Automagic.Characters = {
 	["Bab"] = { ["ground"] = "Midnight", ["flying"] = "Smoldering Ember Wyrm", },
 	["Bess"] = { ["ground"] = "Summon Great Sunwalker Kodo", ["flying"] = "Clutch of Ji-Kun", },
 	["Bite"] = {},
-	["Bones"] = { ["ground"] = "Vile Fiend", ["flying"] = "Malevolent Drone", },
+	["Bones"] = { ["ground"] = "Battle-Bound Warhound", ["flying"] = "Malevolent Drone", },
 	["Bonk"] = { ["ground"] = "Gilded Ravasaur", ["flying"] = "Captured Swampstalker", },
 	["Boom"] = { ["ground"] = "Arcadian War Turtle", ["flying"] = "Depleted-Kyparium Rocket", },
 	["Bree"] = {},
