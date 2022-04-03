@@ -401,8 +401,8 @@ Automagic.Characters = {
 	["Zumaridi"] = {},
 
 	-- Twinks
-	["Flop"] = { ["ground"] = "Tazavesh Gearglider", }, ["Flopping"] = { ["ground"] = "Tazavesh Gearglider", },
-	["Zigi"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigina"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigimortis"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigimortina"] = { ["ground"] = "Gilded Ravasaur", }, ["Zigidoodad"] = { ["ground"] = "Gilded Ravasaur", },
+	["Flopping"] = { ["ground"] = "Tazavesh Gearglider", },
+	["Zigi"] = { ["ground"] = "Gilded Ravasaur", },
 }
 
 
