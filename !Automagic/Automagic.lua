@@ -472,7 +472,8 @@ local function SetGlobalBinds()
 		SetBinding("T", "CLICK BT4Button37:LeftButton")
 		SetBinding("UP", "NONE")
 		SetBinding("V", "CLICK BT4Button67:LeftButton")
-		SetBinding("X", "CLICK BT4Button56:LeftButton")
+		--SetBinding("SX", "MACRO G029")
+		SetBinding("X", "MACRO G028")
 		SetBinding("§", "MACRO G001") -- buggedn in 9.2
 		SetBinding("\\", "MACRO G001")
 		SetBinding("¨", "NONE")
@@ -887,124 +888,82 @@ local function eventHandler(self, event)
 			end
 
 			-- Tonic
-			if instanceName == "Torghast, Tower of the Damned" and bags("Rejuvenating Siphoned Essence") >= 1 then
-				-- Torghast
+			if IsInJailersTower() and bags("Rejuvenating Siphoned Essence") >= 1 then -- Torghast only (10k)
 				macro(29, "#showtooltip\n/use Rejuvenating Siphoned Essence")
-			elseif bags("Crimson Vial") >= 1 then
-				-- Crimson Vial (Conjured by Rogue PvP talent)
+
+			elseif bags("Crimson Vial") >= 1 then -- Conjured by Rogue PvP talent (30%)
 				macro(29, "#showtooltip\n/use 137222")
-			elseif bags("Greater Phial of Serenity") >= 1 then
-				-- Greater Phial of Serenity (Conjured)
-				macro(29, "#showtooltip\n/use Greater Phial of Serenity")
-			elseif instanceType == "pvp" and bags("\"Third Wind\" Potion") >= 1 then
-				-- Battlegrounds
+
+			elseif instanceType == "pvp" and bags("\"Third Wind\" Potion") >= 1 then -- Battlegrounds only (50%)
 				macro(29, "#showtooltip\n/use \"Third Wind\" Potion")
-			elseif instanceType == "none" and bags("Darkmoon Healing Tonic") >= 1 then
-				-- Outdoors only (20%)
+
+			elseif instanceType == "none" and bags("Darkmoon Healing Tonic") >= 1 then -- Outdoors only (20%)
 				macro(29, "#showtooltip\n/use Darkmoon Healing Tonic")
-			elseif bags("Soulful Healing Potion") >= 1 and level >= 51 then
-				-- Shadowlands (random drop), level 51 (10,000)
+
+			elseif bags("Cosmic Healing Potion") >= 1 and level >= 60 then -- Shadowlands, Alchemy (20k)
+				macro(29, "#showtooltip\n/use Cosmic Healing Potion")
+
+			elseif bags("Soulful Healing Potion") >= 1 and level >= 51 then -- Shadowlands, random drop (10k)
 				macro(29, "#showtooltip\n/use Soulful Healing Potion")
-			elseif bags("Spiritual Healing Potion") >= 1 and level >= 51 then
-				-- Shadowlands, level 51 (10,000)
+
+			elseif bags("Spiritual Healing Potion") >= 1 and level >= 51 then -- Shadowlands, Alchemy (10k)
 				macro(29, "#showtooltip\n/use Spiritual Healing Potion")
-			elseif bags("Abyssal Healing Potion") >= 1 and level >= 40 then
-				-- Nazjatar, level 40 (12k, probably not squished properly)
+
+			elseif bags("Abyssal Healing Potion") >= 1 and level >= 40 then -- BfA, Alchemy (6.4k)
 				macro(29, "#showtooltip\n/use Abyssal Healing Potion")
-			elseif bags("Astral Healing Potion") >= 1 and level >= 45 then
-				-- Argus, level 45 (4950)
+
+			elseif bags("Astral Healing Potion") >= 1 and level >= 45 then -- Legion, Alchemy (4.95k)
 				macro(29, "#showtooltip\n/use Astral Healing Potion")
-			elseif bags("Coastal Healing Potion") >= 1 and level >= 40 then
-				-- Kul Tiras/Zandalar, level 40
+
+			elseif bags("Coastal Healing Potion") >= 1 and level >= 40 then -- BfA, Alchemy (3.2k)
 				macro(29, "#showtooltip\n/use Coastal Healing Potion")
-			elseif bags("Ancient Healing Potion") >= 1 and level >= 45 then
-				-- Broken Isles, level 45 (2200)
+
+			elseif bags("Ancient Healing Potion") >= 1 and level >= 40 then -- Legion, Alchemy (2.2k)
 				macro(29, "#showtooltip\n/use Ancient Healing Potion")
-			elseif bags("Healing Tonic") >= 1 and level >= 91 then
-				-- Draenor
-				macro(29, "#showtooltip\n/use Healing Tonic")
-			elseif bags("Master Healing Potion") >= 1 and level >= 32 then
-				-- Pandaria
-				macro(29, "#showtooltip\n/use Master Healing Potion")
-			elseif bags("Mythical Healing Potion") >= 1 and level >= 80 then
-				-- Cataclysm
-				macro(29, "#showtooltip\n/use Mythical Healing Potion")
-			elseif bags("Crazy Alchemist's Potion") >= 1 and level >= 70 then
-				-- Northrend
-				macro(29, "#showtooltip\n/use Crazy Alchemist's Potion")
-			elseif bags("Runic Healing Potion") >= 1 and level >= 70 then
-				-- Northrend
-				macro(29, "#showtooltip\n/use Runic Healing Potion")
-			elseif bags("Powerful Rejuvenation Potion") >= 1 and level >= 70 then
-				-- Northrend
-				macro(29, "#showtooltip\n/use Powerful Rejuvenation Potion")
-			elseif bags("Resurgent Healing Potion") >= 1 and level >= 65 then
-				-- Northrend
-				macro(29, "#showtooltip\n/use Resurgent Healing Potion")
-			elseif bags("Fel Regeneration Potion") >= 1 and level >= 60 then
-				-- Outland
-				macro(29, "#showtooltip\n/use Fel Regeneration Potion")
-			elseif bags("Super Healing Potion") >= 1 and level >= 55 then
-				-- Outland
-				macro(29, "#showtooltip\n/use Super Healing Potion")
-			elseif bags("Volatile Healing Potion") >= 1 and level >= 55 then
-				-- Outland
-				macro(29, "#showtooltip\n/use Volatile Healing Potion")
-			elseif bags("Major Healing Potion") >= 1 and level >= 45 then
-				-- Classic
-				macro(29, "#showtooltip\n/use Major Healing Potion")
-			elseif bags("Superior Healing Potion") >= 1 and level >= 35 then
-				-- Classic
-				macro(29, "#showtooltip\n/use Superior Healing Potion")
-			elseif bags("Greater Healing Potion") >= 1 and level >= 21 then
-				-- Classic
-				macro(29, "#showtooltip\n/use Greater Healing Potion")
-			elseif bags("Expedition Healing Potion") >= 1 then
-				-- Exile's Reach
-				macro(29, "#showtooltip\n/use Expedition Healing Potion")
-			elseif bags("Healing Potion") >= 1 and level >= 12 then
-				-- Classic
-				macro(29, "#showtooltip\n/use Healing Potion")
-			elseif bags("Lesser Healing Potion") >= 1 and level >= 3 then
-				-- Classic
-				macro(29, "#showtooltip\n/use Lesser Healing Potion")
-			elseif bags("Minor Healing Potion") >= 1 then
-				-- Classic
-				macro(29, "#showtooltip\n/use Minor Healing Potion")
-			else
-				-- No Tonic Available
-				macro(29, "#showtooltip\n/use Spiritual Healing Potion", 134865)
+
+			else -- No Tonic Available
+				macro(29, "#showtooltip\n/use Cosmic Healing Potion", 134865)
 			end
 
 
 			-- Potion
-			if instanceName == "Torghast, Tower of the Damned" and bags("Fleeting Frenzy Potion") >= 1 then
-				-- Torghast
+			if IsInJailersTower() and bags("Fleeting Frenzy Potion") >= 1 then -- Torghast only (+30% damage, until combat ends)
 				macro(30, "#showtooltip\n/use Fleeting Frenzy Potion")
-			elseif instanceType == "pvp" and bags("Saltwater Potion") >= 1 then
+
+			elseif instanceType == "pvp" and bags("Saltwater Potion") >= 1 then -- Battlegrounds only (+30% damage, 12 sec)
 				macro(30, "#showtooltip\n/use Saltwater Potion")
-			elseif instanceName == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then
+
+			elseif instanceName == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then -- Ashjra'kamas quest only (+30% damage, 30 sec)
 				macro(30, "#showtooltip\n/use Experimental Vial")
-			elseif bags("Potion of Unbridled Fury") >= 1 then
-				macro(30, "#showtooltip\n/use Potion of Unbridled Fury")
-			elseif primary == "int" and bags("Superior Battle Potion of Intellect") >= 1 then
-				macro(30, "#showtooltip\n/use Superior Battle Potion of Intellect")
-			elseif primary == "agi" and bags("Superior Battle Potion of Agility") >= 1 then
-				macro(30, "#showtooltip\n/use Superior Battle Potion of Agility")
-			elseif primary == "str" and bags("Superior Battle Potion of Strength") >= 1 then
-				macro(30, "#showtooltip\n/use Superior Battle Potion of Strength")
-			elseif primary == "int" and bags("Battle Potion of Intellect") >= 1 then
-				macro(30, "#showtooltip\n/use Battle Potion of Intellect")
-			elseif primary == "agi" and bags("Battle Potion of Agility") >= 1 then
-				macro(30, "#showtooltip\n/use Battle Potion of Agility")
-			elseif primary == "str" and bags("Battle Potion of Strength") >= 1 then
-				macro(30, "#showtooltip\n/use Battle Potion of Strength")
-			elseif bags("Potion of Prolonged Power") >= 1 then
+
+			elseif level >= 51 and primary == "agi" and bags("Potion of Spectral Agility") >= 1 then -- Shadowlands, Alchemy (+190 agi, 25 sec)
+				macro(30, "#showtooltip\n/use Potion of Spectral Agility")
+
+			elseif level >= 51 and primary == "int" and bags("Potion of Spectral Intellect") >= 1 then -- Shadowlands, Alchemy (+190 int, 25 sec)
+				macro(30, "#showtooltip\n/use Potion of Spectral Intellect")
+
+			elseif level >= 51 and primary == "str" and bags("Potion of Spectral Strength") >= 1 then -- Shadowlands, Alchemy (+190 str, 25 sec)
+				macro(30, "#showtooltip\n/use Potion of Spectral Strength")
+
+			elseif level >= 51 and role == "healer" and bags("Potion of Divine Awakening") >= 1 then -- Shadowlands, Alchemy (Increased healing, 25 sec)
+				macro(30, "#showtooltip\n/use Potion of Divine Awakening")
+
+			elseif level >= 51 and bags("Potion of Phantom Fire") >= 1 then -- Shadowlands, Alchemy (Single target damage procs, 25 sec)
+				macro(30, "#showtooltip\n/use Potion of Phantom Fire")
+
+			elseif level >= 51 and bags("Potion of Empowered Exorcisms") >= 1 then -- Shadowlands, Alchemy (AoE damage procs, 25 sec)
+				macro(30, "#showtooltip\n/use Potion of Empowered Exorcisms")
+
+			elseif level >= 51 and bags("Potion of Dethly Fixation") >= 1 then -- Shadowlands, Alchemy (Stacking debuff that explodes, 25 sec)
+				macro(30, "#showtooltip\n/use Potion of Dethly Fixation")
+
+			elseif level >= 40 and bags("Potion of Prolonged Power") >= 1 then -- Legion, Alchemy (+40 all stats, 60 sec)
 				macro(30, "#showtooltip\n/use Potion of Prolonged Power")
-			else
-				-- No Potion Available
+
+			else -- No Potion Available
 				macro(30, "#showtooltip\n/use Potion of Prolonged Power", 132380)
 			end
+
 
 			-- Zone Ability
 			if instanceName == "Draenor" then
