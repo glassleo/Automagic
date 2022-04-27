@@ -401,7 +401,7 @@ local function SetGlobalBinds()
 		SetBinding("I", "TOGGLEDUNGEONSANDRAIDS")
 		SetBinding("INSERT", "NONE")
 		SetBinding("J", "CLICK BT4Button25:LeftButton")
-		SetBinding("L", "NONE")
+		SetBinding("L", "MACRO G037")
 		SetBinding("LEFT", "NONE")
 		SetBinding("N", "CLICK BT4Button13:LeftButton")
 		SetBinding("NUMLOCK", "NONE")
@@ -821,6 +821,7 @@ local function eventHandler(self, event)
 		end
 
 		local instanceName, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
+		local zone = GetZoneText() or ""
 		local _, class, _ = UnitClass("player")
 		local _,race = UnitRace("player")
 		local name = GetUnitName("player", false)
@@ -963,44 +964,44 @@ local function eventHandler(self, event)
 			else -- No Potion Available
 				macro(30, "#showtooltip\n/use Potion of Prolonged Power", 132380)
 			end
+		end
 
-
+		if event ~= "BAG_UPDATE" then
 			-- Zone Ability
 			if instanceName == "Draenor" then
-				-- Draenor: Garrison Ability
 				macro(31, "#showtooltip\n/use Garrison Ability")
 			elseif instanceName == "Argus" then
-				-- Argus: Vindicaar Matrix Crystal
 				macro(31, "#showtooltip\n/use Vindicaar Matrix Crystal")
 			elseif (instanceName == "Horrific Vision of Orgrimmar" or instanceName == "Horrific Vision of Stormwind") and IsSpellKnown(314955) then
-				-- Horrific Vision: Sanity Restoration Orb
 				macro(31, "#showtooltip\n/use Sanity Restoration Orb")
 			elseif instanceName == "Vision of the Twisting Sands" or instanceName == "Vale of Eternal Twilight" then
-				-- Minor Horrific Vision: Resilient Soul
 				macro(31, "#showtooltip\n/use Resilient Soul", 458722)
 			elseif IsInJailersTower() then
-				-- Torghast: Activate Empowerment
 				macro(31, "#showtooltip\n/use Activate Empowerment")
 			elseif instanceName == "Torghast" then
 				-- Torghast: Layer 5 spam
 				-- /run C_GossipInfo.SelectOption(TorghastLevelPickerFrame.currentSelectedButton.index)
 				macro(31, "/run C_GossipInfo.SelectOption(5)", 4067926)
 			elseif instanceName == "The Shadowlands" and covenant == 4 then
-				-- Shadowlands: Construct Ability
-				macro(31, "#showtooltip\n/use Construct Ability")
+				macro(31, "#showtooltip\n/use Construct Ability") -- Necrolord only
 			elseif instanceName == "Zereth Mortis" then
-				-- Zereth Mortis: Summon Pocopoc
 				macro(31, "#showtooltip\n/use Summon Pocopoc")
-			else
-				-- No Zone Ability Available
+			else -- Fallback
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
 			end
-		end
 
-		if event ~= "BAG_UPDATE" then
-			-- UI Stuff
-			--UIWidgetTopCenterContainerFrame:ClearAllPoints()
-			--UIWidgetTopCenterContainerFrame:SetPoint("CENTER", 0, 400)
+
+			-- Zone Travel
+			if instanceName == "Draenor" then
+				macro(37, "#showtooltip\n/use Aviana's Feather")
+			elseif zone == "Oribos" or zone == "Korthia" then
+				macro(37, "#showtooltip\n/use Silver Shardhide Whistle")
+			elseif zone == "Timeless Isle" then
+				macro(37, "#showtooltip\n/use Ash-Covered Horn")
+			else -- Fallback
+				macro(37, "", 975738)
+			end
+
 
 			-- Mounts
 			local z, m, mA, mP = GetZoneText(), "", "", ""
