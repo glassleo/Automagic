@@ -247,7 +247,7 @@ Automagic.Characters = {
 	["Bryan"] = { ["ground"] = "Mollie", ["flying"] = "Farseer's Raging Tempest", },
 	["Byrne"] = { ["ground"] = "Netherlord's Brimstone Wrathsteed", ["flying"] = "Antoran Charhound", },
 	["Cafuné"] = { ["flying"] = "Grove Warden", },
-	["Cain"] = { ["ground"] = "Pureheart Courser", ["flying"] = "Sunreaver Dragonhawk", },
+	["Cain"] = { ["ground"] = "Sundancer", ["flying"] = "High Priest's Lightsworn Seeker", },
 	["Camilla"] = { ["ground"] = "Midnight", ["flying"] = "Expedition Bloodswarmer", },
 	["Carolyn"] = { ["ground"] = "Violet Raptor", ["flying"] = "Armored Skyscreamer", },
 	["Carrie"] = { ["ground"] = "Mollie", ["flying"] = "High Priest's Lightsworn Seeker", },
