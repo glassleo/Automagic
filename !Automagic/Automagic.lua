@@ -994,7 +994,7 @@ local function eventHandler(self, event)
 			-- Zone Travel
 			if instanceName == "Draenor" then
 				macro(37, "#showtooltip\n/use Aviana's Feather")
-			elseif zone == "Oribos" or zone == "Korthia" then
+			elseif zone == "Oribos" or zone == "Korthia" or zone == "The Maw" then
 				macro(37, "#showtooltip\n/use Silver Shardhide Whistle")
 			elseif zone == "Timeless Isle" then
 				macro(37, "#showtooltip\n/use Ash-Covered Horn")
