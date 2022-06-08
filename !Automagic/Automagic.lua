@@ -153,7 +153,6 @@ local function SetGlobalBinds()
 		SetBindingMacro("0", "G002")
 
 		-- Cloak
-		SetBindingMacro("+", "G003")
 		SetBindingMacro("NUMPADDIVIDE", "G003")
 
 		-- Gloves
@@ -251,14 +250,14 @@ local function SetGlobalBinds()
 
 		-------------------------------
 
-		SetBinding("+", "MACRO G003")
+		SetBinding("+", "MACRO G104")
 		SetBinding(",", "EXTRAACTIONBUTTON1")
 		SetBinding("-", "MACRO G035")
 		SetBinding(".", "MACRO G031")
 		SetBinding("0", "MACRO G002")
 		SetBinding("SHIFT-0", "MACRO G002")
-		SetBinding("8", "NONE")
-		SetBinding("9", "NONE")
+		SetBinding("8", "MACRO G030")
+		SetBinding("9", "MACRO G032")
 		SetBinding("<", "REPLY")
 		SetBinding("=", "MACRO G002")
 		SetBinding("ALT-BUTTON3", "CLICK BT4Button28:LeftButton")
@@ -541,6 +540,9 @@ local function BuildGlobalMacros()
 
 		-- Combat Ally
 		macro(35, "#showtooltip\n/use Combat Ally")
+
+		-- Toggle War Mode
+		macro(104, "/run C_PvP.ToggleWarMode()", 1455894)
 
 		-- Toggle ZigiAuras Debug Mode
 		macro(105, "/za", 3610509)
@@ -994,6 +996,8 @@ local function eventHandler(self, event)
 			-- Zone Travel
 			if instanceName == "Draenor" then
 				macro(37, "#showtooltip\n/use Aviana's Feather")
+			elseif instanceName == "Argus" then
+				macro(37, "#showtooltip\n/use Baarut the Brisk")
 			elseif zone == "Oribos" or zone == "Korthia" or zone == "The Maw" then
 				macro(37, "#showtooltip\n/use Silver Shardhide Whistle")
 			elseif zone == "Timeless Isle" then
@@ -1120,7 +1124,7 @@ local function eventHandler(self, event)
 				end
 			elseif z == "Nazjatar" or z == "Damprock Cavern" or z == "The Forgotten Tunnel" or z == "Highborne Estates" then
 				-- Nazjatar
-				if (faction == "Alliance" and C_QuestLog.IsQuestFlaggedCompleted(56350)) or (faction == "Horde" and C_QuestLog.IsQuestFlaggedCompleted(55481)) then -- Quest that gives 20 Manapearls
+				if C_QuestLog.IsQuestFlaggedCompleted(56766) then -- Budding Deepcoral learned
 					preferAquatic = true
 				end
 			end
