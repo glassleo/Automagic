@@ -1,8 +1,8 @@
-## Interface: 90200
+## Interface: 90205
 ## Title: !Automagic
 ## Notes: Automagic
 ## Author: Leo
-## Version: 9.2.0
+## Version: 9.2.5
 ## OptionalDeps: !AutomagicOptions, !ZigiAuras
 
 Custom.lua
