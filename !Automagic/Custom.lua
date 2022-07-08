@@ -397,7 +397,7 @@ Automagic.Characters = {
 	["Zo"] = { ["ground"] = "Battle-Bound Warhound", ["flying"] = "Drake of the Four Winds", },
 	["Zoal"] = { ["ground"] = "Vile Fiend", ["flying"] = "Regal Corpsefly", },
 	["Zolani"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Armored Skyscreamer", },
-	["Zoom"] = { ["ground"] = "Brown Riding Goat", ["flying"] = "Darkmoon Dirigible", },
+	["Zoom"] = { ["ground"] = "Scarlet Helicid", ["flying"] = "Darkmoon Dirigible", },
 	["Zorp"] = { ["ground"] = "Brawler's Burly Basilisk", ["flying"] = "Mechanized Lumber Extractor", },
 	["Zumaridi"] = {},
 
