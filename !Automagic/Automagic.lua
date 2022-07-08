@@ -521,13 +521,16 @@ local function BuildGlobalMacros()
 		macro(24, "/run local _,_,c=UnitClass(\"player\") if c==11 then SetLootSpecialization(GetSpecializationInfo(4)) end", 237281)
 
 		-- Cancel Auras
-		macro(25, "/cancelaura Ice Block\n/cancelaura Divine Shield\n/cancelaura Dispersion\n/cancelaura Aspect of the Turtle\n/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Goblin Glider\n/cancelaura Spirit of Redemption", 135739)
+		--macro(25, "/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Goblin Glider\n\n/cancelaura Forgeborne Reveries", 135739)
 
 		-- Trinket 1
 		macro(26, "#showtooltip\n/use 13")
 
 		-- Trinket 2
 		macro(27, "#showtooltip\n/use 14")
+
+		-- Healthstone
+		macro(28, "#showtooltip\n/use Healthstone", 538745)
 
 		-- Phial of Serenity
 		macro(32, "#showtooltip\n/use Phial of Serenity", 463534)
@@ -540,6 +543,9 @@ local function BuildGlobalMacros()
 
 		-- Combat Ally
 		macro(35, "#showtooltip\n/use Combat Ally")
+
+		-- Remove 36
+		macro(36, "", "INV_MISC_QUESTIONMARK")
 
 		-- Toggle War Mode
 		macro(104, "/run C_PvP.ToggleWarMode()", 1455894)
@@ -824,11 +830,11 @@ local function eventHandler(self, event)
 
 		local instanceName, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
 		local zone = GetZoneText() or ""
-		local _, class, _ = UnitClass("player")
+		local _, class = UnitClass("player")
 		local _,race = UnitRace("player")
 		local name = GetUnitName("player", false)
 		local realm = GetRealmName()
-		local faction,_ = UnitFactionGroup("player")
+		local faction = UnitFactionGroup("player")
 		local spec = GetSpecialization() or 0
 		local level = UnitLevel("player") or 1
 		local covenant = C_Covenants and C_Covenants.GetActiveCovenantID() or 0
@@ -872,25 +878,27 @@ local function eventHandler(self, event)
 
 
 		if event ~= "ZONE_CHANGED_NEW_AREA" then
-			-- Healthstone
-			if bags("Healthstone") >= 1 then
-				-- Healthstone
-				macro(28, "#showtooltip\n/use Healthstone")
-			else
-				-- No Healthstone Available
-				macro(28, "#showtooltip\n/use Healthstone", 237477)
+			-- Cancel Aura (25)
+			local body = "/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Goblin Glider\n/cancelaura Parachute\n/cancelaura Forgeborne Reveries"
+
+			if class == "DEMONHUNTER" then
+				body = body .. "\n/cancelaura Netherwalk"
+			elseif class == "HUNTER" then
+				body = body .. "\n/cancelaura Aspect of the Turtle"
+			elseif class == "MAGE" then
+				body = body .. "\n/cancelaura Ice Block"
+			elseif class == "PALADIN" then
+				body = body .. "\n/cancelaura Divine Shield"
+			elseif class == "PRIEST" then
+				body = body .. "\n/cancelaura Spirit of Redemption\n/cancelaura Dispersion"
+			elseif class == "WARRIOR" then
+				body = body .. "\n/cancelaura Bladestorm"
 			end
 
-			-- Mana Gem
-			if bags("Mana Gem") >= 1 then
-				-- Mana Gem
-				macro(36, "#showtooltip\n/use Mana Gem")
-			else
-				-- No Mana Gem Available
-				macro(36, "#showtooltip\n/use Mana Gem", 1379187)
-			end
+			macro(25, body, 135739)
 
-			-- Tonic
+
+			-- Tonic (29)
 			if IsInJailersTower() and bags("Rejuvenating Siphoned Essence") >= 1 then -- Torghast only (10k)
 				macro(29, "#showtooltip\n/use Rejuvenating Siphoned Essence")
 
@@ -929,7 +937,7 @@ local function eventHandler(self, event)
 			end
 
 
-			-- Potion
+			-- Potion (30)
 			if IsInJailersTower() and bags("Fleeting Frenzy Potion") >= 1 then -- Torghast only (+30% damage, until combat ends)
 				macro(30, "#showtooltip\n/use Fleeting Frenzy Potion")
 
