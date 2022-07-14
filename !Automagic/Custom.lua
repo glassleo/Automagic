@@ -38,7 +38,11 @@ Automagic.Characters = {
 
 	-- Alliance
 	["Aero"] = { ["ground"] = "Pureheart Courser", ["flying"] = "Cloudwing Hippogryph", },
-	["Agon"] = { ["ground"] = "Avenging Felcrusher", ["flying"] = "High Priest's Lightsworn Seeker", },
+	["Agon"] = {
+		["ground"] = "Blessed Felcrusher",
+		["flying"] = "High Priest's Lightsworn Seeker",
+		["hs"] = "Broker Translocation Matrix",
+	},
 	["Aldous"] = { ["ground"] = "Prestigious Ivory Courser", ["flying"] = "Cloudwing Hippogryph", },
 	["Aleksandr"] = { ["ground"] = "Vicious War Elekk", ["flying"] = "Vibrant Mana Ray", },
 	["Altair"] = { ["ground"] = "Prestigious Forest Courser", ["flying"] = "Shadowblade's Baneful Omen", },
