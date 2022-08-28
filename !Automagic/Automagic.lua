@@ -614,7 +614,7 @@ function Automagic.UpdatePets()
 
 	if not realm then return end
 	
-	if class == "HUNTER" and GetStablePetInfo(1) then
+	if class == "HUNTER" then
 		local petAbilityMacro, petExoticMacro = "#showtooltip\n/use ", "#showtooltip\n/use "
 
 		local petAbilities = {
@@ -931,6 +931,8 @@ local function eventHandler(self, event)
 
 			elseif bags("Ancient Healing Potion") >= 1 and level >= 40 then -- Legion, Alchemy (2.2k)
 				macro(29, "#showtooltip\n/use Ancient Healing Potion")
+			elseif level < 50 then
+				macro(29, "#showtooltip\n/use 2") -- Heirloom Neck
 
 			else -- No Tonic Available
 				macro(29, "#showtooltip\n/use Cosmic Healing Potion", 134865)
