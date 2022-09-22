@@ -60,7 +60,7 @@ Automagic.Characters = {
 		["aquatic"] = "Sea Turtle",
 		["hs"] = "Night Fae Hearthstone",
 	},
-	["Asteria"] = {
+	["Hecate"] = {
 		["ground"] = "Lucid Nightmare", -- Temporary: Dauntless Duskrunner
 		["flying"] = "Duskflutter Ardenmoth",
 		["aquatic"] = "Darkwater Skate",
@@ -164,7 +164,6 @@ Automagic.Characters = {
 	["Floyd"] = { ["ground"] = "Vicious War Bear", ["flying"] = "Stormsong Coastwatcher", ["hs"] = "Tome of Town Portal", },
 	["Frid"] = {},
 	["Fuzz"] = { ["hs"] = "Lunar Elder's Hearthstone", },
-	["Ghost"] = { ["ground"] = "Running Wild", },
 	["Gloria"] = { ["ground"] = "Lightforged Felcrusher", ["flying"] = "Scintillating Mana Ray", },
 	["Gnarl"] = {
 		["ground"] = "Armored Plaguerot Tauralus",
@@ -177,9 +176,8 @@ Automagic.Characters = {
 	["Hart"] = { ["ground"] = "Highlord's Golden Charger", ["flying"] = "Grand Armored Gryphon", },
 	["Hazel"] = { ["ground"] = "Azure Riding Crane", },
 	["Heather"] = { ["ground"] = "Llothien Prowler", },
-	["Hecate"] = { ["ground"] = "Bloodfang Widow", ["flying"] = "Nazjatar Blood Serpent", },
 	["Hekla"] = { ["ground"] = "Bristling Hellboar", },
-	["Hel"] = { ["ground"] = "Kaldorei Nightsaber", ["flying"] = "Shadowblade's Lethal Omen", },
+	["Ghost"] = { ["ground"] = "Kaldorei Nightsaber", ["flying"] = "Shadowblade's Lethal Omen", },
 	["Helena"] = { ["flying"] = "Lightforged Warframe", },
 	["Maria"] = {
 		["ground"] = "Grimhowl",
@@ -238,12 +236,6 @@ Automagic.Characters = {
 	["Mark"] = { ["ground"] = "Smoky Charger", ["flying"] = "Dusky Waycrest Gryphon", },
 	["Mary"] = { ["ground"] = "Crimson Deathcharger", ["flying"] = "Armored Bloodwing", },
 	["Matilda"] = { ["ground"] = "Kul Tiran Charger", ["flying"] = "Proudmoore Sea Scout", },
-	["Mayhem"] = {
-		["ground"] = "Vile Fiend",
-		["flying"] = "Slayer's Felbroken Shrieker",
-		["aquatic"] = "Surf Jelly",
-		["hs"] = "Necrolord Hearthstone",
-	},
 	["Medea"] = { ["ground"] = "Lucid Nightmare", ["flying"] = "Ardenweald Wilderling", },
 	["Melissa"] = { ["ground"] = "Prestigious Royal Courser", ["flying"] = "Cobalt Netherwing Drake", },
 	["Mikael"] = { ["ground"] = "Summon Great Exarch's Elekk", ["flying"] = "Enchanted Fey Dragon", ["hs"] = "Holographic Digitalization Hearthstone", },
@@ -257,7 +249,11 @@ Automagic.Characters = {
 	["My"] = { ["ground"] = "Hellfire Infernal", },
 	["Nancy"] = { ["ground"] = "Scrapforged Mechaspider", ["flying"] = "Aerial Unit R-21/X", },
 	["Niels"] = { ["ground"] = "Garn Nighthowl", ["flying"] = "Stormsong Coastwatcher", },
-	["Nieve"] = { ["ground"] = "Vicious Kaldorei Warsaber", ["flying"] = "Teldrassil Hippogryph", },
+	["Asteria"] = {
+		["ground"] = "Vicious Kaldorei Warsaber",
+		["flying"] = "Teldrassil Hippogryph",
+		["hs"] = "Night Fae Hearthstone",
+	},
 	["Nix"] = { ["ground"] = "Netherlord's Chaotic Wrathsteed", ["flying"] = "Black Serpent of N'Zoth", },
 	["Aska"] = { ["ground"] = "Grimhowl", },
 	["Nord"] = { ["ground"] = "Ironbound Wraithcharger", ["flying"] = "Icebound Frostbrood Vanquisher", },
@@ -329,14 +325,14 @@ Automagic.Characters = {
 	["Ed"] = { ["ground"] = "Lucid Nightmare", },
 	["Wu"] = { ["ground"] = "Ban-Lu, Grandmaster's Companion", ["flying"] = "Thundering Jade Cloud Serpent", },
 	["Yessica"] = { ["ground"] = "Beryl Ruinstrider", ["flying"] = "Enchanted Fey Dragon", },
-	["Yulia"] = { ["ground"] = "Bleakhoof Ruinstrider", ["flying"] = "Felglow Mana Ray", },
+	["Yulia"] = { ["ground"] = "Umber Ruinstrider", ["flying"] = "Vibrant Mana Ray", },
 	["Zip"] = { ["flying"] = "Luminous Starseeker", },
 
 	-- Horde
 	["Agata"] = { ["ground"] = "Rivendare's Deathcharger", ["flying"] = "Witherbark Direwing", },
 	["Agnes"] = {
-		["ground"] = "White Skeletal Warhorse", -- Temp: Vicious White Bonesteed
-		["flying"] = "Sinfall Gravewing", -- Temp: Pale Gravewing
+		["ground"] = "Netherlord's Brimstone Wrathsteed",
+		["flying"] = "Smoldering Ember Wyrm",
 	},
 	["Zoal"] = { ["ground"] = "Kor'kron War Wolf", ["flying"] = "Violet Netherwing Drake", ["hs"] = "Lunar Elder's Hearthstone", },
 	["Aip"] = { ["ground"] = "Vicious War Kodo", ["flying"] = "Battlelord's Bloodthirsty War Wyrm", },
@@ -398,7 +394,6 @@ Automagic.Characters = {
 	["Eska"] = { ["ground"] = "Swift Frostwolf", ["flying"] = "Grand Armored Wyvern", },
 	["Esme"] = { ["ground"] = "Highmountain Thunderhoof", ["flying"] = "Spirit of Eche'ro", },
 	["Etu"] = { ["ground"] = "Vicious War Kodo", ["flying"] = "Clutch of Ji-Kun", },
-	["Ewa"] = {},
 	["Felix"] = { ["ground"] = "Summon Thalassian Charger", ["flying"] = "Nether-Gorged Greatwyrm", ["hs"] = "Tome of Town Portal", },
 	["Fester"] = { ["ground"] = "Vicious Skeletal Warhorse", ["flying"] = "Undercity Plaguebat", },
 	["Flerm"] = { ["ground"] = "Kor'kron War Wolf", ["flying"] = "Volcanic Stone Drake", },
@@ -410,7 +405,7 @@ Automagic.Characters = {
 	["Gary"] = { ["ground"] = "Alabaster Hyena", ["flying"] = "Wastewander Skyterror", ["aquatic"] = "Saltwater Seahorse", ["hs"] = "Timewalker's Hearthstone", },
 	["Gizzard"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Soaring Skyterror", },
 	["Glue"] = { ["ground"] = "Ironside Warwolf", ["flying"] = "Crimson Pandaren Phoenix", },
-	["Goom"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Cobalt Pterrordax", },
+	["Bababla"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Cobalt Pterrordax", },
 	["Gorgina"] = { ["ground"] = "Wandering Arden Doe", ["flying"] = "Leyfeather Hippogryph", },
 	["Grime"] = { ["ground"] = "Mag'har Direwolf", ["flying"] = "Iron Skyreaver", },
 	["Boom"] = { ["ground"] = "Mag'har Direwolf", ["flying"] = "Grand Armored Wyvern", },
@@ -451,7 +446,11 @@ Automagic.Characters = {
 		["hs"] = "Night Fae Hearthstone",
 	},
 	["Mildred"] = { ["ground"] = "Rivendare's Deathcharger", ["flying"] = "Abyss Worm", },
-	["Miranda"] = { ["ground"] = "Hellfire Infernal", ["flying"] = "Wastewarped Deathwalker", },
+	["Mayhem"] = {
+		["ground"] = "Hellfire Infernal",
+		["flying"] = "Wastewarped Deathwalker",
+		["hs"] = "Venthyr Sinstone",
+	},
 	["Nea"] = { ["flying"] = "Warforged Nightmare", },
 	["Ap"] = { ["ground"] = "Crusader's Direhorn", ["flying"] = "Cobalt Pterrordax", },
 	["Njord"] = { ["ground"] = "Snapdragon Kelpstalker", ["flying"] = "Abyss Worm", },
@@ -493,7 +492,7 @@ Automagic.Characters = {
 	["Schooka"] = { ["ground"] = "Mag'har Direwolf", ["flying"] = "Iron Skyreaver", },
 	["Scott"] = { ["ground"] = "Dune Scavenger", ["flying"] = "Wastewander Skyterror", },
 	["Serena"] = { ["ground"] = "Vicious Warstrider", ["flying"] = "Ashes of Al'ar", ["hs"] = "Tome of Town Portal", },
-	["Seska"] = { ["ground"] = "Vicious Warstrider", ["flying"] = "Shadowblade's Murderous Omen", },
+	["Seska"] = { ["ground"] = "Vicious Warstrider", ["flying"] = "Violet Pandaren Phoenix", },
 	["Shu"] = { ["ground"] = "Jeweled Onyx Panther", ["flying"] = "Shadowblade's Crimson Omen", },
 	["Sithandra"] = { ["ground"] = "Acherus Deathcharger", ["flying"] = "Deathlord's Vilebrood Vanquisher", },
 	["Solene"] = { ["ground"] = "Swift Red Hawkstrider", ["flying"] = "Red Dragonhawk", ["aquatic"] = "Crimson Tidestallion", },
@@ -531,7 +530,7 @@ Automagic.Characters = {
 	["Zev"] = { ["ground"] = "Prestigious Azure Courser", },
 	["Ziguni"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Bloodthirsty Dreadwing", },
 	["Zo"] = { ["ground"] = "Battle-Bound Warhound", ["flying"] = "Drake of the Four Winds", },
-	["Ghoulina"] = { ["ground"] = "", ["flying"] = "Regal Corpsefly", },
+	["Ghoulina"] = { ["ground"] = "Jigglesworth Sr.", ["flying"] = "Regal Corpsefly", },
 	["Zolani"] = { ["ground"] = "Vicious War Raptor", ["flying"] = "Armored Skyscreamer", },
 	["Zoom"] = { ["ground"] = "Scarlet Helicid", ["flying"] = "Darkmoon Dirigible", },
 	["Zorp"] = { ["ground"] = "Brawler's Burly Basilisk", ["flying"] = "Grinning Reaver", },
