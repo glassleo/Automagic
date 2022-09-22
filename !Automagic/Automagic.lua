@@ -101,6 +101,7 @@ local groundAreas = {
 	["Oribos"] = true,
 	["Maldraxxus Broker Islands"] = true, -- Shattered Grove
 	["The Maw"] = true,
+	["The Rift"] = true,
 	["Korthia"] = true,
 	["Caverns of Contemplation"] = true, -- Korthia
 	["Torghast"] = true,
@@ -879,7 +880,7 @@ local function eventHandler(self, event)
 
 		if event ~= "ZONE_CHANGED_NEW_AREA" then
 			-- Cancel Aura (25)
-			local body = "/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Goblin Glider\n/cancelaura Parachute\n/cancelaura Forgeborne Reveries"
+			local body = "/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Goblin Glider\n/cancelaura Parachute\n/cancelaura Forgeborne Reveries\n/cancelaura Path of Greed"
 
 			if class == "DEMONHUNTER" then
 				body = body .. "\n/cancelaura Netherwalk"
@@ -991,9 +992,9 @@ local function eventHandler(self, event)
 			elseif IsInJailersTower() then
 				macro(31, "#showtooltip\n/use Activate Empowerment")
 			elseif instanceName == "Torghast" then
-				-- Torghast: Layer 5 spam
+				-- Torghast: Layer 1 spam
 				-- /run C_GossipInfo.SelectOption(TorghastLevelPickerFrame.currentSelectedButton.index)
-				macro(31, "/run C_GossipInfo.SelectOption(5)", 4067926)
+				macro(31, "/run C_GossipInfo.SelectOption(1)", 4062765)
 			elseif instanceName == "The Shadowlands" and covenant == 4 then
 				macro(31, "#showtooltip\n/use Construct Ability") -- Necrolord only
 			elseif instanceName == "Zereth Mortis" then
