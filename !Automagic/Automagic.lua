@@ -999,6 +999,8 @@ local function eventHandler(self, event)
 				macro(31, "#showtooltip\n/use Construct Ability") -- Necrolord only
 			elseif instanceName == "Zereth Mortis" then
 				macro(31, "#showtooltip\n/use Summon Pocopoc")
+			elseif instanceName == "Northrend" then
+				macro(31, "/run TradeSkillFrame.DetailsFrame:Create()\n/use 6\n/click StaticPopup1Button1")
 			else -- Fallback
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
 			end
@@ -1009,7 +1011,7 @@ local function eventHandler(self, event)
 				macro(37, "#showtooltip\n/use Aviana's Feather")
 			elseif instanceName == "Argus" then
 				macro(37, "#showtooltip\n/use Baarut the Brisk")
-			elseif zone == "Oribos" or zone == "Korthia" or zone == "The Maw" then
+			elseif zone == "Oribos" or zone == "Korthia" or zone == "The Maw" or zone == "The Rift" then
 				macro(37, "#showtooltip\n/use Silver Shardhide Whistle")
 			elseif zone == "Timeless Isle" then
 				macro(37, "#showtooltip\n/use Ash-Covered Horn")
