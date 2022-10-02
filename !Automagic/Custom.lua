@@ -176,7 +176,10 @@ Automagic.Characters = {
 	["Hart"] = { ["ground"] = "Highlord's Golden Charger", ["flying"] = "Grand Armored Gryphon", },
 	["Hazel"] = { ["ground"] = "Azure Riding Crane", },
 	["Heather"] = { ["ground"] = "Llothien Prowler", },
-	["Hekla"] = { ["ground"] = "Bristling Hellboar", },
+	["Hekla"] = {
+		["ground"] = "Bristling Hellboar",
+		["flying"] = "Black Drake",
+	},
 	["Ghost"] = { ["ground"] = "Kaldorei Nightsaber", ["flying"] = "Shadowblade's Lethal Omen", },
 	["Helena"] = { ["flying"] = "Lightforged Warframe", },
 	["Maria"] = {
@@ -215,7 +218,7 @@ Automagic.Characters = {
 	["Rose"] = { ["ground"] = "Highlord's Golden Charger", ["flying"] = "Sapphire Skyblazer", },
 	["Liam"] = { ["ground"] = "Goldenmane", ["flying"] = "Violet Spellwing", ["hs"] = "Tome of Town Portal", },
 	["Lillian"] = { ["ground"] = "Kul Tiran Charger", },
-	["Lisa"] = { ["ground"] = "Goldenmane", ["flying"] = "High Priest's Lightsworn Seeker", },
+	["Lisa"] = { ["ground"] = "Llothien Prowler", ["flying"] = "Vulpine Familiar", },
 	["Lua"] = {},
 	["Lucas"] = {
 		["ground"] = "Running Wild",
@@ -301,7 +304,11 @@ Automagic.Characters = {
 	["Susie"] = { ["ground"] = "Highlord's Vengeful Charger", },
 	["Suzanne"] = { ["ground"] = "Black Riding Goat", ["flying"] = "Siltwing Albatross", },
 	["Tek"] = { ["ground"] = "Blessed Felcrusher", ["flying"] = "Vibrant Mana Ray", },
-	["Tor"] = { ["ground"] = "Beastlord's Warwolf", ["hs"] = "The Innkeeper's Daughter", },
+	["Tor"] = {
+		["ground"] = "Vicious War Ram",
+		["flying"] = "Island Thunderscale",
+		["hs"] = "The Innkeeper's Daughter",
+	},
 	["Torunn"] = { ["ground"] = "Stormpike Battle Ram", ["flying"] = "Battlelord's Bloodthirsty War Wyrm", },
 	["Tracyanne"] = {
 		["ground"] = "Vicious War Ram",
@@ -451,7 +458,10 @@ Automagic.Characters = {
 		["flying"] = "Wastewarped Deathwalker",
 		["hs"] = "Venthyr Sinstone",
 	},
-	["Nea"] = { ["flying"] = "Warforged Nightmare", },
+	["Nea"] = {
+		["ground"] = "Colossal Wraithbound Mawrat",
+		["flying"] = "Azure Netherwing Drake",
+	},
 	["Ap"] = { ["ground"] = "Crusader's Direhorn", ["flying"] = "Cobalt Pterrordax", },
 	["Njord"] = { ["ground"] = "Snapdragon Kelpstalker", ["flying"] = "Abyss Worm", },
 	["No"] = { ["ground"] = "Llothien Prowler", ["flying"] = "Violet Pandaren Phoenix", ["aquatic"] = "Crimson Tidestallion", },
@@ -494,7 +504,10 @@ Automagic.Characters = {
 	["Serena"] = { ["ground"] = "Vicious Warstrider", ["flying"] = "Ashes of Al'ar", ["hs"] = "Tome of Town Portal", },
 	["Seska"] = { ["ground"] = "Vicious Warstrider", ["flying"] = "Violet Pandaren Phoenix", },
 	["Shu"] = { ["ground"] = "Jeweled Onyx Panther", ["flying"] = "Shadowblade's Crimson Omen", },
-	["Sithandra"] = { ["ground"] = "Acherus Deathcharger", ["flying"] = "Deathlord's Vilebrood Vanquisher", },
+	["Sithandra"] = {
+		["ground"] = "Crimson Deathcharger",
+		["flying"] = "Deathlord's Vilebrood Vanquisher",
+	},
 	["Solene"] = { ["ground"] = "Swift Red Hawkstrider", ["flying"] = "Red Dragonhawk", ["aquatic"] = "Crimson Tidestallion", },
 	["Spoon"] = { ["ground"] = "Vicious War Kodo", ["flying"] = "Farseer's Raging Tempest", ["aquatic"] = "Saltwater Seahorse", },
 	["Suri"] = { ["ground"] = "Ironside Warwolf", ["flying"] = "Huntmaster's Loyal Wolfhawk", },
