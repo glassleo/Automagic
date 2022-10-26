@@ -609,7 +609,7 @@ function Automagic.UpdatePets()
 	local name = GetUnitName("player", false)
 	local realm = GetRealmName()
 	local faction,_ = UnitFactionGroup("player")
-	local spec = GetSpecialization() or 0
+	local spec = GetSpecialization() or 5
 	local level = UnitLevel("player") or 1
 	local covenant = C_Covenants and C_Covenants.GetActiveCovenantID() or 0
 
@@ -744,7 +744,8 @@ end
 local function eventHandler(self, event)
 	if event == "PLAYER_ENTERING_WORLD" then
 		SetCVar("BlockTrades", 0)
-
+		SetCVar("ActionButtonUseKeyDown", 0)
+		
 		-- UI Scale
 		if AutomagicOptions and AutomagicOptions.EnableScaling == false then
 			SetCVar("useuiscale", 0)
@@ -760,13 +761,18 @@ local function eventHandler(self, event)
 			    "MerchantFrame",
 			    "PVEFrame",
 			    "GossipFrame",
-			    "InterfaceOptionsFrame",
+			    --"ClassTalentFrame",
+			    --"InterfaceOptionsFrame",
 			    "GameMenuFrame",
 			    "ChatFrame1EditBox",
+			    "ObjectiveTrackerFrame",
+			    "FriendsFrame",
 			} do
 			    _G[frame]:SetScale(1.2)
 			end
 		end
+
+		--ClassTalentFrame:SetScale(1.2)
 	end
 
 	if InCombatLockdown() then
@@ -836,20 +842,14 @@ local function eventHandler(self, event)
 		local name = GetUnitName("player", false)
 		local realm = GetRealmName()
 		local faction = UnitFactionGroup("player")
-		local spec = GetSpecialization() or 0
+		local spec = GetSpecialization() or 5
+		local role = GetSpecializationRole(spec) or "DAMAGER" -- "DAMAGER", "TANK" or "HEALER"
 		local level = UnitLevel("player") or 1
 		local covenant = C_Covenants and C_Covenants.GetActiveCovenantID() or 0
 		-- 1 Kyrian
 		-- 2 Venthyr
 		-- 3 Night Fae
 		-- 4 Necrolord
-
-		local role = "dps"
-		if (class == "DEATHKNIGHT" and spec == 1) or (class == "DEMONHUNTER" and spec == 2) or (class == "DRUID" and spec == 3) or (class == "MONK" and spec == 1) or (class == "PALADIN" and spec == 2) or (class == "WARRIOR" and spec == 3) then
-			role = "tank"
-		elseif (class == "DRUID" and spec == 4) or (class == "MONK" and spec == 2) or (class == "PALADIN" and spec == 1) or (class == "PRIEST" and spec ~= 3) or (class == "SHAMAN" and spec == 3) then
-			role = "healer"
-		end
 
 		local primary = "int"
 		if (class == "DEMONHUNTER") or (class == "DRUID" and (spec == 2 or spec == 3)) or (class == "HUNTER") or (class == "MONK" and spec ~= 2) or (class == "ROGUE") or (class == "SHAMAN" and spec == 2) then
@@ -959,7 +959,7 @@ local function eventHandler(self, event)
 			elseif level >= 51 and primary == "str" and bags("Potion of Spectral Strength") >= 1 then -- Shadowlands, Alchemy (+190 str, 25 sec)
 				macro(30, "#showtooltip\n/use Potion of Spectral Strength")
 
-			elseif level >= 51 and role == "healer" and bags("Potion of Divine Awakening") >= 1 then -- Shadowlands, Alchemy (Increased healing, 25 sec)
+			elseif level >= 51 and role == "HEALER" and bags("Potion of Divine Awakening") >= 1 then -- Shadowlands, Alchemy (Increased healing, 25 sec)
 				macro(30, "#showtooltip\n/use Potion of Divine Awakening")
 
 			elseif level >= 51 and bags("Potion of Phantom Fire") >= 1 then -- Shadowlands, Alchemy (Single target damage procs, 25 sec)
@@ -999,8 +999,8 @@ local function eventHandler(self, event)
 				macro(31, "#showtooltip\n/use Construct Ability") -- Necrolord only
 			elseif instanceName == "Zereth Mortis" then
 				macro(31, "#showtooltip\n/use Summon Pocopoc")
-			elseif instanceName == "Northrend" then
-				macro(31, "/run TradeSkillFrame.DetailsFrame:Create()\n/use 6\n/click StaticPopup1Button1")
+			--elseif instanceName == "Northrend" then
+			--	macro(31, "/run TradeSkillFrame.DetailsFrame:Create()\n/use 6\n/click StaticPopup1Button1")
 			else -- Fallback
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
 			end
