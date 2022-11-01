@@ -20,9 +20,9 @@ Automagic.PetIcons["SHAMAN"] = {
 	["Greater Earth Elemental"] = 136024,
 	["Greater Fire Elemental"] = 135790,
 	["Greater Storm Elemental"] = 2065626,
-	["Primal Earth Elemental"] = 136024,
+	["Primal Earth Elemental"] = 1016351,
 	["Primal Fire Elemental"] = 651081,
-	["Primal Storm Elemental"] = 2065626,
+	["Primal Storm Elemental"] = 462522,
 }
 
 
@@ -257,7 +257,7 @@ local function SetGlobalBinds()
 		SetBinding(".", "MACRO G031")
 		SetBinding("0", "MACRO G002")
 		SetBinding("SHIFT-0", "MACRO G002")
-		SetBinding("8", "MACRO G030")
+		SetBinding("8", "NONE")
 		SetBinding("9", "MACRO G032")
 		SetBinding("<", "REPLY")
 		SetBinding("=", "MACRO G002")
@@ -321,7 +321,7 @@ local function SetGlobalBinds()
 		SetBinding("CTRL-BUTTON3", "CLICK BT4Button41:LeftButton")
 		SetBinding("CTRL-BUTTON4", "MACRO Mount Gathering")
 		SetBinding("CTRL-BUTTON5", "MACRO G009")
-		SetBinding("CTRL-C", "CLICK BT4Button73:LeftButton")
+		SetBinding("CTRL-C", "NONE")
 		SetBinding("CTRL-E", "ACTIONBUTTON8")
 		SetBinding("CTRL-F", "CLICK BT4Button30:LeftButton")
 		SetBinding("CTRL-F1", "NONE")
@@ -341,8 +341,9 @@ local function SetGlobalBinds()
 		SetBinding("CTRL-N", "NONE")
 		SetBinding("CTRL-PAGEDOWN", "NONE")
 		SetBinding("CTRL-PAGEUP", "NONE")
-		SetBinding("CTRL-Q", "CLICK BT4Button54:LeftButton")
+		SetBinding("CTRL-Q", "CLICK BT4Button55:LeftButton")
 		SetBinding("CTRL-R", "CLICK BT4Button17:LeftButton")
+		SetBinding("SHIFT-H", "CLICK BT4Button19:LeftButton")
 		SetBinding("CTRL-S", "NONE")
 		SetBinding("CTRL-SHIFT-BUTTON3", "MACRO Mount Aquatic")
 		SetBinding("CTRL-SHIFT-BUTTON4", "CLICK BindPadKey:MACRO Mount Passenger")
@@ -382,17 +383,12 @@ local function SetGlobalBinds()
 		SetBinding("F10", "TOGGLESOUND")
 		SetBinding("F11", "MACRO G110")
 		SetBinding("F12", "MACRO G111")
-		SetBinding("F14", "SPELL Revive Battle Pets")
-		SetBinding("F15", "MACRO No Companion")
-		SetBinding("F16", "MACRO Army")
-		SetBinding("F17", "MACRO Wholly")
-		SetBinding("F18", "MACRO Army")
 		SetBinding("F2", "CLICK BT4Button50:LeftButton")
 		SetBinding("F3", "CLICK BT4Button51:LeftButton")
 		SetBinding("F4", "CLICK BT4Button52:LeftButton")
 		SetBinding("F5", "CLICK BT4Button53:LeftButton")
-		SetBinding("F6", "DEJUNK_TOGGLE_OPTIONS_FRAME")
-		SetBinding("F7", "ALLTHETHINGS_TOGGLEMINILIST")
+		SetBinding("F6", "CLICK BT4Button54:LeftButton")
+		SetBinding("F7", "DEJUNK_TOGGLE_OPTIONS_FRAME")
 		SetBinding("F8", "TOGGLEMUSIC")
 		SetBinding("F9", "NONE")
 		SetBinding("G", "CLICK BT4Button65:LeftButton")
@@ -401,7 +397,9 @@ local function SetGlobalBinds()
 		SetBinding("I", "TOGGLEDUNGEONSANDRAIDS")
 		SetBinding("INSERT", "NONE")
 		SetBinding("J", "CLICK BT4Button25:LeftButton")
-		SetBinding("L", "MACRO G037")
+		SetBinding("L", "MACRO G036")
+		SetBinding("SHIFT-L", "MACRO G037")
+		SetBinding("CTRL-L", "MACRO G038")
 		SetBinding("LEFT", "NONE")
 		SetBinding("N", "CLICK BT4Button13:LeftButton")
 		SetBinding("NUMLOCK", "NONE")
@@ -449,7 +447,7 @@ local function SetGlobalBinds()
 		SetBinding("SHIFT-F5", "NONE")
 		SetBinding("SHIFT-F7", "ALLTHETHINGS_TOGGLEMAINLIST")
 		SetBinding("SHIFT-G", "CLICK BT4Button66:LeftButton")
-		SetBinding("SHIFT-H", "CLICK BT4Button19:LeftButton")
+		SetBinding("CTRL-G", "MACRO G030")
 		SetBinding("SHIFT-I", "NONE")
 		SetBinding("SHIFT-J", "CLICK BT4Button26:LeftButton")
 		SetBinding("SHIFT-M", "NONE")
@@ -471,17 +469,20 @@ local function SetGlobalBinds()
 		SetBinding("SHIFT-å", "MACRO G107")
 		SetBinding("T", "CLICK BT4Button37:LeftButton")
 		SetBinding("UP", "NONE")
-		SetBinding("V", "CLICK BT4Button67:LeftButton")
-		--SetBinding("SX", "MACRO G029")
+		SetBinding("V", "ACTIONBUTTON7")
+		SetBinding("SX", "MACRO G029")
 		SetBinding("X", "MACRO G028")
-		SetBinding("§", "MACRO G001") -- buggedn in 9.2
+		SetBinding("§", "MACRO G001")
 		SetBinding("\\", "MACRO G001")
 		SetBinding("¨", "NONE")
-		SetBinding("ä", "FOCUSTARGET") -- bugged in 9.2
+		SetBinding("ä", "FOCUSTARGET")
 		SetBinding("'", "FOCUSTARGET")
-		SetBinding("å", "FOLLOWTARGET") -- bugged in 9.2
+		SetBinding("å", "FOLLOWTARGET")
 		SetBinding("]", "FOLLOWTARGET")
 		SetBinding("ö", "TOGGLERUN")
+		SetBinding("6", "ACTIONBUTTON6")
+		SetBinding("7", "MACRO G026") -- Trinket 1
+		SetBinding("8", "MACRO G027") -- Trinket 2
 	end
 end
 
@@ -544,9 +545,6 @@ local function BuildGlobalMacros()
 
 		-- Combat Ally
 		macro(35, "#showtooltip\n/use Combat Ally")
-
-		-- Remove 36
-		macro(36, "", "INV_MISC_QUESTIONMARK")
 
 		-- Toggle War Mode
 		macro(104, "/run C_PvP.ToggleWarMode()", 1455894)
@@ -741,38 +739,44 @@ function Automagic.UpdatePets()
 end
 
 
-local function eventHandler(self, event)
-	if event == "PLAYER_ENTERING_WORLD" then
-		SetCVar("BlockTrades", 0)
-		SetCVar("ActionButtonUseKeyDown", 0)
-		
-		-- UI Scale
-		if AutomagicOptions and AutomagicOptions.EnableScaling == false then
-			SetCVar("useuiscale", 0)
-		else
-			SetCVar("useuiscale", 1)
-			SetCVar("uiscale", 1)
-			local _, height = GetPhysicalScreenSize()
-			UIParent:SetScale(768 / height)
+local vanish = CreateFrame("Frame")
+vanish:Hide()
 
-			for _, frame in next, {
-			    "CharacterFrame",
-			    "TradeFrame",
-			    "MerchantFrame",
-			    "PVEFrame",
-			    "GossipFrame",
-			    --"ClassTalentFrame",
-			    --"InterfaceOptionsFrame",
-			    "GameMenuFrame",
-			    "ChatFrame1EditBox",
-			    "ObjectiveTrackerFrame",
-			    "FriendsFrame",
-			} do
-			    _G[frame]:SetScale(1.2)
+vanish.UnregisterAllEvents(BuffFrame)
+vanish.Hide(BuffFrame)
+vanish.SetParent(BuffFrame, vanish)
+
+vanish.UnregisterAllEvents(DebuffFrame)
+vanish.Hide(DebuffFrame)
+vanish.SetParent(DebuffFrame, vanish)
+
+if TemporaryEnchantFrame then
+	vanish.UnregisterAllEvents(TemporaryEnchantFrame)
+	vanish.Hide(TemporaryEnchantFrame)
+	vanish.SetParent(TemporaryEnchantFrame, vanish)
+end
+
+function Automagic.SetLayout(name)
+	local activeLayoutInfo = EditModeManagerFrame:GetActiveLayoutInfo()
+	if activeLayoutInfo then
+		if name ~= activeLayoutInfo.layoutName then
+			for index, layout in ipairs(EditModeManagerFrame:GetLayouts()) do
+				if layout.layoutName == name then
+					EditModeManagerFrame:SelectLayout(index)
+				end
 			end
 		end
+	end
+end
 
-		--ClassTalentFrame:SetScale(1.2)
+local function eventHandler(self, event)
+	if event == "PLAYER_ENTERING_WORLD" then
+		SetCVar("useuiscale", 0)
+		SetCVar("BlockTrades", 0)
+		SetCVar("ActionButtonUseKeyDown", 0)
+		SetCVar("GxAllowCachelessShaderMode", 0)
+		MinimapCluster.MailFrame:SetPoint("TOPLEFT", Minimap, 0, 500)
+		Automagic.SetLayout("Global")
 	end
 
 	if InCombatLockdown() then
@@ -782,6 +786,11 @@ local function eventHandler(self, event)
 
 		if event == "PET_STABLE_CLOSED" then
 			Automagic.UpdatePets()
+			return
+		end
+
+		if event == "PLAYER_SPECIALIZATION_CHANGED" then
+			Automagic.SetLayout("Global")
 			return
 		end
 
@@ -1006,18 +1015,40 @@ local function eventHandler(self, event)
 			end
 
 
-			-- Zone Travel
-			if instanceName == "Draenor" then
-				macro(37, "#showtooltip\n/use Aviana's Feather")
+			-- Zone Utility
+			local mL, mSL, mCL = nil, nil, nil
+			if instanceName == "Pandaria" then
+				if zone == "Timeless Isle" then
+					mL = "#showtooltip\n/use Ash-Covered Horn"
+				end
+				mSL = "#showtooltip\n/use Battle Horn"
+				mCL = "#showtooltip\n/use Salyin Battle Banner"
+			elseif instanceName == "Draenor" then
+				mL = "#showtooltip\n/use Spirit of Shinri"
+				mSL = "#showtooltip\n/use Aviana's Feather"
+				mCL = "#showtooltip\n/use Treessassin's Guise"
 			elseif instanceName == "Argus" then
-				macro(37, "#showtooltip\n/use Baarut the Brisk")
-			elseif zone == "Oribos" or zone == "Korthia" or zone == "The Maw" or zone == "The Rift" then
-				macro(37, "#showtooltip\n/use Silver Shardhide Whistle")
-			elseif zone == "Timeless Isle" then
-				macro(37, "#showtooltip\n/use Ash-Covered Horn")
-			else -- Fallback
-				macro(37, "", 975738)
+				mL = "#showtooltip\n/use Baarut the Brisk"
+			elseif instanceName == "The Broken Isles" then
+				mSL = "#showtooltip\n/use Emerald Winds"
+				-- Rocfeather Skyhorn Kite?
+			elseif instanceName == "The Shadowlands" then
+				mL = "#showtooltip\n/use Silver Shardhide Whistle"
+
+				if covenant == 1 then
+					mSL = "#showtooltip\n/use Summon Steward"
+				elseif covenant == 2 then
+					mSL = "#showtooltip\n/use Door of Shadows"
+				elseif covenant == 3 then
+					mSL = "#showtooltip\n/use Soulshape"
+				elseif covenant == 4 then
+					mSL = "#showtooltip\n/use Fleshcraft"
+				end
 			end
+
+			macro(36, mL or "", (not mL) and 975738 or nil)
+			macro(37, mSL or "", (not mSL) and 975738 or nil)
+			macro(38, mCL or "", (not mCL) and 975738 or nil)
 
 
 			-- Mounts
