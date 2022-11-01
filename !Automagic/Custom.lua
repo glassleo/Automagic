@@ -16,6 +16,11 @@ local faction = UnitFactionGroup("player")
 --   Companion Pets:
 --		"pets" - Companion Pet(s)
 --
+--   Class Specific:
+--   	"treant" (true or false)
+--   	"polymorph" - Polymorph variant
+--   	"hex" - Hex variant
+--
 -- Character names can be either just the name ("Bob") or include realm ("Bob-Earthen Ring")
 --
 -- For spec specific entries, suffix : and spec number (example: "flying:2" for the second spec)
@@ -403,9 +408,18 @@ Automagic.Characters = {
 	["Etu"] = { ["ground"] = "Vicious War Kodo", ["flying"] = "Clutch of Ji-Kun", },
 	["Felix"] = { ["ground"] = "Summon Thalassian Charger", ["flying"] = "Nether-Gorged Greatwyrm", ["hs"] = "Tome of Town Portal", },
 	["Fester"] = { ["ground"] = "Vicious Skeletal Warhorse", ["flying"] = "Undercity Plaguebat", },
-	["Flerm"] = { ["ground"] = "Kor'kron War Wolf", ["flying"] = "Volcanic Stone Drake", },
+	["Flerm"] = {
+		["ground"] = "Kor'kron War Wolf",
+		["flying"] = "Volcanic Stone Drake",
+		["hex"] = "Cockroach",
+	},
 	["Francesca"] = { ["ground"] = "Sundancer", ["flying"] = "Infinite Timereaver", ["aquatic"] = "Saltwater Seahorse", ["hs"] = "Tome of Town Portal", },
-	["Frango"] = { ["ground"] = "Flametalon of Alysrazor", ["flying"] = "Ashes of Al'ar", ["hs"] = "Fire Eater's Hearthstone", },
+	["Frango"] = {
+		["ground"] = "Grove Warden",
+		["flying"] = "Grove Warden",
+		["hs"] = "Night Fae Hearthstone",
+		["treant"] = true,
+	},
 	["Fred"] = { ["ground"] = "Mollie", ["flying"] = "Wastewander Skyterror", },
 	["Gabriel"] = { ["ground"] = "White Skeletal Warhorse", },
 	["Galinha"] = {},
