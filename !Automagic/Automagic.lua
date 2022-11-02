@@ -2,11 +2,6 @@ local gr, fl, aq, su, pa, hs, co = {}, {}, {}, {}, {}, {}, {}
 local throttled = {}
 
 
-Automagic.PetIcons["DETHKNIGHT"] = {
-	["Geist"] = 336781,
-	["Ghoul"] = 1100170,
-	["Skeleton"] = 136187,
-}
 Automagic.PetIcons["MAGE"] = {
 	["Water Elemental"] = 135862,
 }
@@ -613,7 +608,23 @@ function Automagic.UpdatePets()
 
 	if not realm then return end
 	
-	if class == "HUNTER" then
+	if class == "DEATHKNIGHT" then
+		local icons = {
+			[0] = 1100170, -- Ghoul (default)
+			[514] = 336781, -- Geist
+			[1074] = 1269569, -- Skeleton
+		}
+
+		local icon = icons[0] or 0
+		local link = GetSpellLink(46584)
+
+		if link then
+			local glyph = tonumber(string.match(link, "spell:[%d]+:([%d]+)") or 0) or 0
+			if icons[glyph] then icon = icons[glyph] end
+		end
+
+		macro(14, "#showtooltip\n#icon " .. icon .. "\n/use Raise Dead", tonumber(icon) > 0 and tonumber(icon) or nil)
+	elseif class == "HUNTER" then
 		local petAbilityMacro, petExoticMacro = "#showtooltip\n/use ", "#showtooltip\n/use "
 
 		local petAbilities = {
