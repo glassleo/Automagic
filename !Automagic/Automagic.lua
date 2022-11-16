@@ -131,7 +131,10 @@ end
 
 
 local function SetGlobalBinds()
-	if not InCombatLockdown() then
+	if GetCurrentBindingSet() == 2 then
+		LoadBindings(1)
+		ReloadUI()
+	elseif not InCombatLockdown() then
 		-- Fishing
 		SetBindingSpell("CTRL-Z", "Fishing")
 
@@ -208,7 +211,7 @@ local function SetGlobalBinds()
 		-- Open BugSack
 		SetBindingMacro("END", "G109")
 
-		-- Close BugSack
+		-- LFG Teleport
 		SetBindingMacro("HOME", "G106")
 
 		-- Toggle ZigiAuras Debug Mode
@@ -494,10 +497,10 @@ local function BuildGlobalMacros()
 		macro(4, "#showtooltip\n/use 10", 3552836)
 
 		-- Tinker: Nitro Boosts
-		macro(5, "/run C_TradeSkillUI.OpenTradeSkill(202) C_TradeSkillUI.CraftRecipe(55016) C_TradeSkillUI.CloseTradeSkill()\n/click CharacterWaistSlot", 136243)
+		macro(5, "/run C_TradeSkillUI.OpenTradeSkill(202) C_TradeSkillUI.CraftRecipe(55016) C_TradeSkillUI.CloseTradeSkill()\n/use 6", 136243)
 		
 		-- Tinker: Goblin Glider
-		macro(6, "/run C_TradeSkillUI.OpenTradeSkill(202) C_TradeSkillUI.CraftRecipe(126392) C_TradeSkillUI.CloseTradeSkill()\n/click CharacterBackSlot", 136243)
+		macro(6, "/run C_TradeSkillUI.OpenTradeSkill(202) C_TradeSkillUI.CraftRecipe(126392) C_TradeSkillUI.CloseTradeSkill()\n/use 15", 136243)
 
 		-- Gathering Mount
 		macro(9, "/use [nomounted]Sky Golem\n/dismount [mounted]\n/leavevehicle", 413588)
@@ -546,9 +549,6 @@ local function BuildGlobalMacros()
 
 		-- Toggle ZigiAuras Debug Mode
 		macro(105, "/za", 3610509)
-
-		-- Close BugSack
-		macro(106, "/run BugSack:CloseSack()", 237144)
 
 		-- LFG Teleport
 		macro(106, "/run LFGTeleport(IsInLFGDungeon())", 397907)
@@ -753,6 +753,7 @@ end
 local vanish = CreateFrame("Frame")
 vanish:Hide()
 
+
 vanish.UnregisterAllEvents(BuffFrame)
 vanish.Hide(BuffFrame)
 vanish.SetParent(BuffFrame, vanish)
@@ -767,7 +768,18 @@ if TemporaryEnchantFrame then
 	vanish.SetParent(TemporaryEnchantFrame, vanish)
 end
 
+vanish.UnregisterAllEvents(MirrorTimer1)
+vanish.Hide(MirrorTimer1)
+vanish.SetParent(MirrorTimer1, vanish)
+
+vanish.UnregisterAllEvents(MirrorTimer2)
+vanish.Hide(MirrorTimer2)
+vanish.SetParent(MirrorTimer2, vanish)
+
+
 function Automagic.SetLayout(name)
+	if InCombatLockdown() then return end
+	
 	local activeLayoutInfo = EditModeManagerFrame:GetActiveLayoutInfo()
 	if activeLayoutInfo then
 		if name ~= activeLayoutInfo.layoutName then
@@ -780,14 +792,78 @@ function Automagic.SetLayout(name)
 	end
 end
 
+function Automagic.SetTracking(auto)
+	local _, class = UnitClass("player")
+
+	local forced = {
+		-- Don't touch
+		-- ["Track Pets"] = false,
+
+		-- On
+		["Flight Master"] = true,
+		["Trivial Quests"] = true,
+		["Target"] = true,
+		["Track Quest POIs"] = true,
+
+		-- Hunter only
+		["Stable Master"] = false,
+		--["Stable Master"] = (class == "HUNTER") and true or false,
+
+		-- Off
+		["Track Warboards"] = false,
+		["Auctioneer"] = false,
+		["Banker"] = false,
+		["Barber"] = false,
+		["Battlemaster"] = false,
+		["Food & Drink"] = false,
+		["Innkeeper"] = false,
+		["Item Upgrades"] = false,
+		["Mailbox"] = false,
+		["Profession Trainers"] = false,
+		["Reagents"] = false,
+		["Repair"] = false,
+		["Transmogrifier"] = false,
+		["Points of Interest"] = false,
+		["Focus Target"] = false,
+		["Track Digsites"] = false,
+	}
+
+	for index = 1, C_Minimap.GetNumTrackingTypes() do
+		local name, icon, active, type, subType, spellID = C_Minimap.GetTrackingInfo(index)
+		local link = spellID and GetSpellLink(spellID) or ("|cff71d5ff"..name.."|r")
+		
+		if auto then
+			if forced[name] ~= nil and forced[name] ~= (active and true or false) then
+				C_Minimap.SetTracking(index, forced[name])
+
+				print(
+					(forced[name] and "Now tracking" or "|cffffff00No longer tracking|r") .. " ",
+					(icon and "|T"..icon..":14:14|t " or "") .. link
+				)
+			end
+		else
+			print(
+				(icon and "|T"..icon..":14:14|t " or "") ..link.." ",
+				(active and CreateAtlasMarkup("common-icon-checkmark") .. " |cff00ff00On|r" or CreateAtlasMarkup("common-icon-redx") .. " |cffff0000Off|r")
+			)
+		end
+	end
+end
+
 local function eventHandler(self, event)
 	if event == "PLAYER_ENTERING_WORLD" then
-		SetCVar("useuiscale", 0)
-		SetCVar("BlockTrades", 0)
 		SetCVar("ActionButtonUseKeyDown", 0)
+		SetCVar("autoLootDefault", 1)
+		SetCVar("BlockTrades", 0)
+		SetCVar("displaySpellActivationOverlays", 0)
 		SetCVar("GxAllowCachelessShaderMode", 0)
+		SetCVar("mapFade", 0)
+		SetCVar("useuiscale", 0)
+		SetCVar("whisperMode", "inline")
+		SetCVar("worldPreloadNonCritical", 0)
 		MinimapCluster.MailFrame:SetPoint("TOPLEFT", Minimap, 0, 500)
 		Automagic.SetLayout("Global")
+		Automagic.SetTracking(true)
 	end
 
 	if InCombatLockdown() then
@@ -1001,7 +1077,10 @@ local function eventHandler(self, event)
 
 		if event ~= "BAG_UPDATE" then
 			-- Zone Ability
-			if instanceName == "Draenor" then
+
+			if instanceName == "Eastern Kingdoms" and zone == "Dun Morogh" then
+				macro(31, "/targetexact Stolen Ram\n/whistle\n/targetlasttarget", 132161)
+			elseif instanceName == "Draenor" then
 				macro(31, "#showtooltip\n/use Garrison Ability")
 			elseif instanceName == "Argus" then
 				macro(31, "#showtooltip\n/use Vindicaar Matrix Crystal")
@@ -1019,8 +1098,8 @@ local function eventHandler(self, event)
 				macro(31, "#showtooltip\n/use Construct Ability") -- Necrolord only
 			elseif instanceName == "Zereth Mortis" then
 				macro(31, "#showtooltip\n/use Summon Pocopoc")
-			--elseif instanceName == "Northrend" then
-			--	macro(31, "/run TradeSkillFrame.DetailsFrame:Create()\n/use 6\n/click StaticPopup1Button1")
+			elseif instanceName == "Northrend" then
+				macro(31, "/run ProfessionsFrame.CraftingPage.CreateButton:Click()\n/use 6\n/click StaticPopup1Button1")
 			else -- Fallback
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
 			end
