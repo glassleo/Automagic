@@ -32,6 +32,7 @@ frame:RegisterEvent("PET_STABLE_CLOSED")
 frame:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 frame:RegisterEvent("PLAYER_LEVEL_UP")
 frame:RegisterEvent("LEARNED_SPELL_IN_TAB")
+frame:RegisterEvent("PLAYER_FLAGS_CHANGED", "player")
 frame:RegisterUnitEvent("PLAYER_SPECIALIZATION_CHANGED", "player")
 
 
@@ -129,11 +130,31 @@ local function cmacro(name, text, icon)
 	EditMacro(string.format("C%02d", name), nil, icon, text, 1)
 end
 
+local function known(spell)
+	local spellId
+	local exact = false
+
+	if type(spell) == "number" then
+		spellId = spell
+		exact = true
+	else
+		if spellNameToId[spell] then
+			spellId = spellNameToId[spell]
+		else
+			spellId = select(7, GetSpellInfo(spell))
+		end
+	end
+
+	if not spellId then return false end
+
+	return IsPlayerSpell(spellId) or IsSpellKnown(spellId, true)
+end
+
 
 local function SetGlobalBinds()
 	if GetCurrentBindingSet() == 2 then
 		LoadBindings(1)
-		ReloadUI()
+		print(CreateAtlasMarkup("services-icon-warning", 24, 24) .. " |cffff2020Character Specific Keybindings Detected|r")
 	elseif not InCombatLockdown() then
 		-- Fishing
 		SetBindingSpell("CTRL-Z", "Fishing")
@@ -199,9 +220,6 @@ local function SetGlobalBinds()
 		-- Zone Ability
 		SetBindingMacro(".", "G031")
 
-		-- Combat Ally
-		SetBindingMacro("-", "G035")
-
 		-- Autofollow
 		SetBindingMacro("SHIFT-å", "G107")
 
@@ -256,7 +274,7 @@ local function SetGlobalBinds()
 		SetBinding("0", "MACRO G002")
 		SetBinding("SHIFT-0", "MACRO G002")
 		SetBinding("8", "NONE")
-		SetBinding("9", "MACRO G032")
+		SetBinding("9", "NONE")
 		SetBinding("<", "REPLY")
 		SetBinding("=", "MACRO G002")
 		SetBinding("ALT-BUTTON3", "CLICK BT4Button28:LeftButton")
@@ -334,7 +352,7 @@ local function SetGlobalBinds()
 		SetBinding("CTRL-F9", "NONE")
 		SetBinding("CTRL-H", "CLICK BT4Button74:LeftButton")
 		SetBinding("CTRL-I", "NONE")
-		SetBinding("CTRL-J", "CLICK BT4Button27:LeftButton")
+		SetBinding("CTRL-J", "MACRO G034")
 		SetBinding("CTRL-M", "NONE")
 		SetBinding("CTRL-N", "NONE")
 		SetBinding("CTRL-PAGEDOWN", "NONE")
@@ -394,7 +412,7 @@ local function SetGlobalBinds()
 		SetBinding("HOME", "MACRO G106")
 		SetBinding("I", "TOGGLEDUNGEONSANDRAIDS")
 		SetBinding("INSERT", "NONE")
-		SetBinding("J", "CLICK BT4Button25:LeftButton")
+		SetBinding("J", "MACRO G032")
 		SetBinding("L", "MACRO G036")
 		SetBinding("SHIFT-L", "MACRO G037")
 		SetBinding("CTRL-L", "MACRO G038")
@@ -447,7 +465,7 @@ local function SetGlobalBinds()
 		SetBinding("SHIFT-G", "CLICK BT4Button66:LeftButton")
 		SetBinding("CTRL-G", "MACRO G030")
 		SetBinding("SHIFT-I", "NONE")
-		SetBinding("SHIFT-J", "CLICK BT4Button26:LeftButton")
+		SetBinding("SHIFT-J", "MACRO G033")
 		SetBinding("SHIFT-M", "NONE")
 		SetBinding("SHIFT-MOUSEWHEELDOWN", "NONE")
 		SetBinding("SHIFT-MOUSEWHEELUP", "NONE")
@@ -532,18 +550,6 @@ local function BuildGlobalMacros()
 		-- Healthstone
 		macro(28, "#showtooltip\n/use Healthstone", 538745)
 
-		-- Phial of Serenity
-		macro(32, "#showtooltip\n/use Phial of Serenity", 463534)
-
-		-- Signature Ability
-		macro(33, "#showtooltip\n/use Signature Ability")
-
-		-- Covenant Ability
-		macro(34, "#showtooltip\n/use Covenant Ability")
-
-		-- Combat Ally
-		macro(35, "#showtooltip\n/use Combat Ally")
-
 		-- Toggle War Mode
 		macro(104, "/run C_PvP.ToggleWarMode()", 1455894)
 
@@ -596,7 +602,7 @@ function Automagic.UpdatePets()
 	if InCombatLockdown() then return end
 
 	-- Pets
-	local instanceName, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
+	local instance, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
 	local _, class, _ = UnitClass("player")
 	local _,race = UnitRace("player")
 	local name = GetUnitName("player", false)
@@ -861,6 +867,18 @@ local function eventHandler(self, event)
 		SetCVar("useuiscale", 0)
 		SetCVar("whisperMode", "inline")
 		SetCVar("worldPreloadNonCritical", 0)
+		SetCVar("nameplateShowSelf", 0)
+		SetCVar("nameplateShowAll", 1)
+		SetCVar("nameplateHorizontalScale", 1.4)
+		SetCVar("nameplateVerticalScale", 2.7)
+		SetCVar("nameplateClassificationScale", 1.25)
+		SetCVar("nameplateShowEnemies", 1)
+		SetCVar("nameplateShowEnemyPets", 1)
+		SetCVar("nameplateShowEnemyGuardians", 1)
+		SetCVar("nameplateShowEnemyTotems", 1)
+		SetCVar("nameplateShowEnemyMinions", 1)
+		SetCVar("nameplateShowEnemyMinus", 1)
+		SetCVar("empowerTapControls", 1)
 		MinimapCluster.MailFrame:SetPoint("TOPLEFT", Minimap, 0, 500)
 		Automagic.SetLayout("Global")
 		Automagic.SetTracking(true)
@@ -888,7 +906,7 @@ local function eventHandler(self, event)
 			C_Timer.After(1, function()
 				throttled[event] = false
 
-				if event ~= "BAG_UPDATE" and event ~= "LEARNED_SPELL_IN_TAB" and event ~="ACTIVE_TALENT_GROUP_CHANGED" and event ~= "ZONE_CHANGED_NEW_AREA" and event ~= "PLAYER_REGEN_ENABLED" and event ~= "PET_STABLE_CLOSED" and event ~= "PLAYER_LEVEL_UP" then
+				if event ~= "BAG_UPDATE" and event ~= "LEARNED_SPELL_IN_TAB" and event ~= "PLAYER_FLAGS_CHANGED" and event ~="ACTIVE_TALENT_GROUP_CHANGED" and event ~= "ZONE_CHANGED_NEW_AREA" and event ~= "PLAYER_REGEN_ENABLED" and event ~= "PET_STABLE_CLOSED" and event ~= "PLAYER_LEVEL_UP" then
 					SetGlobalBinds()
 				end
 			end)
@@ -913,7 +931,7 @@ local function eventHandler(self, event)
 			--end
 
 
-			if event ~= "LEARNED_SPELL_IN_TAB" and event ~= "PLAYER_REGEN_ENABLED" and event ~="ACTIVE_TALENT_GROUP_CHANGED" then
+			if event ~= "LEARNED_SPELL_IN_TAB" and event ~= "PLAYER_FLAGS_CHANGED" and event ~= "PLAYER_REGEN_ENABLED" and event ~="ACTIVE_TALENT_GROUP_CHANGED" then
 				-- Replace Global Macros
 				for i = 1, 120 do
 					if GetMacroBody(i) then
@@ -931,7 +949,7 @@ local function eventHandler(self, event)
 			end
 		end
 
-		local instanceName, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
+		local instance, instanceType, difficulty, difficultyName, maxPlayers, playerDifficulty, isDynamicInstance, mapID, instanceGroupSize = GetInstanceInfo()
 		local zone = GetZoneText() or ""
 		local _, class = UnitClass("player")
 		local _,race = UnitRace("player")
@@ -958,7 +976,7 @@ local function eventHandler(self, event)
 
 
 		if event ~= "BAG_UPDATE" then
-			if instanceName == "Draenor" or instanceName == "Tanaan Jungle Intro" then
+			if instance == "Draenor" or instance == "Tanaan Jungle Intro" then
 				if class == "ROGUE" then
 					macro(1, "#showtooltip Findle's Loot-A-Rang\n/use [stealth,harm,nodead]Pick Pocket;[@mouseover,harm,dead][harm,dead][]Findle's Loot-A-Rang", 986491)
 				else
@@ -1043,7 +1061,7 @@ local function eventHandler(self, event)
 			elseif instanceType == "pvp" and bags("Saltwater Potion") >= 1 then -- Battlegrounds only (+30% damage, 12 sec)
 				macro(30, "#showtooltip\n/use Saltwater Potion")
 
-			elseif instanceName == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then -- Ashjra'kamas quest only (+30% damage, 30 sec)
+			elseif instance == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then -- Ashjra'kamas quest only (+30% damage, 30 sec)
 				macro(30, "#showtooltip\n/use Experimental Vial")
 
 			elseif level >= 51 and primary == "agi" and bags("Potion of Spectral Agility") >= 1 then -- Shadowlands, Alchemy (+190 agi, 25 sec)
@@ -1076,29 +1094,78 @@ local function eventHandler(self, event)
 		end
 
 		if event ~= "BAG_UPDATE" then
+			-- Content Abilities
+			if level >= 20 and instanceType == "arena" or instanceType == "pvp" or C_PvP.IsWarModeActive() or (C_PvP.IsWarModeDesired() and ((instance == "Kalimdor" and zone == "Orgrimmar") or (instance == "Eastern Kingdoms" and zone == "Stormwind City"))) then
+				-- War Mode
+				local pvp1, pvp2, pvp3 = false, false, false
+
+				for i, id in pairs(C_SpecializationInfo.GetAllSelectedPvpTalentIDs()) do
+					local _, name, _, _, spellId = GetPvpTalentInfoByID(id)
+					macro((i == 1) and 32 or (i == 2) and 33 or 34, "#showtooltip\n/use " .. (name or ""))
+				end
+			elseif instance == "The Shadowlands" then
+				-- Covenant Class Ability
+				if class == "DEATHKNIGHT" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Shackle the Unworthy;[known:Fleshcraft]Abomination Limb;[known:Door of Shadows]Swarming Mist")
+				elseif class == "DEMONHUNTER" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Elysian Decree;[known:Soulshape]The Hunt;[known:Door of Shadows]Sinful Brand")
+				elseif class == "DRUID" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Kindred Spirits;[known:Fleshcraft]Adaptive Swarm;[known:Soulshape]Convoke the Spirits;[known:Door of Shadows]Ravenous Frenzy")
+				elseif class == "HUNTER" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Resonating Arrow;[known:Fleshcraft]Death Chakram;[known:Soulshape]Wild Spirits;[known:Door of Shadows]Flayed Shot")
+				elseif class == "MAGE" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Radiant Spark;[known:Fleshcraft]Deathborne;[known:Soulshape]Shifting Power;[known:Door of Shadows]Mirrors of Torment")
+				elseif class == "MONK" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Weapons of Order;[known:Fleshcraft]Bonedust Brew;[known:Soulshape]Faeline Stomp;[known:Door of Shadows]Fallen Order")
+				elseif class == "PALADIN" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Divine Toll;[known:Fleshcraft]Vanquisher's Hammer;[known:Soulshape]Blessing of Summer;[known:Door of Shadows]Ashen Hallow")
+				elseif class == "PRIEST" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Boon of the Ascended;[known:Fleshcraft]Unholy Nova;[known:Soulshape]Fae Guardians;[known:Door of Shadows]Mindgames")
+				elseif class == "ROGUE" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Echoing Reprimand;[known:Fleshcraft]Serrated Bone Spike;[known:Soulshape]Sepsis;[known:Door of Shadows]Flagellation")
+				elseif class == "SHAMAN" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Vesper Totem;[known:Fleshcraft]Primordial Wave;[known:Soulshape]Fae Transfusion;[known:Door of Shadows]Chain Harvest")
+				elseif class == "WARLOCK" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Scouring Tithe;[known:Fleshcraft]Decimating Bolt;[known:Soulshape]Soul Rot;[known:Door of Shadows]Impending Catastrophe")
+				elseif class == "WARRIOR" then
+					macro(32, "#showtooltip\n/use [known:Summon Steward]Spear of Bastion;[known:Fleshcraft]Conqueror's Banner;[known:Soulshape]Ancient Aftershock")
+				else
+					macro(32, "#showtooltip\n/use [known:Boon of the Covenants]Boon of the Covenants")
+				end
+
+				-- Covenant Ability
+				macro(33, "#showtooltip\n/use [known:Summon Steward]Summon Steward;[known:Fleshcraft]Fleshcraft;[known:Soulshape]Soulshape;[known:Door of Shadows]Door of Shadows")
+				macro(34, "#showtooltip\n/use Phial of Serenity", 463534)
+			else
+				-- Heart of Azeroth
+				macro(32, "#showtooltip\n/use Heart Essence")
+			end
+
 			-- Zone Ability
 
-			if instanceName == "Eastern Kingdoms" and zone == "Dun Morogh" then
+			if instance == "Eastern Kingdoms" and zone == "Dun Morogh" then
 				macro(31, "/targetexact Stolen Ram\n/whistle\n/targetlasttarget", 132161)
-			elseif instanceName == "Draenor" then
+			elseif instance == "Pandaria" and zone == "Kun-Lai Summit" and class == "MONK" then
+				macro(31, "/bow", 572034)
+			elseif instance == "Draenor" then
 				macro(31, "#showtooltip\n/use Garrison Ability")
-			elseif instanceName == "Argus" then
+			elseif instance == "Argus" then
 				macro(31, "#showtooltip\n/use Vindicaar Matrix Crystal")
-			elseif (instanceName == "Horrific Vision of Orgrimmar" or instanceName == "Horrific Vision of Stormwind") and IsSpellKnown(314955) then
+			elseif (instance == "Horrific Vision of Orgrimmar" or instance == "Horrific Vision of Stormwind") and IsSpellKnown(314955) then
 				macro(31, "#showtooltip\n/use Sanity Restoration Orb")
-			elseif instanceName == "Vision of the Twisting Sands" or instanceName == "Vale of Eternal Twilight" then
+			elseif instance == "Vision of the Twisting Sands" or instance == "Vale of Eternal Twilight" then
 				macro(31, "#showtooltip\n/use Resilient Soul", 458722)
 			elseif IsInJailersTower() then
 				macro(31, "#showtooltip\n/use Activate Empowerment")
-			elseif instanceName == "Torghast" then
+			elseif instance == "Torghast" then
 				-- Torghast: Layer 1 spam
 				-- /run C_GossipInfo.SelectOption(TorghastLevelPickerFrame.currentSelectedButton.index)
 				macro(31, "/run C_GossipInfo.SelectOption(1)", 4062765)
-			elseif instanceName == "The Shadowlands" and covenant == 4 then
+			elseif instance == "The Shadowlands" and covenant == 4 then
 				macro(31, "#showtooltip\n/use Construct Ability") -- Necrolord only
-			elseif instanceName == "Zereth Mortis" then
+			elseif instance == "Zereth Mortis" then
 				macro(31, "#showtooltip\n/use Summon Pocopoc")
-			elseif instanceName == "Northrend" then
+			elseif instance == "Northrend" then
 				macro(31, "/run ProfessionsFrame.CraftingPage.CreateButton:Click()\n/use 6\n/click StaticPopup1Button1")
 			else -- Fallback
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
@@ -1107,33 +1174,23 @@ local function eventHandler(self, event)
 
 			-- Zone Utility
 			local mL, mSL, mCL = nil, nil, nil
-			if instanceName == "Pandaria" then
+			if instance == "Pandaria" then
 				if zone == "Timeless Isle" then
 					mL = "#showtooltip\n/use Ash-Covered Horn"
 				end
 				mSL = "#showtooltip\n/use Battle Horn"
 				mCL = "#showtooltip\n/use Salyin Battle Banner"
-			elseif instanceName == "Draenor" then
+			elseif instance == "Draenor" then
 				mL = "#showtooltip\n/use Spirit of Shinri"
 				mSL = "#showtooltip\n/use Aviana's Feather"
 				mCL = "#showtooltip\n/use Treessassin's Guise"
-			elseif instanceName == "Argus" then
+			elseif instance == "Argus" then
 				mL = "#showtooltip\n/use Baarut the Brisk"
-			elseif instanceName == "The Broken Isles" then
+			elseif instance == "The Broken Isles" then
 				mSL = "#showtooltip\n/use Emerald Winds"
 				-- Rocfeather Skyhorn Kite?
-			elseif instanceName == "The Shadowlands" then
+			elseif instance == "The Shadowlands" then
 				mL = "#showtooltip\n/use Silver Shardhide Whistle"
-
-				if covenant == 1 then
-					mSL = "#showtooltip\n/use Summon Steward"
-				elseif covenant == 2 then
-					mSL = "#showtooltip\n/use Door of Shadows"
-				elseif covenant == 3 then
-					mSL = "#showtooltip\n/use Soulshape"
-				elseif covenant == 4 then
-					mSL = "#showtooltip\n/use Fleshcraft"
-				end
 			end
 
 			macro(36, mL or "", (not mL) and 975738 or nil)
@@ -1229,16 +1286,16 @@ local function eventHandler(self, event)
 			end
 
 			-- Check if the character has riding skill
-			if instanceName == "The Deaths of Chromie" or instanceName == "Tirisfal Glades" then
+			if instance == "The Deaths of Chromie" or instance == "Tirisfal Glades" then
 				mountType = "flying" -- Force flying in the Deaths of Chromie scenario/Tirisfal Glades Artifact scenario
-			elseif instanceName == "Torghast, Tower of the Damned" then
+			elseif instance == "Torghast, Tower of the Damned" then
 				overrideMount = "/use Mawrat Harness" -- Mawrat Harness is the only "mount" that is useable inside Torghast
 			elseif (z == "The Maw" or z == "Korthia") and class ~= "DRUID" and not C_QuestLog.IsQuestFlaggedCompleted(63994) then
 				overrideMount = "/use [nomounted]Corridor Creeper" -- The Maw
 			elseif IsSpellKnown(34090) or IsSpellKnown(34091) or IsSpellKnown(90265) then -- Expert, Artisan, Master Riding
 				mountType = "flying" -- We can use flying mounts
 
-				if (instanceType ~= "none" and not garrisonId[mapID]) or groundAreas[z] or groundAreas[instanceName] then
+				if (instanceType ~= "none" and not garrisonId[mapID]) or groundAreas[z] or groundAreas[instance] then
 					-- We can't fly inside instances, except Draenor Garrisons and The Deaths of Chromie
 					-- Flying is also disabled in certain outdoor areas/zones
 					mountType = "ground"
