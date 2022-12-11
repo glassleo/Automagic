@@ -103,6 +103,31 @@ local groundAreas = {
 	["Torghast"] = true,
 	["Font of Fealty"] = true, -- Chains of Domination Campaign Scenario
 	["Tazavesh, the Veiled Market"] = true,
+	-- Dragon Isles
+	["The Waking Shores"] = true,
+	["Thaldraszus"] = true,
+	["Ohn'ahran Plains"] = true,
+	["The Azure Span"] = true,
+	["The Forbidden Reach"] = true,
+	["Grand Time Adventure"] = true,
+}
+
+-- Dragonriding enabled zones
+local dragonAreas = {
+	-- Dragon Isles
+	["10.0 Dragon Isles"] = true,
+	["Dragon Isles"] = true,
+	["The Dragon Isles"] = true,
+	["The Waking Shores"] = true,
+	["Thaldraszus"] = true,
+	["Valdrakken"] = true,
+	["The Roasted Ram"] = true, -- Valdrakken Inn
+	["Ohn'ahran Plains"] = true,
+	["The Azure Span"] = true,
+	["The Forbidden Reach"] = true,
+	-- Instances
+	["The Nokhud Offensive"] = true,
+	["The Primalist Future"] = true,
 }
 
 -- Garrisons Map IDs
@@ -478,7 +503,6 @@ local function SetGlobalBinds()
 		SetBinding("SHIFT-T", "CLICK BT4Button38:LeftButton")
 		SetBinding("SHIFT-UP", "NONE")
 		SetBinding("SHIFT-V", "CLICK BT4Button43:LeftButton")
-		SetBinding("SHIFT-X", "CLICK BT4Button55:LeftButton")
 		SetBinding("SHIFT-§", "MACRO G001") -- bugged in 9.2
 		SetBinding("SHIFT-\\", "MACRO G001")
 		SetBinding("SHIFT-¨", "MACRO Cancel")
@@ -486,7 +510,7 @@ local function SetGlobalBinds()
 		SetBinding("T", "CLICK BT4Button37:LeftButton")
 		SetBinding("UP", "NONE")
 		SetBinding("V", "ACTIONBUTTON7")
-		SetBinding("SX", "MACRO G029")
+		SetBinding("SHIFT-X", "MACRO G029")
 		SetBinding("X", "MACRO G028")
 		SetBinding("§", "MACRO G001")
 		SetBinding("\\", "MACRO G001")
@@ -879,7 +903,7 @@ local function eventHandler(self, event)
 		SetCVar("nameplateShowEnemyMinions", 1)
 		SetCVar("nameplateShowEnemyMinus", 1)
 		SetCVar("empowerTapControls", 1)
-		MinimapCluster.MailFrame:SetPoint("TOPLEFT", Minimap, 0, 500)
+		--MinimapCluster.MailFrame:SetPoint("TOPLEFT", Minimap, 0, 500)
 		Automagic.SetLayout("Global")
 		Automagic.SetTracking(true)
 	end
@@ -1014,82 +1038,128 @@ local function eventHandler(self, event)
 
 
 			-- Tonic (29)
-			if IsInJailersTower() and bags("Rejuvenating Siphoned Essence") >= 1 then -- Torghast only (10k)
-				macro(29, "#showtooltip\n/use Rejuvenating Siphoned Essence")
+			if bags(137222) >= 1 then -- Crimson Vial (30%) - Rogue PvP talent
+				macro(29, "#showtooltip\n/use item:137222")
 
-			elseif bags("Crimson Vial") >= 1 then -- Conjured by Rogue PvP talent (30%)
-				macro(29, "#showtooltip\n/use 137222")
+			elseif instanceType == "pvp" and bags(138486) >= 1 then -- "Third Wind" Potion (50%) - Battlegrounds only
+				macro(29, "#showtooltip\n/use item:138486")
 
-			elseif instanceType == "pvp" and bags("\"Third Wind\" Potion") >= 1 then -- Battlegrounds only (50%)
-				macro(29, "#showtooltip\n/use \"Third Wind\" Potion")
+			elseif instanceType == "none" and bags(124660) >= 1 then -- Darkmoon Healing Tonic (20%) - Outdoor only
+				macro(29, "#showtooltip\n/use item:124660")
 
-			elseif instanceType == "none" and bags("Darkmoon Healing Tonic") >= 1 then -- Outdoors only (20%)
-				macro(29, "#showtooltip\n/use Darkmoon Healing Tonic")
+			elseif bags(191380) >= 1 and level >= 61 then -- Refreshing Healing Potion ◆◆◆ (1.28m)
+				macro(29, "#showtooltip\n/use item:191380")
 
-			elseif bags("Cosmic Healing Potion") >= 1 and level >= 60 then -- Shadowlands, Alchemy (20k)
-				macro(29, "#showtooltip\n/use Cosmic Healing Potion")
+			elseif bags(191379) >= 1 and level >= 61 then -- Refreshing Healing Potion ◆◆ (1.1m)
+				macro(29, "#showtooltip\n/use item:191379")
 
-			elseif bags("Soulful Healing Potion") >= 1 and level >= 51 then -- Shadowlands, random drop (10k)
-				macro(29, "#showtooltip\n/use Soulful Healing Potion")
+			elseif bags(191378) >= 1 and level >= 61 then -- Refreshing Healing Potion ◆ (94k)
+				macro(29, "#showtooltip\n/use item:191378")
 
-			elseif bags("Spiritual Healing Potion") >= 1 and level >= 51 then -- Shadowlands, Alchemy (10k)
-				macro(29, "#showtooltip\n/use Spiritual Healing Potion")
+			elseif IsInJailersTower() and bags(176409) >= 1 then -- Rejuvenating Siphoned Essence (10k) - Torghast only
+				macro(29, "#showtooltip\n/use item:176409")
 
-			elseif bags("Abyssal Healing Potion") >= 1 and level >= 40 then -- BfA, Alchemy (6.4k)
-				macro(29, "#showtooltip\n/use Abyssal Healing Potion")
+			elseif bags(187802) >= 1 and level >= 60 then -- Cosmic Healing Potion (20k)
+				macro(29, "#showtooltip\n/use item:187802")
 
-			elseif bags("Astral Healing Potion") >= 1 and level >= 45 then -- Legion, Alchemy (4.95k)
-				macro(29, "#showtooltip\n/use Astral Healing Potion")
+			elseif bags(180317) >= 1 and level >= 51 then -- Soulful Healing Potion (10k)
+				macro(29, "#showtooltip\n/use item:180317")
 
-			elseif bags("Coastal Healing Potion") >= 1 and level >= 40 then -- BfA, Alchemy (3.2k)
-				macro(29, "#showtooltip\n/use Coastal Healing Potion")
+			elseif bags(171267) >= 1 and level >= 51 then -- Spiritual Healing Potion (10k)
+				macro(29, "#showtooltip\n/use item:171267")
 
-			elseif bags("Ancient Healing Potion") >= 1 and level >= 40 then -- Legion, Alchemy (2.2k)
-				macro(29, "#showtooltip\n/use Ancient Healing Potion")
-			elseif level < 50 then
+			elseif level < 60 then
 				macro(29, "#showtooltip\n/use 2") -- Heirloom Neck
 
 			else -- No Tonic Available
-				macro(29, "#showtooltip\n/use Cosmic Healing Potion", 134865)
+				macro(29, "#showtooltip\n/use Refreshing Healing Potion", 134865)
 			end
 
 
 			-- Potion (30)
-			if IsInJailersTower() and bags("Fleeting Frenzy Potion") >= 1 then -- Torghast only (+30% damage, until combat ends)
-				macro(30, "#showtooltip\n/use Fleeting Frenzy Potion")
+			if IsInJailersTower() and bags(176443) >= 1 then -- Fleeting Frenzy Potion - Torghast only
+				macro(30, "#showtooltip\n/use item:176443")
 
-			elseif instanceType == "pvp" and bags("Saltwater Potion") >= 1 then -- Battlegrounds only (+30% damage, 12 sec)
-				macro(30, "#showtooltip\n/use Saltwater Potion")
+			elseif instanceType == "pvp" and bags(138488) >= 1 then -- Saltwater Potion - Battlegrounds only
+				macro(30, "#showtooltip\n/use item:138488")
 
-			elseif instance == "Blackwing Descent Scenario" and bags("Experimental Vial") >= 1 then -- Ashjra'kamas quest only (+30% damage, 30 sec)
-				macro(30, "#showtooltip\n/use Experimental Vial")
+			elseif instance == "Blackwing Descent Scenario" and bags(172072) >= 1 then -- Experimental Vial - Ashjra'kamas scenario only
+				macro(30, "#showtooltip\n/use item:172072")
 
-			elseif level >= 51 and primary == "agi" and bags("Potion of Spectral Agility") >= 1 then -- Shadowlands, Alchemy (+190 agi, 25 sec)
-				macro(30, "#showtooltip\n/use Potion of Spectral Agility")
+			elseif level >= 61 and bags(191914) >= 1 then -- Fleeting Elemental Potion of Ultimate Power ◆◆◆
+				macro(30, "#showtooltip\n/use item:191914")
 
-			elseif level >= 51 and primary == "int" and bags("Potion of Spectral Intellect") >= 1 then -- Shadowlands, Alchemy (+190 int, 25 sec)
-				macro(30, "#showtooltip\n/use Potion of Spectral Intellect")
+			elseif level >= 61 and bags(191913) >= 1 then -- Fleeting Elemental Potion of Ultimate Power ◆◆
+				macro(30, "#showtooltip\n/use item:191913")
 
-			elseif level >= 51 and primary == "str" and bags("Potion of Spectral Strength") >= 1 then -- Shadowlands, Alchemy (+190 str, 25 sec)
-				macro(30, "#showtooltip\n/use Potion of Spectral Strength")
+			elseif level >= 61 and bags(191912) >= 1 then -- Fleeting Elemental Potion of Ultimate Power ◆
+				macro(30, "#showtooltip\n/use item:191912")
 
-			elseif level >= 51 and role == "HEALER" and bags("Potion of Divine Awakening") >= 1 then -- Shadowlands, Alchemy (Increased healing, 25 sec)
-				macro(30, "#showtooltip\n/use Potion of Divine Awakening")
+			elseif level >= 61 and bags(191383) >= 1 then -- Elemental Potion of Ultimate Power ◆◆◆
+				macro(30, "#showtooltip\n/use item:191383")
 
-			elseif level >= 51 and bags("Potion of Phantom Fire") >= 1 then -- Shadowlands, Alchemy (Single target damage procs, 25 sec)
-				macro(30, "#showtooltip\n/use Potion of Phantom Fire")
+			elseif level >= 61 and bags(191382) >= 1 then -- Elemental Potion of Ultimate Power ◆◆
+				macro(30, "#showtooltip\n/use item:191382")
 
-			elseif level >= 51 and bags("Potion of Empowered Exorcisms") >= 1 then -- Shadowlands, Alchemy (AoE damage procs, 25 sec)
-				macro(30, "#showtooltip\n/use Potion of Empowered Exorcisms")
+			elseif level >= 61 and bags(191381) >= 1 then -- Elemental Potion of Ultimate Power ◆
+				macro(30, "#showtooltip\n/use item:191381")
 
-			elseif level >= 51 and bags("Potion of Dethly Fixation") >= 1 then -- Shadowlands, Alchemy (Stacking debuff that explodes, 25 sec)
-				macro(30, "#showtooltip\n/use Potion of Dethly Fixation")
+			elseif level >= 61 and bags(191907) >= 1 then -- Fleeting Elemental Potion of Power ◆◆◆
+				macro(30, "#showtooltip\n/use item:191907")
 
-			elseif level >= 40 and bags("Potion of Prolonged Power") >= 1 then -- Legion, Alchemy (+40 all stats, 60 sec)
-				macro(30, "#showtooltip\n/use Potion of Prolonged Power")
+			elseif level >= 61 and bags(191906) >= 1 then -- Fleeting Elemental Potion of Power ◆◆
+				macro(30, "#showtooltip\n/use item:191906")
+
+			elseif level >= 61 and bags(191905) >= 1 then -- Fleeting Elemental Potion of Power ◆
+				macro(30, "#showtooltip\n/use item:191905")
+
+			elseif level >= 61 and bags(191389) >= 1 then -- Elemental Potion of Power ◆◆◆
+				macro(30, "#showtooltip\n/use item:171270")
+
+			elseif level >= 61 and bags(191388) >= 1 then -- Elemental Potion of Power ◆◆
+				macro(30, "#showtooltip\n/use item:191388")
+
+			elseif level >= 61 and bags(191387) >= 1 then -- Elemental Potion of Power ◆
+				macro(30, "#showtooltip\n/use item:191387")
+
+			elseif level >= 51 and primary == "agi" and bags(171270) >= 1 then -- Potion of Spectral Agility
+				macro(30, "#showtooltip\n/use item:171270")
+
+			elseif level >= 51 and primary == "int" and bags(171273) >= 1 then -- Potion of Spectral Intellect
+				macro(30, "#showtooltip\n/use item:171273")
+
+			elseif level >= 51 and primary == "str" and bags(171275) >= 1 then -- Potion of Spectral Strength
+				macro(30, "#showtooltip\n/use item:171275")
+
+			elseif level >= 51 and role == "HEALER" and bags(171350) >= 1 then -- Potion of Divine Awakening
+				macro(30, "#showtooltip\n/use item:171350")
+
+			elseif level >= 51 and bags(171349) >= 1 then -- Potion of Phantom Fire
+				macro(30, "#showtooltip\n/use item:171349")
+
+			elseif level >= 51 and bags(171352) >= 1 then -- Potion of Empowered Exorcisms
+				macro(30, "#showtooltip\n/use item:171352")
+
+			elseif level >= 51 and bags(171351) >= 1 then -- Potion of Dethly Fixation
+				macro(30, "#showtooltip\n/use item:171351")
+
+			elseif level >= 35 and primary == "agi" and bags(109217) >= 1 then -- Draenic Agility Potion
+				macro(30, "#showtooltip\n/use item:109217")
+
+			elseif level >= 35 and primary == "int" and bags(109218) >= 1 then -- Draenic Intellect Potion
+				macro(30, "#showtooltip\n/use item:109218")
+
+			elseif level >= 35 and primary == "str" and bags(109219) >= 1 then -- Draenic Strength Potion
+				macro(30, "#showtooltip\n/use item:109219")
+
+			elseif level >= 40 and bags(142117) >= 1 then -- Potion of Prolonged Power
+				macro(30, "#showtooltip\n/use item:142117")
+
+			elseif level >= 35 and bags(109220) >= 1 then -- Draenic Versatility Potion
+				macro(30, "#showtooltip\n/use item:109220")
 
 			else -- No Potion Available
-				macro(30, "#showtooltip\n/use Potion of Prolonged Power", 132380)
+				macro(30, "#showtooltip\n/use Fleeting Elemental Potion of Ultimate Power", 132380)
 			end
 		end
 
@@ -1103,7 +1173,7 @@ local function eventHandler(self, event)
 					local _, name, _, _, spellId = GetPvpTalentInfoByID(id)
 					macro((i == 1) and 32 or (i == 2) and 33 or 34, "#showtooltip\n/use " .. (name or ""))
 				end
-			elseif instance == "The Shadowlands" then
+			elseif instance == "The Shadowlands" or instance == "Torghast" or IsInJailersTower() then
 				-- Covenant Class Ability
 				if class == "DEATHKNIGHT" then
 					macro(32, "#showtooltip\n/use [known:Summon Steward]Shackle the Unworthy;[known:Fleshcraft]Abomination Limb;[known:Door of Shadows]Swarming Mist")
@@ -1200,10 +1270,11 @@ local function eventHandler(self, event)
 
 			-- Mounts
 			local z, m, mA, mP = GetZoneText(), "", "", ""
-			local mountType, preferAquatic, overrideMount = "", false, false
+			local mountType, preferAquatic, overrideMount, dragonriding = "", false, false, false
 
 			local ground = Automagic.Characters["defaults"]["ground"]
 			local flying = Automagic.Characters["defaults"]["flying"]
+			local dragon = Automagic.Characters["defaults"]["dragon"]
 			local aquatic = Automagic.Characters["defaults"]["aquatic"]
 			local passenger = Automagic.Characters["defaults"]["passenger"]
 			local hs = (covenant == 1) and "Kyrian Hearthstone" or (covenant == 2) and "Venthyr Sinstone" or (covenant == 3) and "Night Fae Hearthstone" or (covenant == 4) and "Necrolord Hearthstone" or Automagic.Characters["defaults"]["hs"]
@@ -1215,6 +1286,9 @@ local function eventHandler(self, event)
 				if c["flying:"..spec] or c["flying"] then
 					flying = c["flying:"..spec] or c["flying"]
 					ground = flying
+				end
+				if c["dragon:"..spec] or c["dragon"] then
+					dragon = c["dragon:"..spec] or c["dragon"]
 				end
 				if c["ground:"..spec] or c["ground"] then
 					ground = c["ground:"..spec] or c["ground"]
@@ -1256,6 +1330,19 @@ local function eventHandler(self, event)
 				for i = 1, #pieces do
 					if i > 1 then flying = flying .. "," end
 					flying = flying .. strtrim(pieces[i])
+				end
+			end
+
+			-- Dragonriding Mounts
+			local pieces = { strsplit("|", dragon) }
+
+			if #pieces == 1 then
+				dragon = "/use [nomounted]" .. strtrim(pieces[1])
+			else
+				dragon = "/userandom [nomounted]"
+				for i = 1, #pieces do
+					if i > 1 then dragon = dragon .. "," end
+					dragon = dragon .. strtrim(pieces[i])
 				end
 			end
 
@@ -1305,6 +1392,11 @@ local function eventHandler(self, event)
 				mountType = "ground"
 			end
 
+			-- Dragonriding
+			if IsSpellKnown(376777) and (dragonAreas[instance] or dragonAreas[z]) then
+				dragonriding = true
+			end
+
 			-- Check which aquatic mount we should use
 			if z == "Vashj'ir" or z == "Kelp'thar Forest" or z == "Shimmering Expanse" or z == "Abyssal Depths" then
 				-- Vashj'ir
@@ -1351,6 +1443,9 @@ local function eventHandler(self, event)
 					macro(7, pre .. ground .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 					macro(8, pre .. ground .."\n/dismount [mounted]\n/leavevehicle", 413588)
 				end
+			elseif dragonriding then
+				macro(7, dragon .. "\n/dismount [mounted]\n/leavevehicle", 413588)
+				macro(8, aquatic .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 			elseif preferAquatic then
 				macro(7, aquatic .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 				macro(8, ((mountType == "flying") and flying or ground) .. "\n/dismount [mounted]\n/leavevehicle", 413588)
