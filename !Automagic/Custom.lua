@@ -12,6 +12,7 @@ local faction = UnitFactionGroup("player")
 --
 --   Toys:
 --		"hs" - Hearthstone Toy
+--		"mailbox" - Mailbox Toy (Katy's Stampwhistle or Ohuna Perch)
 --
 --   Companion Pets:
 --		"pets" - Companion Pet(s)
@@ -40,6 +41,7 @@ Automagic.Characters = {
 		["aquatic"] = "Subdued Seahorse",
 		["passenger"] = "X-53 Touring Rocket",
 		["hs"] = "Tome of Town Portal", -- Replaced by Covenant Hearthstone if available
+		["mailbox"] = "Ohuna Perch"
 		--["hex"] = "Frog",
 		--["polymorph"] = "Sheep",
 	},
@@ -82,7 +84,7 @@ Automagic.Characters = {
 	["Cordelia"] = { ["ground"] = "Black Riding Goat", },
 	["Cosmia"] = { ["ground"] = "Nightborne Manasaber", ["flying"] = "Arcanist's Manasaber", },
 	["Crash"] = { ["ground"] = "Running Wild", },
-	["Debbie"] = { ["flying"] = "Mystic Runesaber", },
+	["Debbie"] = { ["flying"] = "Mystic Runesaber", ["mailbox"] = "Katy's Stampwhistle", },
 	["Desna"] = { ["ground"] = "Frostwolf Snarler", ["flying"] = "Grand Armored Wyvern", },
 	["Dia"] = { ["ground"] = "Mag'har Direwolf", ["flying"] = "Ashenvale Chimaera", ["aquatic"] = "Fathom Dweller", ["hs"] = "Lunar Elder's Hearthstone", },
 	["Ean"] = { ["ground"] = "Vicious War Fox", ["flying"] = "Armored Blue Dragonhawk", ["aquatic"] = "Saltwater Seahorse", ["hs"] = "Eternal Traveler's Hearthstone", },
@@ -101,7 +103,7 @@ Automagic.Characters = {
 	["Errol"] = { ["flying"] = "Grove Warden", ["hs"] = "Lunar Elder's Hearthstone", },
 	["Eska"] = { ["ground"] = "Swift Frostwolf", ["flying"] = "Grand Armored Wyvern", },
 	["Felix"] = { ["ground"] = "Summon Thalassian Charger", ["flying"] = "Nether-Gorged Greatwyrm", ["hs"] = "Tome of Town Portal", },
-	["Fester"] = { ["ground"] = "Vicious Skeletal Warhorse", ["flying"] = "Undercity Plaguebat", },
+	["Fester"] = { ["ground"] = "Vicious War Spider", ["flying"] = "Undercity Plaguebat", ["dragon"] = "Highland Drake", },
 	["Flerm"] = { ["ground"] = "Kor'kron War Wolf", ["flying"] = "Volcanic Stone Drake", ["hex"] = "Cockroach", },
 	["Flora"] = { ["ground"] = "Crimson Vorquin", ["flying"] = "Life-Binder's Handmaiden", },
 	["Francesca"] = { ["ground"] = "Sundancer", ["flying"] = "Infinite Timereaver", ["aquatic"] = "Saltwater Seahorse", ["hs"] = "Tome of Town Portal", },
@@ -127,7 +129,7 @@ Automagic.Characters = {
 	["Helena"] = { ["flying"] = "Lightforged Warframe", },
 	["Hilda"] = { ["ground"] = "Summon Dawnforge Ram", ["flying"] = "Time-Lost Proto-Drake", ["aquatic"] = "Subdued Seahorse", ["hs"] = "Timewalker's Hearthstone", },
 	["Hope"] = { ["ground"] = "Bronze Vorquin", ["flying"] = "Bronze Drake", ["hs"] = "Timewalker's Hearthstone", },
-	["Huo"] = { ["ground"] = "Crimson Vorquin", ["flying"] = "Crimson Pandaren Phoenix", ["dragon"] = "Renewed Proto-Drake", },
+	["Huo"] = { ["ground"] = "Stormhide Salamanther", ["flying"] = "Crimson Pandaren Phoenix", ["dragon"] = "Renewed Proto-Drake", },
 	["Ini"] = { ["ground"] = "Violet Raptor", ["flying"] = "Bloodgorged Hunter", },
 	["Io"] = { ["ground"] = "Bronze Vorquin", ["flying"] = "Tangled Dreamweaver", },
 	["Iro"] = { ["ground"] = "Felsaber", ["flying"] = "Cloudwing Hippogryph", },
@@ -145,7 +147,7 @@ Automagic.Characters = {
 	["Lif"] = { ["ground"] = "Golden Riding Crane", ["flying"] = "Violet Pandaren Phoenix", ["aquatic"] = "Crimson Tidestallion", },
 	["Linda"] = { ["ground"] = "Snapback Scuttler", ["flying"] = "Siltwing Albatross", },
 	["Ling"] = { ["ground"] = "Golden Riding Crane", ["flying"] = "Violet Pandaren Phoenix", },
-	["Lion"] = { ["ground"] = "Vicious War Kodo", ["flying"] = "Battlelord's Bloodthirsty War Wyrm", ["dragon"] = "Cliffside Wylderdrake", },
+	["Lion"] = { ["ground"] = "Magmashell", ["flying"] = "Battlelord's Bloodthirsty War Wyrm", ["dragon"] = "Renewed Proto-Drake", },
 	["Liou"] = { ["ground"] = "Ban-Lu, Grandmaster's Companion", ["flying"] = "Emerald Pandaren Phoenix", },
 	["Lisa"] = { ["ground"] = "Llothien Prowler", ["flying"] = "Vulpine Familiar", },
 	["Liz"] = { ["ground"] = "Vicious War Trike", ["flying"] = "Shadowblade's Baneful Omen", },
@@ -168,7 +170,7 @@ Automagic.Characters = {
 	["Njord"] = { ["ground"] = "Snapdragon Kelpstalker", ["flying"] = "Abyss Worm", },
 	["Nord"] = { ["ground"] = "Ironbound Wraithcharger", ["flying"] = "Icebound Frostbrood Vanquisher", },
 	["Norega"] = { ["ground"] = "Warstitched Darkhound", ["flying"] = "Witherbark Direwing", },
-	["Nour"] = { ["ground"] = "Vicious War Kodo", ["flying"] = "High Priest's Lightsworn Seeker", ["dragon"] = "Cliffside Wylderdrake", ["aquatic"] = "Saltwater Seahorse", ["hs"] = "Peddlefeet's Lovely Hearthstone", },
+	["Nour"] = { ["ground"] = "Vicious Sabertooth", ["flying"] = "High Priest's Lightsworn Seeker", ["dragon"] = "Windborne Velocidrake", ["aquatic"] = "Saltwater Seahorse", ["hs"] = "Peddlefeet's Lovely Hearthstone", },
 	["Onion"] = { ["ground"] = "Midnight", ["flying"] = "The Dreadwake", },
 	["Ornacia"] = { },
 	["Pang"] = { ["ground"] = "Obsidian Vorquin", ["flying"] = "Black Drake", },
