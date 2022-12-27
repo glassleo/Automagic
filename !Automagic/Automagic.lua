@@ -1,4 +1,4 @@
-local gr, fl, aq, su, pa, hs, co = {}, {}, {}, {}, {}, {}, {}
+local gr, fl, aq, su, pa, hs, co, mb = {}, {}, {}, {}, {}, {}, {}, {}
 local throttled = {}
 
 
@@ -176,11 +176,16 @@ local function known(spell)
 end
 
 
+local BindingThrottle = false
 local function SetGlobalBinds()
-	if GetCurrentBindingSet() == 2 then
+	if BindingThrottle then
+		C_Timer.After(0.1, function() BindingThrottle = false end)
+	elseif GetCurrentBindingSet() == 2 then
 		LoadBindings(1)
 		print(CreateAtlasMarkup("services-icon-warning", 24, 24) .. " |cffff2020Character Specific Keybindings Detected|r")
 	elseif not InCombatLockdown() then
+		BindingThrottle = true
+		
 		-- Fishing
 		SetBindingSpell("CTRL-Z", "Fishing")
 
@@ -258,7 +263,7 @@ local function SetGlobalBinds()
 		SetBindingMacro("HOME", "G106")
 
 		-- Toggle ZigiAuras Debug Mode
-		SetBindingMacro("NUMPAD8", "G105")
+		SetBindingMacro("SHIFT-NUMPAD8", "G105")
 
 		-- Volume Low
 		SetBindingMacro("F11", "G110")
@@ -384,7 +389,7 @@ local function SetGlobalBinds()
 		SetBinding("CTRL-PAGEUP", "NONE")
 		SetBinding("CTRL-Q", "CLICK BT4Button55:LeftButton")
 		SetBinding("CTRL-R", "CLICK BT4Button17:LeftButton")
-		SetBinding("SHIFT-H", "CLICK BT4Button19:LeftButton")
+		SetBinding("SHIFT-F2", "CLICK BT4Button19:LeftButton")
 		SetBinding("CTRL-S", "NONE")
 		SetBinding("CTRL-SHIFT-BUTTON3", "MACRO Mount Aquatic")
 		SetBinding("CTRL-SHIFT-BUTTON4", "CLICK BindPadKey:MACRO Mount Passenger")
@@ -393,16 +398,6 @@ local function SetGlobalBinds()
 		SetBinding("CTRL-SHIFT-F18", "MACRO Reset Instances")
 		SetBinding("CTRL-SHIFT-F19", "MACRO Camp")
 		SetBinding("CTRL-SHIFT-HOME", "MACRO G113")
-		SetBinding("CTRL-SHIFT-NUMPAD0", "CLICK BindPadMacro:Pull 0")
-		SetBinding("CTRL-SHIFT-NUMPAD1", "CLICK BindPadMacro:Pull 10")
-		SetBinding("CTRL-SHIFT-NUMPAD2", "CLICK BindPadMacro:Pull 12")
-		SetBinding("CTRL-SHIFT-NUMPAD3", "CLICK BindPadMacro:Pull 3")
-		SetBinding("CTRL-SHIFT-NUMPAD4", "CLICK BindPadMacro:Pull 15")
-		SetBinding("CTRL-SHIFT-NUMPAD5", "CLICK BindPadMacro:Pull 5")
-		SetBinding("CTRL-SHIFT-NUMPAD6", "CLICK BindPadMacro:Pull 30")
-		SetBinding("CTRL-SHIFT-NUMPAD7", "CLICK BindPadMacro:Pull 7")
-		SetBinding("CTRL-SHIFT-NUMPAD8", "CLICK BindPadMacro:Pull 20")
-		SetBinding("CTRL-SHIFT-NUMPAD9", "CLICK BindPadMacro:Pull 60")
 		SetBinding("CTRL-SHIFT-NUMPADDECIMAL", "CLICK BindPadMacro:Ready Check")
 		SetBinding("CTRL-SHIFT-NUMPADDIVIDE", "MACRO G112")
 		SetBinding("CTRL-SHIFT-NUMPADMULTIPLY", "MACRO G114")
@@ -420,10 +415,10 @@ local function SetGlobalBinds()
 		SetBinding("E", "CLICK BT4Button64:LeftButton")
 		SetBinding("END", "MACRO G109")
 		SetBinding("F", "CLICK BT4Button32:LeftButton")
-		SetBinding("F1", "CLICK BT4Button49:LeftButton")
 		SetBinding("F10", "TOGGLESOUND")
 		SetBinding("F11", "MACRO G110")
 		SetBinding("F12", "MACRO G111")
+		SetBinding("F1", "CLICK BT4Button49:LeftButton")
 		SetBinding("F2", "CLICK BT4Button50:LeftButton")
 		SetBinding("F3", "CLICK BT4Button51:LeftButton")
 		SetBinding("F4", "CLICK BT4Button52:LeftButton")
@@ -433,7 +428,6 @@ local function SetGlobalBinds()
 		SetBinding("F8", "TOGGLEMUSIC")
 		SetBinding("F9", "NONE")
 		SetBinding("G", "CLICK BT4Button65:LeftButton")
-		SetBinding("H", "CLICK BT4Button18:LeftButton")
 		SetBinding("HOME", "MACRO G106")
 		SetBinding("I", "TOGGLEDUNGEONSANDRAIDS")
 		SetBinding("INSERT", "NONE")
@@ -444,6 +438,17 @@ local function SetGlobalBinds()
 		SetBinding("LEFT", "NONE")
 		SetBinding("N", "CLICK BT4Button13:LeftButton")
 		SetBinding("NUMLOCK", "NONE")
+		SetBinding("NUMPAD0", "TARGETFOCUS")
+		-- arena
+		SetBinding("SHIFT-1", "NONE")
+		SetBinding("SHIFT-2", "NONE")
+		SetBinding("SHIFT-3", "NONE")
+		SetBinding("CTRL-1", "NONE")
+		SetBinding("CTRL-2", "NONE")
+		SetBinding("CTRL-3", "NONE")
+		SetBinding("CTRL-SHIFT-1", "NONE")
+		SetBinding("CTRL-SHIFT-2", "NONE")
+		SetBinding("CTRL-SHIFT-3", "NONE")
 		SetBinding("NUMPAD0", "RAIDTARGET8")
 		SetBinding("NUMPAD1", "RAIDTARGET7")
 		SetBinding("NUMPAD2", "RAIDTARGET6")
@@ -465,28 +470,14 @@ local function SetGlobalBinds()
 		SetBinding("Q", "CLICK BT4Button63:LeftButton")
 		SetBinding("R", "CLICK BT4Button15:LeftButton")
 		SetBinding("RIGHT", "NONE")
-		SetBinding("SHIFT-0", "MACRO G002")
-		SetBinding("SHIFT-1", "NONE")
-		SetBinding("SHIFT-2", "NONE")
-		SetBinding("SHIFT-3", "NONE")
-		SetBinding("SHIFT-4", "NONE")
-		SetBinding("SHIFT-5", "NONE")
-		SetBinding("SHIFT-6", "NONE")
+		SetBinding("SHIFT-0", "MACRO G002") -- Belt (Nitro)
 		SetBinding("SHIFT-<", "REPLY2")
 		SetBinding("SHIFT-B", "NONE")
-		SetBinding("SHIFT-BUTTON3", "MACRO G008")
-		SetBinding("SHIFT-BUTTON4", "MACRO Cancel")
-		SetBinding("SHIFT-BUTTON5", "MACRO G025")
+		SetBinding("SHIFT-BUTTON3", "MACRO G008") -- Aquatic Mount
+		SetBinding("SHIFT-BUTTON5", "MACRO G025") -- Cancelaura
 		SetBinding("SHIFT-C", "CLICK BT4Button62:LeftButton")
 		SetBinding("SHIFT-DOWN", "NONE")
 		SetBinding("SHIFT-E", "CLICK BT4Button68:LeftButton")
-		SetBinding("SHIFT-F", "CLICK BT4Button31:LeftButton")
-		SetBinding("SHIFT-F1", "NONE")
-		SetBinding("SHIFT-F2", "NONE")
-		SetBinding("SHIFT-F3", "NONE")
-		SetBinding("SHIFT-F4", "NONE")
-		SetBinding("SHIFT-F5", "NONE")
-		SetBinding("SHIFT-F7", "ALLTHETHINGS_TOGGLEMAINLIST")
 		SetBinding("SHIFT-G", "CLICK BT4Button66:LeftButton")
 		SetBinding("CTRL-G", "MACRO G030")
 		SetBinding("SHIFT-I", "NONE")
@@ -510,8 +501,8 @@ local function SetGlobalBinds()
 		SetBinding("T", "CLICK BT4Button37:LeftButton")
 		SetBinding("UP", "NONE")
 		SetBinding("V", "ACTIONBUTTON7")
-		SetBinding("SHIFT-X", "MACRO G029")
-		SetBinding("X", "MACRO G028")
+		SetBinding("SHIFT-F1", "MACRO G028") -- Healthstone
+		SetBinding("SHIFT-F2", "MACRO G029") -- Tonic
 		SetBinding("§", "MACRO G001")
 		SetBinding("\\", "MACRO G001")
 		SetBinding("¨", "NONE")
@@ -521,8 +512,11 @@ local function SetGlobalBinds()
 		SetBinding("]", "FOLLOWTARGET")
 		SetBinding("ö", "TOGGLERUN")
 		SetBinding("6", "ACTIONBUTTON6")
-		SetBinding("7", "MACRO G026") -- Trinket 1
-		SetBinding("8", "MACRO G027") -- Trinket 2
+		SetBinding("X", "MACRO G026") -- Trinket 1
+		SetBinding("SHIFT-X", "MACRO G027") -- Trinket 2
+		SetBinding("TAB", "TARGETNEARESTENEMY")
+		SetBinding("SHIFT-TAB", "TARGETPREVIOUSENEMY")
+		SetBinding("CTRL-SHIFT-TAB", "NONE")
 	end
 end
 
@@ -1165,13 +1159,16 @@ local function eventHandler(self, event)
 
 		if event ~= "BAG_UPDATE" then
 			-- Content Abilities
-			if level >= 20 and instanceType == "arena" or instanceType == "pvp" or C_PvP.IsWarModeActive() or (C_PvP.IsWarModeDesired() and ((instance == "Kalimdor" and zone == "Orgrimmar") or (instance == "Eastern Kingdoms" and zone == "Stormwind City"))) then
+			if level >= 20 and instanceType == "arena" or instanceType == "pvp" or C_PvP.IsWarModeActive() or (C_PvP.IsWarModeDesired() and ((instance == "Kalimdor" and zone == "Orgrimmar") or (instance == "Eastern Kingdoms" and zone == "Stormwind City") or zone == "Valdrakken")) then
 				-- War Mode
 				local pvp1, pvp2, pvp3 = false, false, false
 
 				for i, id in pairs(C_SpecializationInfo.GetAllSelectedPvpTalentIDs()) do
 					local _, name, _, _, spellId = GetPvpTalentInfoByID(id)
-					macro((i == 1) and 32 or (i == 2) and 33 or 34, "#showtooltip\n/use " .. (name or ""))
+					local suffix = "(PvP Talent)"
+					if name == "Spirit of the Redeemer" then name = "Spirit of Redemption" end
+					if name == "Dream Projection" then suffix = "" end
+					macro((i == 1) and 32 or (i == 2) and 33 or 34, "#showtooltip\n/use " .. (name or "")..suffix)
 				end
 			elseif instance == "The Shadowlands" or instance == "Torghast" or IsInJailersTower() then
 				-- Covenant Class Ability
@@ -1278,6 +1275,7 @@ local function eventHandler(self, event)
 			local aquatic = Automagic.Characters["defaults"]["aquatic"]
 			local passenger = Automagic.Characters["defaults"]["passenger"]
 			local hs = (covenant == 1) and "Kyrian Hearthstone" or (covenant == 2) and "Venthyr Sinstone" or (covenant == 3) and "Night Fae Hearthstone" or (covenant == 4) and "Necrolord Hearthstone" or Automagic.Characters["defaults"]["hs"]
+			local mailbox = Automagic.Characters["defaults"]["mailbox"]
 			local pets = nil
 
 			if Automagic.Characters[name.."-"..realm] or Automagic.Characters[name] then
@@ -1301,6 +1299,9 @@ local function eventHandler(self, event)
 				end
 				if c["hs:"..spec] or c["hs"] then
 					hs = c["hs:"..spec] or c["hs"]
+				end
+				if c["mailbox:"..spec] or c["mailbox"] then
+					mailbox = c["mailbox:"..spec] or c["mailbox"]
 				end
 				if c["pets:"..spec] or c["pets"] then
 					pets = c["pets:"..spec] or c["pets"]
@@ -1462,6 +1463,9 @@ local function eventHandler(self, event)
 
 			-- Hearthstone
 			macro(13, "#showtooltip\n#icon 134414\n/use " .. hs, 134414)
+
+			-- Mailbox
+			macro(40, "#showtooltip\n/use " .. mailbox)
 
 			-- Companion
 			if pets then
