@@ -534,7 +534,7 @@ local function BuildGlobalMacros()
 
 		-- Tinker: Nitro Boosts
 		macro(5, "/run C_TradeSkillUI.OpenTradeSkill(202) C_TradeSkillUI.CraftRecipe(55016) C_TradeSkillUI.CloseTradeSkill()\n/use 6", 136243)
-		
+
 		-- Tinker: Goblin Glider
 		macro(6, "/run C_TradeSkillUI.OpenTradeSkill(202) C_TradeSkillUI.CraftRecipe(126392) C_TradeSkillUI.CloseTradeSkill()\n/use 15", 136243)
 
@@ -1208,34 +1208,53 @@ local function eventHandler(self, event)
 				macro(32, "#showtooltip\n/use Heart Essence")
 			end
 
-			-- Zone Ability
-
+			-- Zone Abilities
+			-- 31 = .
+			-- 35 = -
 			if instance == "Eastern Kingdoms" and zone == "Dun Morogh" then
 				macro(31, "/targetexact Stolen Ram\n/whistle\n/targetlasttarget", 132161)
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
+			elseif instance == "Kalimdor" and zone == "Azshara" and faction == "Horde" then
+				macro(31, "#showtooltip\n/use Polymorph Insect", 294474)
+				macro(35, "#showtooltip\n/use Return to Camp", 135750)
 			elseif instance == "Pandaria" and zone == "Kun-Lai Summit" and class == "MONK" then
 				macro(31, "/bow", 572034)
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "Draenor" then
 				macro(31, "#showtooltip\n/use Garrison Ability")
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "Argus" then
 				macro(31, "#showtooltip\n/use Vindicaar Matrix Crystal")
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif (instance == "Horrific Vision of Orgrimmar" or instance == "Horrific Vision of Stormwind") and IsSpellKnown(314955) then
 				macro(31, "#showtooltip\n/use Sanity Restoration Orb")
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "Vision of the Twisting Sands" or instance == "Vale of Eternal Twilight" then
 				macro(31, "#showtooltip\n/use Resilient Soul", 458722)
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif IsInJailersTower() then
 				macro(31, "#showtooltip\n/use Activate Empowerment")
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "Torghast" then
 				-- Torghast: Layer 1 spam
 				-- /run C_GossipInfo.SelectOption(TorghastLevelPickerFrame.currentSelectedButton.index)
 				macro(31, "/run C_GossipInfo.SelectOption(1)", 4062765)
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "The Shadowlands" and covenant == 4 then
 				macro(31, "#showtooltip\n/use Construct Ability") -- Necrolord only
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "Zereth Mortis" then
 				macro(31, "#showtooltip\n/use Summon Pocopoc")
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "Northrend" then
 				macro(31, "/run ProfessionsFrame.CraftingPage.CreateButton:Click()\n/use 6\n/click StaticPopup1Button1")
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
+			elseif instance == "10.0 Dragon Isles" or instance == "Dragon Isles" then
+				macro(31, "#showtooltip\n/use Blessing of Ohn'ara")
+				macro(35, "#showtooltip\n/use Hunting Companion")
 			else -- Fallback
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
+				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			end
 
 
