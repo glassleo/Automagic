@@ -486,7 +486,7 @@ local function SetGlobalBinds()
 		SetBinding("SHIFT-MOUSEWHEELDOWN", "NONE")
 		SetBinding("SHIFT-MOUSEWHEELUP", "NONE")
 		SetBinding("SHIFT-N", "CLICK BT4Button14:LeftButton")
-		SetBinding("SHIFT-P", "TOGGLECOLLECTIONSMOUNTJOURNAL")
+		SetBinding("SHIFT-P", "TOGGLECOLLECTIONS")
 		SetBinding("SHIFT-PAGEDOWN", "NONE")
 		SetBinding("SHIFT-Q", "CLICK BT4Button42:LeftButton")
 		SetBinding("SHIFT-R", "CLICK BT4Button16:LeftButton")
@@ -1016,6 +1016,8 @@ local function eventHandler(self, event)
 
 			if class == "DEMONHUNTER" then
 				body = body .. "\n/cancelaura Netherwalk"
+			elseif class == "EVOKER" then
+				body = body .. "\n/cancelaura Emerald Communion"
 			elseif class == "HUNTER" then
 				body = body .. "\n/cancelaura Aspect of the Turtle"
 			elseif class == "MAGE" then
