@@ -66,6 +66,7 @@ local groundAreas = {
 	-- Broken Isles
 	["Helheim"] = true,
 	["Niskara"] = true,
+	["Telogrus Ríft"] = true,
 	-- Order Halls
 	["The Maelstrom"] = true,
 	["Mardum, the Shattered Abyss"] = true,
@@ -80,7 +81,7 @@ local groundAreas = {
 	-- Argus
 	["Krokuun"] = true,
 	["Antoran Wastes"] = true,
-	["Mac'Aree"] = true, -- Removed in 9.1.5 but still used in API in some places
+	["Mac'Aree"] = true, -- Renamed to Eredath in 9.1.5 but still used in some places
 	["Eredath"] = true,
 	["Invasion Points"] = true,
 	-- Battle for Azeroth
