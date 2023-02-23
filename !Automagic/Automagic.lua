@@ -649,6 +649,22 @@ function Automagic.UpdatePets()
 		end
 
 		macro(14, "#showtooltip\n#icon " .. icon .. "\n/use Raise Dead", tonumber(icon) > 0 and tonumber(icon) or nil)
+	elseif class == "PRIEST" then
+		local icons = {
+			[0] = 136199, -- Shadowfiend (default)
+			[1299] = 525026, -- Lightspawn
+			[1085] = 2735130, -- Sha
+		}
+
+		local icon = icons[0] or 0
+		local link = GetSpellLink(34433)
+
+		if link then
+			local glyph = tonumber(string.match(link, "spell:[%d]+:([%d]+)") or 0) or 0
+			if icons[glyph] then icon = icons[glyph] end
+		end
+
+		macro(14, "#showtooltip\n#icon " .. icon .. "\n/use Shadowfiend", tonumber(icon) > 0 and tonumber(icon) or nil)
 	elseif class == "HUNTER" then
 		local petAbilityMacro, petExoticMacro = "#showtooltip\n/use ", "#showtooltip\n/use "
 
@@ -978,11 +994,7 @@ local function eventHandler(self, event)
 		local spec = GetSpecialization() or 5
 		local role = GetSpecializationRole(spec) or "DAMAGER" -- "DAMAGER", "TANK" or "HEALER"
 		local level = UnitLevel("player") or 1
-		local covenant = C_Covenants and C_Covenants.GetActiveCovenantID() or 0
-		-- 1 Kyrian
-		-- 2 Venthyr
-		-- 3 Night Fae
-		-- 4 Necrolord
+		local covenant = C_Covenants and C_Covenants.GetActiveCovenantID() or 0 -- 1 Kyrian, 2 Venthyr, 3 Night Fae, 4 Necrolord
 
 		local primary = "int"
 		if (class == "DEMONHUNTER") or (class == "DRUID" and (spec == 2 or spec == 3)) or (class == "HUNTER") or (class == "MONK" and spec ~= 2) or (class == "ROGUE") or (class == "SHAMAN" and spec == 2) then
@@ -1156,7 +1168,7 @@ local function eventHandler(self, event)
 				macro(30, "#showtooltip\n/use item:109220")
 
 			else -- No Potion Available
-				macro(30, "#showtooltip\n/use Fleeting Elemental Potion of Ultimate Power", 132380)
+				macro(30, "#showtooltip\n/use Fleeting Elemental Potion of Power", 132380)
 			end
 		end
 
