@@ -1467,7 +1467,10 @@ local function eventHandler(self, event)
 
 			-- Update Macros
 			-- Mount + Aquatic Mount
-			if class == "DRUID" then
+			if dragonriding then
+				macro(7, dragon .. "\n/dismount [mounted]\n/leavevehicle", 413588)
+				macro(8, aquatic .. "\n/dismount [mounted]\n/leavevehicle", 413588)
+			elseif class == "DRUID" then
 				if mountType == "flying" then
 					macro(7, pre .. "/use [swimming][nocombat,nomounted]!Travel Form\n/dismount [mounted]\n/leavevehicle", 413588)
 					macro(8, pre .. flying .."\n/dismount [mounted]\n/leavevehicle", 413588)
@@ -1478,9 +1481,6 @@ local function eventHandler(self, event)
 					macro(7, pre .. ground .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 					macro(8, pre .. ground .."\n/dismount [mounted]\n/leavevehicle", 413588)
 				end
-			elseif dragonriding then
-				macro(7, dragon .. "\n/dismount [mounted]\n/leavevehicle", 413588)
-				macro(8, aquatic .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 			elseif preferAquatic then
 				macro(7, aquatic .. "\n/dismount [mounted]\n/leavevehicle", 413588)
 				macro(8, ((mountType == "flying") and flying or ground) .. "\n/dismount [mounted]\n/leavevehicle", 413588)
