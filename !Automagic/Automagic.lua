@@ -504,6 +504,7 @@ local function SetGlobalBinds()
 		SetBinding("V", "ACTIONBUTTON7")
 		SetBinding("SHIFT-F1", "MACRO G028") -- Healthstone
 		SetBinding("SHIFT-F2", "MACRO G029") -- Tonic
+		SetBinding("F7", "MACRO G041") -- Bloodlust
 		SetBinding("§", "MACRO G001")
 		SetBinding("\\", "MACRO G001")
 		SetBinding("¨", "NONE")
@@ -1170,6 +1171,45 @@ local function eventHandler(self, event)
 			else -- No Potion Available
 				macro(30, "#showtooltip\n/use Fleeting Elemental Potion of Power", 132380)
 			end
+
+			-- Bloodlust (41)
+			if class == "SHAMAN" and faction == "Horde" and level >= 48 then -- Bloodlust (48)
+				macro(41, "#showtooltip\n/use Bloodlust")
+
+			elseif class == "SHAMAN" and level >= 48 then -- Heroism (48)
+				macro(41, "#showtooltip\n/use Heroism")
+
+			elseif class == "HUNTER" and level >= 28 then -- Primal Rage (28)
+				macro(41, "#showtooltip\n/use Primal Rage")
+
+			elseif class == "MAGE" and level >= 49 then -- Time Warp (49)
+				macro(41, "#showtooltip\n/use Time Warp")
+
+			elseif class == "EVOKER" and level >= 60 then -- Fury of the Aspects (60)
+				macro(41, "#showtooltip\n/use Fury of the Aspects")
+
+			else
+				if bags(193470) >= 1 and level >= 61 then -- Feral Hide Drums
+					macro(41, "#showtooltip\n/use item:193470")
+
+				elseif bags(172233) >= 1 and level <= 60 then -- Drums of Deathly Ferocity
+					macro(41, "#showtooltip\n/use item:172233")
+
+				elseif bags(154167) >= 1 and level <= 50 then -- Drums of the Maelstrom
+					macro(41, "#showtooltip\n/use item:154167")
+
+				elseif bags(142406) >= 1 and level <= 50 then -- Drums of the Mountain
+					macro(41, "#showtooltip\n/use item:142406")
+
+				elseif bags(102351) >= 1 and level <= 50 then -- Drums of Rage
+					macro(41, "#showtooltip\n/use item:102351")
+
+				elseif level >= 61 then -- No Drums Available
+					macro(41, "#showtooltip\n/use item:193470")
+				else -- No Drums Available
+					macro(41, "#showtooltip\n/use item:142406")
+				end
+			end
 		end
 
 		if event ~= "BAG_UPDATE" then
@@ -1226,7 +1266,11 @@ local function eventHandler(self, event)
 			-- Zone Abilities
 			-- 31 = .
 			-- 35 = -
-			if instance == "Eastern Kingdoms" and zone == "Dun Morogh" then
+			if level < 60 then
+				--macro(31, "/inv Flop-Ravenholdt\n/inv Flopping-Ravenholdt\n/pr Flop-Ravenholdt\n/pr Flopping-Ravenholdt", 975738)
+				--macro(35, "/tar Flop\n/follow", 975738)
+				macro(35, "/tar Leo\n/follow", 975738)
+			elseif instance == "Eastern Kingdoms" and zone == "Dun Morogh" then
 				macro(31, "/targetexact Stolen Ram\n/whistle\n/targetlasttarget", 132161)
 				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "Kalimdor" and zone == "Azshara" and faction == "Horde" then
