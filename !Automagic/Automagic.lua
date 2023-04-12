@@ -1026,7 +1026,7 @@ local function eventHandler(self, event)
 
 		if event ~= "ZONE_CHANGED_NEW_AREA" then
 			-- Cancel Aura (25)
-			local body = "/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Goblin Glider\n/cancelaura Parachute\n/cancelaura Forgeborne Reveries\n/cancelaura Path of Greed"
+			local body = "/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Updraft\n/cancelaura Goblin Glider\n/cancelaura Parachute\n/cancelaura Forgeborne Reveries\n/cancelaura Path of Greed"
 
 			if class == "DEMONHUNTER" then
 				body = body .. "\n/cancelaura Netherwalk"
