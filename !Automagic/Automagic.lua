@@ -1054,6 +1054,9 @@ local function eventHandler(self, event)
 			elseif instanceType == "pvp" and bags(138486) >= 1 then -- "Third Wind" Potion (50%) - Battlegrounds only
 				macro(29, "#showtooltip\n/use item:138486")
 
+			elseif bags(202088) >= 1 then -- Powerful Flask of Renewal (30%)
+				macro(29, "#showtooltip\n/use item:202088")
+
 			elseif instanceType == "none" and bags(124660) >= 1 then -- Darkmoon Healing Tonic (20%) - Outdoor only
 				macro(29, "#showtooltip\n/use item:124660")
 
