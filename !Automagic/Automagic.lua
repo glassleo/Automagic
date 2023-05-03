@@ -111,6 +111,7 @@ local groundAreas = {
 	["The Azure Span"] = true,
 	["The Forbidden Reach"] = true,
 	["Grand Time Adventure"] = true,
+	["Zaralek Cavern"] = true,
 }
 
 -- Dragonriding enabled zones
@@ -126,6 +127,7 @@ local dragonAreas = {
 	["Ohn'ahran Plains"] = true,
 	["The Azure Span"] = true,
 	["The Forbidden Reach"] = true,
+	["Zaralek Cavern"] = true,
 	-- Instances
 	["The Nokhud Offensive"] = true,
 	["The Primalist Future"] = true,
@@ -914,6 +916,7 @@ local function eventHandler(self, event)
 		SetCVar("nameplateShowEnemyTotems", 1)
 		SetCVar("nameplateShowEnemyMinions", 1)
 		SetCVar("nameplateShowEnemyMinus", 1)
+		SetCVar("nameplateMotion", 1) -- Stacking nameplates
 		SetCVar("empowerTapControls", 1)
 		--MinimapCluster.MailFrame:SetPoint("TOPLEFT", Minimap, 0, 500)
 		Automagic.SetLayout("Global")
@@ -1127,7 +1130,7 @@ local function eventHandler(self, event)
 				macro(30, "#showtooltip\n/use item:191905")
 
 			elseif level >= 61 and bags(191389) >= 1 then -- Elemental Potion of Power ◆◆◆
-				macro(30, "#showtooltip\n/use item:171270")
+				macro(30, "#showtooltip\n/use item:191389")
 
 			elseif level >= 61 and bags(191388) >= 1 then -- Elemental Potion of Power ◆◆
 				macro(30, "#showtooltip\n/use item:191388")
