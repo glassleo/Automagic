@@ -142,7 +142,7 @@ Automagic.Characters = {
 	["Kiwi"] = {},
 	["Lakrits"] = { ["ground"] = "Battle Gargon Silessa", ["flying"] = "Sinfall Gravewing", ["hs"] = "Venthyr Sinstone", },
 	["Leaf"] = { ["ground"] = "Wandering Ancient", },
-	["Leo"] = { ["ground"] = "Highlord's Golden Charger", ["flying"] = "Sapphire Skyblazer", ["dragon"] = "Highland Drake", },
+	["Leo"] = { ["ground"] = "Highlord's Golden Charger", ["flying"] = "Sapphire Skyblazer", ["dragon"] = "Winding Slitherdrake", },
 	["Lif"] = { ["ground"] = "Golden Riding Crane", ["flying"] = "Violet Pandaren Phoenix", ["aquatic"] = "Crimson Tidestallion", },
 	["Linda"] = { ["ground"] = "Snapback Scuttler", ["flying"] = "Siltwing Albatross", ["dragon"] = "Windborne Velocidrake", },
 	["Ling"] = { ["ground"] = "Golden Riding Crane", ["flying"] = "Violet Pandaren Phoenix", },
