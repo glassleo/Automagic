@@ -21,6 +21,15 @@ Automagic.PetIcons["SHAMAN"] = {
 }
 
 
+-- Disable micro button alerts
+hooksecurefunc("MicroButtonPulse", function(self,duration)
+    MicroButtonPulseStop(self)
+end)
+hooksecurefunc("MainMenuMicroButton_ShowAlert", function(self)
+    HelpTip:HideAllSystem("MicroButtons")
+end)
+
+
 local frame = CreateFrame("FRAME", "AutomagicFrame")
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:RegisterEvent("VARIABLES_LOADED")
