@@ -1041,19 +1041,21 @@ local function eventHandler(self, event)
 			local body = "/cancelaura Blessing of Protection\n/cancelaura Slow Fall\n/cancelaura Levitate\n/cancelaura Updraft\n/cancelaura Goblin Glider\n/cancelaura Parachute\n/cancelaura Forgeborne Reveries\n/cancelaura Path of Greed"
 
 			if class == "DEMONHUNTER" then
-				body = body .. "\n/cancelaura Netherwalk"
+				body = "/cancelaura Netherwalk\n" .. body
 			elseif class == "EVOKER" then
-				body = body .. "\n/cancelaura Emerald Communion"
+				body = "/cancelaura Emerald Communion\n" .. body
 			elseif class == "HUNTER" then
-				body = body .. "\n/cancelaura Aspect of the Turtle"
+				body = "/cancelaura Aspect of the Turtle\n" .. body
 			elseif class == "MAGE" then
-				body = body .. "\n/cancelaura Ice Block"
+				body = "/cancelaura Ice Block\n" .. body
 			elseif class == "PALADIN" then
-				body = body .. "\n/cancelaura Divine Shield"
-			elseif class == "PRIEST" then
-				body = body .. "\n/cancelaura Spirit of Redemption\n/cancelaura Dispersion"
+				body = "/cancelaura Divine Shield\n" .. body
+			elseif class == "PRIEST" and spec == 2 then
+				body = "/cancelaura Spirit of Redemption\n" .. body
+			elseif class == "PRIEST" and spec == 3 then
+				body = "/cancelaura Dispersion\n" .. body
 			elseif class == "WARRIOR" then
-				body = body .. "\n/cancelaura Bladestorm"
+				body = "/cancelaura Bladestorm\n" .. body
 			end
 
 			macro(25, body, 135739)
@@ -1324,7 +1326,11 @@ local function eventHandler(self, event)
 				macro(31, "/run ProfessionsFrame.CraftingPage.CreateButton:Click()\n/use 6\n/click StaticPopup1Button1")
 				macro(35, "#showtooltip\n/use Garrison Ability", 975738)
 			elseif instance == "10.0 Dragon Isles" or instance == "Dragon Isles" then
-				macro(31, "#showtooltip\n/use Blessing of Ohn'ara")
+				if zone == "Ohn'ahran Plains" and C_TaskQuest.IsActive(70549) then
+					macro(31, "#showtooltip Simple Shot\n/tar Honey Plum\n/click ExtraActionButton1")
+				else
+					macro(31, "#showtooltip\n/use Blessing of Ohn'ara")
+				end
 				macro(35, "#showtooltip\n/use Hunting Companion")
 			else -- Fallback
 				macro(31, "#showtooltip\n/use Garrison Ability", 975738)
