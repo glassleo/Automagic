@@ -821,13 +821,9 @@ if TemporaryEnchantFrame then
 	vanish.SetParent(TemporaryEnchantFrame, vanish)
 end
 
-vanish.UnregisterAllEvents(MirrorTimer1)
-vanish.Hide(MirrorTimer1)
-vanish.SetParent(MirrorTimer1, vanish)
-
-vanish.UnregisterAllEvents(MirrorTimer2)
-vanish.Hide(MirrorTimer2)
-vanish.SetParent(MirrorTimer2, vanish)
+vanish.UnregisterAllEvents(MirrorTimerContainer)
+vanish.Hide(MirrorTimerContainer)
+vanish.SetParent(MirrorTimerContainer, vanish)
 
 
 function Automagic.SetLayout(name)
@@ -1357,6 +1353,8 @@ local function eventHandler(self, event)
 				-- Rocfeather Skyhorn Kite?
 			elseif instance == "The Shadowlands" then
 				mL = "#showtooltip\n/use Silver Shardhide Whistle"
+			elseif instance == "Zaralek Cavern" then
+				mL = "#showtooltip\n/use Niffen Diggin' Mitts"
 			end
 
 			macro(36, mL or "", (not mL) and 975738 or nil)
