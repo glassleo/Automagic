@@ -1,9 +1,9 @@
-## Interface: 100100
+## Interface: 100105
 ## IconTexture: 892830
 ## Title: !Automagic
 ## Notes: Automagic
 ## Author: Leo
-## Version: 10.1
+## Version: 10.1.5
 ## OptionalDeps: !AutomagicOptions, !ZigiAuras
 
 Custom.lua
