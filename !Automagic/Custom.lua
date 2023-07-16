@@ -126,7 +126,7 @@ Automagic.Characters = {
 	["Grey"] = { ["ground"] = "Smoky Charger", ["flying"] = "Life-Binder's Handmaiden", },
 	["Gruff"] = { ["ground"] = "Snapback Scuttler", ["flying"] = "Squawks", },
 	["Hecate"] = { ["ground"] = "Lucid Nightmare", ["flying"] = "Duskflutter Ardenmoth", ["aquatic"] = "Darkwater Skate", ["hs"] = "Lunar Elder's Hearthstone", },
-	["Hekla"] = { ["ground"] = "Flametalon of Alysrazor", ["flying"] = "Pureblood Fire Hawk", },
+	["Hekla"] = { ["ground"] = "Dauntless Duskrunner", ["flying"] = "Corrupted Fire Hawk", },
 	["Helena"] = { ["ground"] = "Armored Plaguerot Tauralus", },
 	["Hilda"] = { ["ground"] = "Summon Dawnforge Ram", ["flying"] = "Time-Lost Proto-Drake", ["aquatic"] = "Subdued Seahorse", ["dragon"] = "Renewed Proto-Drake", ["hs"] = "Timewalker's Hearthstone", },
 	["Hope"] = { ["ground"] = "Bronze Vorquin", ["flying"] = "Bronze Drake", ["hs"] = "Timewalker's Hearthstone", },
