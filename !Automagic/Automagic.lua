@@ -516,7 +516,7 @@ local function SetGlobalBinds()
 		SetBinding("SHIFT-F1", "MACRO G028") -- Healthstone
 		SetBinding("SHIFT-F2", "MACRO G029") -- Tonic
 		SetBinding("SHIFT-F3", "MACRO G042") -- Weyrnstone
-		SetBinding("F7", "MACRO G041") -- Bloodlust
+		SetBinding("CTRL-SHIFT-G", "MACRO G041") -- Bloodlust
 		SetBinding("§", "MACRO G001")
 		SetBinding("\\", "MACRO G001")
 		SetBinding("¨", "NONE")
