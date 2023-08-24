@@ -416,7 +416,6 @@ local function SetGlobalBinds()
 		SetBinding("CTRL-SHIFT-PAGEDOWN", "MACRO G108")
 		SetBinding("CTRL-SHIFT-PAGEUP", "MACRO G120")
 		SetBinding("CTRL-SHIFT-SPACE", "INTERACTTARGET")
-		SetBinding("CTRL-SPACE", "NONE")
 		SetBinding("CTRL-T", "CLICK BT4Button39:LeftButton")
 		SetBinding("CTRL-V", "CLICK BT4Button44:LeftButton")
 		SetBinding("CTRL-X", "SPELL Survey")
@@ -531,6 +530,7 @@ local function SetGlobalBinds()
 		SetBinding("TAB", "TARGETNEARESTENEMY")
 		SetBinding("SHIFT-TAB", "TARGETPREVIOUSENEMY")
 		SetBinding("CTRL-SHIFT-TAB", "NONE")
+		SetBinding("CTRL-SPACE", "MACRO G043")
 	end
 end
 
@@ -582,8 +582,11 @@ local function BuildGlobalMacros()
 		-- Healthstone
 		macro(28, "#showtooltip\n/use Healthstone", 538745)
 
-		-- Healthstone
+		-- Weyrnstone
 		macro(42, "#showtooltip\n/use Weyrnstone", 5199618)
+
+		-- Gateway Control Orb
+		macro(43, "#showtooltip\n/use Gateway Control Shard", 607513)
 
 		-- Toggle War Mode
 		macro(104, "/run C_PvP.ToggleWarMode()", 1455894)
